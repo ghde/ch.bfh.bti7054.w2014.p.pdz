@@ -93,5 +93,5 @@ echo 'Your name is' . ' ' . $_GET['firstname'] . ' ' . $_GET['lastname'];
 
 
 </body>
-</html
+</html>
 

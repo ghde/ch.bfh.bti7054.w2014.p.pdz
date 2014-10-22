@@ -197,6 +197,6 @@ for ($x=0; $x<$array_length; $x++)
 
 
 </body>
-</html
+</html>
 
 
