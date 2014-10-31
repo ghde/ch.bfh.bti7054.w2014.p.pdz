@@ -70,8 +70,7 @@
 	echo "You have ordered:" . " " . "Plant Nr." . $_SESSION['plant'];
 	
 	?>
-
-		
+	
 	<div id="customizing">
 	
 	<h3>Continue Shopping</h3>

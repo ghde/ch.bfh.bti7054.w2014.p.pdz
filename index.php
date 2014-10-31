@@ -32,6 +32,12 @@
 if (isset($_COOKIE["language"]))
 				
 	echo "Language is" . " " . $_COOKIE["language"];
+
+else {
+	
+	echo "Language is unknown";
+	
+}
 				
 ?>
 
