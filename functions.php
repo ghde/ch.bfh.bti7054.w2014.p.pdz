@@ -1,53 +1,34 @@
 <?php
-	
 function setlanguage() {
-
-
-	if(isset($_GET['lang'])) {
-
-		$langURL = $_GET['lang'];
-	
-		switch ($langURL) {
-	
-			case "de":
-				setcookie("language", "", time()-1);
-				setcookie("language", "de", time()+60);
-				break;
-		
-			case "en":
-				setcookie("language", "", time()-1);
-				setcookie("language", "en", time()+60);
-				break;
-	
-		}
-
-	}
-
-	if(isset($_GET['lang']) || isset($_COOKIE['language'])) {
-
-		$lang = array_key_exists('lang', $_GET) ? $_GET['lang'] : null;
-        if ($lang == null) {
-        	$lang = $_COOKIE['language'];
+    
+    // Configure available/supported languages
+    $availableLang = array (
+            'de' => 'german',
+            'en' => 'english' 
+    );
+    
+    // Default language english
+    $lang = "en";
+    
+    // Get the language from url and check if it is supported.
+    if (array_key_exists ( 'lang', $_GET )) {
+        $langURL = $_GET ['lang'];
+        if (array_key_exists ( $langURL, $availableLang )) {
+            setcookie ( "language", "", time () - 1 );
+            setcookie ( "language", $langURL, time () + 60 );
+            $lang = $langURL;
         }
-		
-		switch ($lang) {
-		
-			case "en":
-				require_once('language/english.php');
-				break;
-			
-			case "de":
-				require_once('language/deutsch.php');
-				break;
-		}
-		
-	}
-
-	else {
-			
-		require_once('language/english.php');
-
-	}
+    } 
+    
+    // If not defined in url take if from the cookie (if available).
+    else if (isset ( $_COOKIE ['language'] )) {
+        $langCookie = $_COOKIE ['language'];
+        if (array_key_exists ( $langCookie, $availableLang )) {
+            $lang = $langCookie;
+        }
+    }
+    
+    require_once "language/" . $availableLang[$lang]. ".php";
 }
-	setlanguage();
+setlanguage ();
 ?>
