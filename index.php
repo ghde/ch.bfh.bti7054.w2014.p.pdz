@@ -26,21 +26,7 @@
 <div id="promise">
 
 <?php echo PROMISE;?> 
-
-<?php
 				
-if (isset($_COOKIE["language"]))
-				
-	echo "Language is" . " " . $_COOKIE["language"];
-
-else {
-	
-	echo "Language is unknown";
-	
-}
-				
-?>
-
 	<div id="languages">
 
 		<a href="?lang=de">&raquo; Deutsch<a/>

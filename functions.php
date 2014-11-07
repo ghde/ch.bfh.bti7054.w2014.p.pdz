@@ -3,7 +3,7 @@ function setlanguage() {
     
     // Configure available/supported languages
     $availableLang = array (
-            'de' => 'german',
+            'de' => 'deutsch',
             'en' => 'english' 
     );
     
