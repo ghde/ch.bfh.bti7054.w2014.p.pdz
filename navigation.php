@@ -21,7 +21,7 @@
 
 <div id="promise">
 
-    <?php echo PROMISE;?>
+    <?php echo PROMISE; ?>
 
     <div id="languages">
 
@@ -40,6 +40,7 @@
     <div id="logo_and_slogan">
 
         <img id="logo" src="pictures/Logo_Plant_Front.png" width="110" height="80" border="0">
+
         <h1>Plants for your home</h1>
 
     </div>
@@ -48,15 +49,13 @@
 
         <div id="login">
 
-            <a id="style_navigation_pane" href="login.html"><?php echo LOGIN;?><a/>
+            <a id="style_navigation_pane" href="login.html"><?php echo LOGIN; ?><a/>
 
                 <?php
 
-                if(isset($_SESSION['user'])) {
-                    echo 'Hello' . ' ' . $_SESSION['user'];
-                }
-
-                else {
+                if (isset($_SESSION['user'])) {
+                    echo 'Hello ' . $_SESSION['user'];
+                } else {
 
                     echo '<form action="index.php" method="post">';
                     echo '<input name= "user"/>User Name <br/>';
@@ -70,34 +69,30 @@
                 <button type=button onclick="logoutj()">Logout!</button>
 
 
-                <a id="style_navigation_pane" href="help.html"><?php echo HELP;?><a/>
-                    <a id="style_navigation_pane" href="contact.html"><?php echo CONTACT;?><a/>
+                <a id="style_navigation_pane" href="help.html"><?php echo HELP; ?><a/>
+                    <a id="style_navigation_pane" href="contact.html"><?php echo CONTACT; ?><a/>
         </div>
-
 
 
         <div id="shopping_cart">
 
-            <a id="style_navigation_pane" href="cart.html"><?php echo CART;?></a>
+            <a id="style_navigation_pane" href="cart.html"><?php echo CART; ?></a>
 
-                <?php
+            <?php
 
 
-                if (isset($_SESSION['shoppingcart']))
+            if (isset($_SESSION['shoppingcart'])) {
 
-                {
-
-                    foreach ($_SESSION['shoppingcart'] as $key => $plant) {
-
-                        echo "<br>";
-                        echo "You have ordered: " . $plant['name'];
-                        echo "<button type='button'";
-                        echo "onclick=";
-                        echo '"' . "window.location.href=" . "'" . "customize.php?remove_plant=". $key . "'" . ";" . '"' . ">Removal</button>";
-                    }
+                foreach ($_SESSION['shoppingcart'] as $key => $plant) {
+                    ?><br/>
+                    You have ordered: <?= $plant["name"]; ?>
+                    <button type="button" onclick="window.location.href='customize.php?remove_plant=<?= $key; ?>'">
+                        Removal</button>
+                    <?
                 }
+            }
 
-                ?>
+            ?>
 
         </div>
 
