@@ -76,7 +76,7 @@
 
         <div id="shopping_cart">
 
-            <a id="style_navigation_pane" href="cart.html"><?php echo CART;?><a/>
+            <a id="style_navigation_pane" href="cart.html"><?php echo CART;?></a>
 
                 <?php
 

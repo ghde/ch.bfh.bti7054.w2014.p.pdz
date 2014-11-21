@@ -1,11 +1,10 @@
 <?php session_start(); ?>
 <?php include_once('functions.php');?>
 <?php include('authenticate.php');?>
-<?php include('shoppingcartfunctions.php');?>
+<?php include('shopping_functions.php');?>
 <?php require_once('navigation.php');?>
 
 <html>
-
 
 <div id="navigation_pane">
 
@@ -34,7 +33,7 @@ for ($x=0; $x<$array_length; $x++)
 	echo $navigation[$x][0];
 	echo '">';
 	echo $navigation[$x][1];
-	echo '<a/>';
+	echo '</a>';
 	echo ' ';
 }
 
@@ -46,14 +45,13 @@ for ($x=0; $x<$array_length; $x++)
 
 	<?php
 	
-	if(isSet($_GET['page'])) {
-	
-	$p = $_GET['page'];
-	switch ($p){
+	if(isset($_GET['page'])) {
+
+	switch ($_GET['page']){
 	case "home":
 		include('pages/home.php');
 	break;
-	case "livingroom":
+	case "livingroom";
 		include('pages/livingroom.php');
 	break;
 	case "bathroom":
@@ -77,14 +75,11 @@ for ($x=0; $x<$array_length; $x++)
 	case "accessories":
 		include('pages/accessories.php');
 	break;
-	default:
-		include('pages/home.php');
 	}
 	}
-	
 	else 
 	{
-	 include ('pages/home.php');
+	 include('pages/home.php');
 	}
 	?>
 

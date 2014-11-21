@@ -1,9 +1,10 @@
 <?php session_start(); ?>
 <?php include_once('functions.php');?>
+<?php include('authenticate.php');?>
 <?php include('shopping_functions.php');?>
-
 <?php require_once('navigation.php');?>
 
+<html>
 
 <div id="preview_pane">
 
@@ -13,8 +14,7 @@
 
 	<?php
 
-	$pl = $_GET['plant'];
-	switch ($pl){
+	switch ($_GET['plant']){
 	case "1":
 		$plant_image = 'plant1.jpg';
 	break;
@@ -43,8 +43,7 @@
 		$plant_image = 'plant9.jpg';
 	break;
 		}
-	
-	
+
 	echo '<img id="logo" src="' . $plant_image . '"width="400" height="400" border="0">';
 		
 	?>
