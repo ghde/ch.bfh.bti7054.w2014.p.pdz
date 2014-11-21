@@ -1,6 +1,7 @@
 <?php session_start(); ?>
 <?php include_once('functions.php');?>
 <?php include('authenticate.php');?>
+<?php include('shoppingcartfunctions.php');?>
 
 <html>
 	<head>
@@ -8,12 +9,10 @@
 		<title>Plants for your home</title>
 		
 		<script>
-		
-		
+
 		function logoutj() {
 			
 			alert("<?php logout(); ?>");
-			
 		}
 		
 		</script>
@@ -83,18 +82,6 @@
 		
 		<a id="style_navigation_pane" href="shoppingcart.php"><?php echo CART;?><a/>
 		
-		<?php
-	
-			if (isset($_SESSION['plant']))
-			
-			{
-		
-			echo "You have ordered:" . " " . "Plant Nr." . $_SESSION['plant'];
-			
-			}
-	
-			?>
-	
 		</div>
 
 

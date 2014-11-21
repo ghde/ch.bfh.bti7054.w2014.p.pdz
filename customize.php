@@ -1,10 +1,13 @@
 <?php session_start(); ?>
 <?php include_once('functions.php');?>
+<?php include('shopping_functions.php');?>
 
 <html>
 	<head>
-	    <link rel="stylesheet" type="text/css" media="screen" href="design.css">
+
+		<link rel="stylesheet" type="text/css" media="screen" href="design.css">
 		<title>Plants for your home</title>
+
 	</head>
 
 <body>
@@ -49,12 +52,32 @@
 		
 		<a id="style_navigation_pane" href="cart.html"><?php echo CART;?><a/>
 		
+		<?php
+
+
+			if (isset($_SESSION['shoppingcart']))
+			
+			{
+		
+			foreach ($_SESSION['shoppingcart'] as $key => $plant) {
+
+			 echo "<br>";
+			 echo "You have ordered: " . $plant['name'];
+             echo "<button type='button'";
+		     echo "onclick=";
+		     echo '"' . "window.location.href=" . "'" . "customize.php?remove_plant=". $key . "'" . ";" . '"' . ">Removal</button>";
+			    }
+			}
+	
+			?>
+
+		    
 		</div>
 
 
 	</div>
 
-</div>
+</div
 
 
 
@@ -66,7 +89,6 @@
 
 	<?php
 
-	$plant_image;
 	$pl = $_GET['plant'];
 	switch ($pl){
 	case "1":
@@ -107,7 +129,6 @@
 	
 	</div>
 	
-	
 	<div id="customizing">
 	
 	<h3>Shipping</h3>
@@ -118,7 +139,7 @@
 	
 	<h3>Expansion</h3>
 	
-	<input type="hidden" name="plant" value="<?php $wplant = $_GET['plant']; echo $wplant;?>">
+	<input type="hidden" name="plant" value="<?php $plant = $_GET['plant']; echo $plant;?>">
 	<input type="checkbox" name="addons" value="pot">Mit Topf<br>
 	<input type="checkbox" name="addons" value="wpot">Ohne Topf<br>
 	<input type="checkbox" name="addons" value="spot">Mit Plantaflor<br>

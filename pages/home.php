@@ -3,17 +3,17 @@
 <div>
 <h3>Plant 1</h3>
 <img class="plant" src="plant1.jpg" width="200" height="200" border="0"><p> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-<button type="button" value="Plant 1" onclick="window.location.href='customize.php?plant=1';" >Buy Now!</button>
+<button type="button" value="Plant 1" onclick="window.location.href='customize.php?plantID=1&plantName=baum';" >Buy Now!</button>
 </div>
 <div>
 <h3>Plant 2</h3>
 <img class="plant" src="plant2.jpg" width="200" height="200" border="0"> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-<button type="button" value="Plant 2" onclick="window.location.href='customize.php?plant=2';" >Buy Now!</button>
+<button type="button" value="Plant 2" onclick="window.location.href='customize.php?plantID=2&plantName=strauch';" >Buy Now!</button>
 </div>
 <div>
 <h3>Plant 3</h3>
 <img class="plant" src="plant3.jpg" width="200" height="200" border="0"> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-<button type="button" value="Plant 3" onclick="window.location.href='customize.php?plant=3';" >Buy Now!</button>
+<button type="button" value="Plant 3" onclick="window.location.href='customize.php?plantID=3&plantName=gestrüpp';" >Buy Now!</button>
 </div>
 <div>
 <h3>Plant 4</h3>
