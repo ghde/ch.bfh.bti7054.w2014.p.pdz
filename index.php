@@ -1,92 +1,29 @@
-<?php session_start(); ?>
-<?php include_once('php_functions/functions.php');?>
-<?php include('php_functions/authenticate.php');?>
-<?php include('php_functions/shopping_functions.php');?>
-<?php require_once('navigation.php');?>
-
-<html>
-
-<div id="navigation_pane">
-
 <?php
 
-$navigation = array
-(
-array("index.php?page=home", HOME),
-array("index.php?page=livingroom", ROOM0),
-array("index.php?page=bathroom", ROOM1),
-array("index.php?page=bedroom", ROOM2),
-array("index.php?page=garden", ROOM3),
-array("index.php?page=stairwell", ROOM4),
-array("index.php?page=pots", POTS),
-array("index.php?page=fertilizers", FERTILIZERS),
-array("index.php?page=accessories", ACCESSORIES)
-);
+// Error reporting
+ini_set('error_reporting', E_ALL);
+ini_set('log_errors', '1');
+ini_set('error_log', __DIR__ . '/error-log.txt');
+ini_set('display_errors', '0');
 
-$array_length = count($navigation);
+// Include functions and classes.
+require_once 'php_classes/smarty/Smarty.class.php';
+require_once 'php_functions/functions.php';
 
+// Initialize PHP Session
+session_start();
 
-for ($x=0; $x<$array_length; $x++) 
-{	
-	echo '<a class="navigation_pane"';
-	echo 'href="';
-	echo $navigation[$x][0];
-	echo '">';
-	echo $navigation[$x][1];
-	echo '</a>';
-	echo ' ';
-}
+// Load basic layout
+$smarty = new Smarty;
+$smarty->debugging = true;
+$smarty->caching = true;
+$smarty->cache_lifetime = 120;
 
-?>
-
-</div>
-
-<div id="preview_pane">
-
-	<?php
-	
-	if(isset($_GET['page'])) {
-
-	switch ($_GET['page']){
-	case "home":
-		include('pages/home.php');
-	break;
-	case "livingroom";
-		include('pages/livingroom.php');
-	break;
-	case "bathroom":
-		include('pages/bathroom.php');
-	break;
-	case "bedroom":
-		include('pages/bedroom.php');
-	break;
-	case "garden":
-		include('pages/garden.php');
-	break;
-	case "stairwell":
-		include('pages/stairwell.php');
-	break;
-	case "pots":
-		include('pages/pots.php');
-	break;
-	case "fertilizers":
-		include('pages/fertilizers.php');
-	break;
-	case "accessories":
-		include('pages/accessories.php');
-	break;
-	}
-	}
-	else 
-	{
-	 include('pages/home.php');
-	}
-	?>
-
-</div>
+$smarty->assign('language', array("OUR_PROMISE" => PROMISE));
+$smarty->assign('languages', array("de" => "Deutsch", "en" => "English"));
+$smarty->display('index.tpl');
 
 
-</body>
-</html>
-
+// Write and close session
+session_write_close();
 
