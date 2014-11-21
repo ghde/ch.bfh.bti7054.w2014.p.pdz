@@ -56,7 +56,7 @@
     </div>
     <div>
         <h3>Plant 7</h3>
-        <img class="plant" src="plant7.jpg" width="200" height="200" border="0">Lorem ipsum dolor sit amet, consetetur
+        <img class="plant" src="pictures/plant7.jpg" width="200" height="200" border="0">Lorem ipsum dolor sit amet, consetetur
         sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
         voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
         sanctus est Lorem ipsum dolor sit amet.
