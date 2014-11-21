@@ -1,7 +1,7 @@
 <?php session_start(); ?>
-<?php include_once('functions.php');?>
-<?php include('authenticate.php');?>
-<?php include('shopping_functions.php');?>
+<?php include_once('php_functions/functions.php');?>
+<?php include('php_functions/authenticate.php');?>
+<?php include('php_functions/shopping_functions.php');?>
 <?php require_once('navigation.php');?>
 
 <html>
@@ -14,15 +14,16 @@
 
 	<?php
 
-	switch ($_GET['plant']){
+	switch ($_GET['plantID']){
+
 	case "1":
-		$plant_image = 'plant1.jpg';
+		$plant_image = 'pictures/plant1.jpg';
 	break;
 	case "2":
-		$plant_image = 'plant2.jpg';
+		$plant_image = 'pictures/plant2.jpg';
 	break;
 	case "3":
-		$plant_image = 'plant3.jpg';
+		$plant_image = 'pictures/plant3.jpg';
 	break;
 	case "4":
 		$plant_image = 'plant4.jpg';
@@ -62,7 +63,7 @@
 	
 	<h3>Expansion</h3>
 	
-	<input type="hidden" name="plant" value="<?php $plant = $_GET['plant']; echo $plant;?>">
+	<input type="hidden" name="plant" value="<?php $plant = $_GET['plantID']; echo $plant;?>">
 	<input type="checkbox" name="addons" value="pot">Mit Topf<br>
 	<input type="checkbox" name="addons" value="wpot">Ohne Topf<br>
 	<input type="checkbox" name="addons" value="spot">Mit Plantaflor<br>

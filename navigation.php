@@ -8,7 +8,9 @@
 
         function logoutj() {
 
-            alert("<?php logout(); ?>");
+            <?php logout();?>
+
+            alert("now logged out");
         }
 
     </script>
@@ -37,7 +39,7 @@
 
     <div id="logo_and_slogan">
 
-        <img id="logo" src="Logo_Plant_Front.png" width="110" height="80" border="0">
+        <img id="logo" src="pictures/Logo_Plant_Front.png" width="110" height="80" border="0">
         <h1>Plants for your home</h1>
 
     </div>

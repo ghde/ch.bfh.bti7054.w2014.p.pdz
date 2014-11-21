@@ -1,7 +1,7 @@
 <?php session_start(); ?>
-<?php include_once('functions.php');?>
-<?php include('authenticate.php');?>
-<?php include('shopping_functions.php');?>
+<?php include_once('php_functions/functions.php');?>
+<?php include('php_functions/authenticate.php');?>
+<?php include('php_functions/shopping_functions.php');?>
 <?php require_once('navigation.php');?>
 
 <html>

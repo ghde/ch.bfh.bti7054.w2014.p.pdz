@@ -1,5 +1,8 @@
 <?php session_start(); ?>
 <?php include_once('functions.php');?>
+<?php include_once('php_functions/functions.php');?>
+<?php include('php_functions/authenticate.php');?>
+<?php include('php_functions/shopping_functions.php');?>
 
 <html>
 	<head>
@@ -29,7 +32,7 @@
 
 	<div id="logo_and_slogan">
 
-		<img id="logo" src="Logo_Plant_Front.png" width="110" height="80" border="0">
+		<img id="logo" src="pictures/Logo_Plant_Front.png" width="110" height="80" border="0">
 		<h1>Plants for your home</h1>
 
 	</div>

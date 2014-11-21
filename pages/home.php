@@ -1,7 +1,7 @@
 <div id="plants">
     <div>
         <h3>Plant 1</h3>
-        <img class="plant" src="plant1.jpg" width="200" height="200" border="0">
+        <img class="plant" src="pictures/plant1.jpg" width="200" height="200" border="0">
 
         <p> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
             dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
@@ -12,7 +12,7 @@
     </div>
     <div>
         <h3>Plant 2</h3>
-        <img class="plant" src="plant2.jpg" width="200" height="200" border="0"> Lorem ipsum dolor sit amet, consetetur
+        <img class="plant" src="pictures/plant2.jpg" width="200" height="200" border="0"> Lorem ipsum dolor sit amet, consetetur
         sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
         voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
         sanctus est Lorem ipsum dolor sit amet.
@@ -22,7 +22,7 @@
     </div>
     <div>
         <h3>Plant 3</h3>
-        <img class="plant" src="plant3.jpg" width="200" height="200" border="0"> Lorem ipsum dolor sit amet, consetetur
+        <img class="plant" src="pictures/plant3.jpg" width="200" height="200" border="0"> Lorem ipsum dolor sit amet, consetetur
         sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
         voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
         sanctus est Lorem ipsum dolor sit amet.
@@ -32,7 +32,7 @@
     </div>
     <div>
         <h3>Plant 4</h3>
-        <img class="plant" src="plant4.jpg" width="200" height="200" border="0">Lorem ipsum dolor sit amet, consetetur
+        <img class="plant" src="pictures/plant4.jpg" width="200" height="200" border="0">Lorem ipsum dolor sit amet, consetetur
         sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
         voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
         sanctus est Lorem ipsum dolor sit amet.
@@ -40,7 +40,7 @@
     </div>
     <div>
         <h3>Plant 5</h3>
-        <img class="plant" src="plant5.jpg" width="200" height="200" border="0">Lorem ipsum dolor sit amet, consetetur
+        <img class="plant" src="pictures/plant5.jpg" width="200" height="200" border="0">Lorem ipsum dolor sit amet, consetetur
         sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
         voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
         sanctus est Lorem ipsum dolor sit amet.
@@ -48,7 +48,7 @@
     </div>
     <div>
         <h3>Plant 6</h3>
-        <img class="plant" src="plant6.jpg" width="200" height="200" border="0">Lorem ipsum dolor sit amet, consetetur
+        <img class="plant" src="pictures/plant6.jpg" width="200" height="200" border="0">Lorem ipsum dolor sit amet, consetetur
         sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
         voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
         sanctus est Lorem ipsum dolor sit amet.
@@ -64,7 +64,7 @@
     </div>
     <div>
         <h3>Plant 8</h3>
-        <img class="plant" src="plant8.jpg" width="200" height="200" border="0">Lorem ipsum dolor sit amet, consetetur
+        <img class="plant" src="pictures/plant8.jpg" width="200" height="200" border="0">Lorem ipsum dolor sit amet, consetetur
         sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
         voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
         sanctus est Lorem ipsum dolor sit amet.
@@ -72,7 +72,7 @@
     </div>
     <div>
         <h3>Plant 9</h3>
-        <img class="plant" src="plant9.jpg" width="200" height="200" border="0">Lorem ipsum dolor sit amet, consetetur
+        <img class="plant" src="pictures/plant9.jpg" width="200" height="200" border="0">Lorem ipsum dolor sit amet, consetetur
         sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
         voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
         sanctus est Lorem ipsum dolor sit amet.

@@ -13,8 +13,6 @@ function logout() {
 
 session_destroy();
 
-echo "Logged out - probably";
-
 }
 
 ?>
