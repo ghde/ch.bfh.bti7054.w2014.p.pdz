@@ -1,4 +1,3 @@
-<html>
 <head>
 
     <link rel="stylesheet" type="text/css" media="screen" href="design.css">
@@ -78,21 +77,7 @@
 
             <a id="style_navigation_pane" href="cart.html"><?php echo CART; ?></a>
 
-            <?php
 
-
-            if (isset($_SESSION['shoppingcart'])) {
-
-                foreach ($_SESSION['shoppingcart'] as $key => $plant) {
-                    ?><br/>
-                    You have ordered: <?= $plant["name"]; ?>
-                    <button type="button" onclick="window.location.href='customize.php?remove_plant=<?= $key; ?>'">
-                        Removal</button>
-                    <?
-                }
-            }
-
-            ?>
 
         </div>
 

@@ -6,7 +6,7 @@
  * Time: 10:10
  */
 
-class shoppingcartOOP
+class ShoppingCart
 {
 
     private $items = array();

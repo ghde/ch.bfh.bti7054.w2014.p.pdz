@@ -1,10 +1,37 @@
-<?php session_start(); ?>
 <?php include_once('php_functions/functions.php');?>
 <?php include('php_functions/authenticate.php');?>
-<?php include('php_functions/shopping_functions.php');?>
-<?php require_once('navigation.php');?>
+<?php include('php_functions/ShoppingCart.php')?>
+<?php session_start();?>
+
 
 <html>
+
+
+<?php include('navigation.php');?>
+
+<?php
+
+if (isset($_SESSION['cart'])) {
+
+
+$_SESSION['cart']->display();
+
+
+}
+
+else {
+
+
+echo "Cart is empty";
+	$_SESSION['cart'] = new ShoppingCart;
+
+}
+
+$_SESSION['cart']->addItem(1,2);
+
+
+?>
+
 
 <div id="navigation_pane">
 
