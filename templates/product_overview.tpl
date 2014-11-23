@@ -1,0 +1,15 @@
+<div id="plants">
+    {foreach from=$inner_products item=product}
+        <div>
+            <h3>{$product["name"]}</h3>
+            <img class="plant" src="pictures/{$product["picture"]}" width="200" height="200" border="0">
+
+            <p>{$product["description"]}</p>
+            <form action="index.php" method="GET">
+                <input type="hidden" name="page" value="order" />
+                <input type="hidden" name="plantID" value="{$product["id"]}" />
+                <button type="submit">{$language["PRODUCT_BUY_NOW"]}</button>
+            </form>
+        </div>
+    {/foreach}
+</div>

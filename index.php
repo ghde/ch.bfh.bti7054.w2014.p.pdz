@@ -13,17 +13,40 @@ require_once 'php_functions/functions.php';
 // Initialize PHP Session
 session_start();
 
+// Check & include language
+$language = getLanguage();
+if ($language) {
+    require_once "language/$language.php";
+}
+
 // Load basic layout
 $smarty = new Smarty;
 $smarty->debugging = true;
-$smarty->caching = true;
-$smarty->cache_lifetime = 120;
+$smarty->caching = false;
+//$smarty->cache_lifetime = 120;
 
-$smarty->assign('language', array("OUR_PROMISE" => PROMISE));
-$smarty->assign('languages', array("de" => "Deutsch", "en" => "English"));
+// Assign common attributes
+$smarty->assign('url', $_SERVER["REQUEST_URI"]);
+$smarty->assign('languages', getAvailableLanguages());
+$smarty->assign('language', $languageKeys);
+$smarty->assign('navigation', getNavigationElements());
+
+// Check page attribute
+if (isset($_GET["page"]) && preg_match("/^([a-z])+$/", $_GET["page"]))
+{
+    $pagePath = "pages/" . $_GET["page"] . ".php";
+    if (file_exists($pagePath)) {
+        require_once "$pagePath";
+    }
+    else {
+        header("Location: index.php?page=home");
+    }
+} else {
+    header("Location: index.php?page=home");
+}
+
+// Display root template
 $smarty->display('index.tpl');
-
 
 // Write and close session
 session_write_close();
-

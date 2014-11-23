@@ -14,7 +14,7 @@ if (isset($_GET['plantName'])) {
 }
 
 
-$_SESSION['shoppingcart'][$current_plant_ID] = array(name=>$plant_name, shipping=>$_GET['shipping']);
+$_SESSION['shoppingcart'][$current_plant_ID] = array('name'=>$plant_name, 'shipping'=>$_GET['shipping']);
 
 
 // $current_plant_ID => expansion => ID of expansion

@@ -1,81 +1,71 @@
-<div id="plants">
-    <div>
-        <h3>Plant 1</h3>
-        <img class="plant" src="pictures/plant1.jpg" width="200" height="200" border="0">
+<?php
 
-        <p> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+// Assign to the template
+$smarty->assign('inner_template', 'product_overview');
+$smarty->assign('inner_title', 'Plants');
+$smarty->assign('inner_products', array(
+    array(
+        "id" => 1,
+        "name" => "Plant 1",
+        "picture" => "plant1.jpg",
+        "description" => "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
             dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-            clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-        <button type="button" value="Plant 1" onclick="window.location.href='customize.php?plantID=1&plantName=baum';">
-            Buy Now!
-        </button>
-    </div>
-    <div>
-        <h3>Plant 2</h3>
-        <img class="plant" src="pictures/plant2.jpg" width="200" height="200" border="0"> Lorem ipsum dolor sit amet, consetetur
-        sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-        voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-        sanctus est Lorem ipsum dolor sit amet.
-        <button type="button" value="Plant 2"
-                onclick="window.location.href='customize.php?plantID=2&plantName=strauch';">Buy Now!
-        </button>
-    </div>
-    <div>
-        <h3>Plant 3</h3>
-        <img class="plant" src="pictures/plant3.jpg" width="200" height="200" border="0"> Lorem ipsum dolor sit amet, consetetur
-        sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-        voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-        sanctus est Lorem ipsum dolor sit amet.
-        <button type="button" value="Plant 3"
-                onclick="window.location.href='customize.php?plantID=3&plantName=gestruepp';">Buy Now!
-        </button>
-    </div>
-    <div>
-        <h3>Plant 4</h3>
-        <img class="plant" src="pictures/plant4.jpg" width="200" height="200" border="0">Lorem ipsum dolor sit amet, consetetur
-        sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-        voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-        sanctus est Lorem ipsum dolor sit amet.
-        <button type="button" value="Plant 4" onclick="window.location.href='customize.php?plant=4';">Buy Now!</button>
-    </div>
-    <div>
-        <h3>Plant 5</h3>
-        <img class="plant" src="pictures/plant5.jpg" width="200" height="200" border="0">Lorem ipsum dolor sit amet, consetetur
-        sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-        voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-        sanctus est Lorem ipsum dolor sit amet.
-        <button type="button" value="Plant 5" onclick="window.location.href='customize.php?plant=5';">Buy Now!</button>
-    </div>
-    <div>
-        <h3>Plant 6</h3>
-        <img class="plant" src="pictures/plant6.jpg" width="200" height="200" border="0">Lorem ipsum dolor sit amet, consetetur
-        sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-        voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-        sanctus est Lorem ipsum dolor sit amet.
-        <button type="button" value="Plant 6" onclick="window.location.href='customize.php?plant=6';">Buy Now!</button>
-    </div>
-    <div>
-        <h3>Plant 7</h3>
-        <img class="plant" src="pictures/plant7.jpg" width="200" height="200" border="0">Lorem ipsum dolor sit amet, consetetur
-        sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-        voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-        sanctus est Lorem ipsum dolor sit amet.
-        <button type="button" value="Plant 7" onclick="window.location.href='customize.php?plant=7';">Buy Now!</button>
-    </div>
-    <div>
-        <h3>Plant 8</h3>
-        <img class="plant" src="pictures/plant8.jpg" width="200" height="200" border="0">Lorem ipsum dolor sit amet, consetetur
-        sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-        voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-        sanctus est Lorem ipsum dolor sit amet.
-        <button type="button" value="Plant 8" onclick="window.location.href='customize.php?plant=8';">Buy Now!</button>
-    </div>
-    <div>
-        <h3>Plant 9</h3>
-        <img class="plant" src="pictures/plant9.jpg" width="200" height="200" border="0">Lorem ipsum dolor sit amet, consetetur
-        sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-        voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-        sanctus est Lorem ipsum dolor sit amet.
-        <button type="button" value="Plant 9" onclick="window.location.href='customize.php?plant=9';">Buy Now!</button>
-    </div>
-</div>
+            clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+    ), array(
+        "id" => 2,
+        "name" => "Plant 2",
+        "picture" => "plant2.jpg",
+        "description" => "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+            clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+    ), array(
+        "id" => 3,
+        "name" => "Plant 3",
+        "picture" => "plant3.jpg",
+        "description" => "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+            clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+    ), array(
+        "id" => 4,
+        "name" => "Plant 4",
+        "picture" => "plant4.jpg",
+        "description" => "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+            clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+    ), array(
+        "id" => 5,
+        "name" => "Plant 5",
+        "picture" => "plant5.jpg",
+        "description" => "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+            clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+    ), array(
+        "id" => 6,
+        "name" => "Plant 6",
+        "picture" => "plant6.jpg",
+        "description" => "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+            clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+    ), array(
+        "id" => 7,
+        "name" => "Plant 7",
+        "picture" => "plant7.jpg",
+        "description" => "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+            clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+    ), array(
+        "id" => 8,
+        "name" => "Plant 8",
+        "picture" => "plant8.jpg",
+        "description" => "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+            clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+    ), array(
+        "id" => 9,
+        "name" => "Plant 9",
+        "picture" => "plant9.jpg",
+        "description" => "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+            clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+    )
+));

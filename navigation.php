@@ -83,12 +83,8 @@
 
             if (isset($_SESSION['shoppingcart'])) {
 
-                foreach ($_SESSION['shoppingcart'] as $key => $plant) {
-                    ?><br/>
-                    You have ordered: <?= $plant["name"]; ?>
-                    <button type="button" onclick="window.location.href='customize.php?remove_plant=<?= $key; ?>'">
-                        Removal</button>
-                    <?
+                foreach ($_SESSION['shoppingcart'] as $key=>$plant) {
+
                 }
             }
 

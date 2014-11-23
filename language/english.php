@@ -15,4 +15,12 @@ define('POTS', 'Pots');
 define('FERTILIZERS', 'Fertilizers');
 define('ACCESSORIES', 'Accessories');
 
-?>
+// Define language keys -> to go to the database.
+$languageKeys = array(
+    "OUR_PROMISE" => PROMISE,
+    "LOGIN_FORM_USERNAME" => "Username",
+    "LOGIN_FORM_PASSWORD" => "Password",
+    "LOGIN_FORM_LOGIN" => "Login",
+    "SHOPPING_CART_NAME" => "Shopping-Cart",
+    "PRODUCT_BUY_NOW" => "Buy now"
+);

@@ -24,15 +24,32 @@
     </div>
     <div id="sitemap">
         <div id="login">
-            <a id="style_navigation_pane" href="login.html"></a>
-            <a id="style_navigation_pane" href="help.html"></a>
-            <a id="style_navigation_pane" href="contact.html"></a>
+            {if $user}
+                {$language["LOGIN_HELLO"]} {$user["firstname"]} {$user["lastname"]}
+                <button type=button onclick="logoutj()">Logout!</button>
+            {else}
+                <form action="" method="post">
+                    <label for="username">{$language["LOGIN_FORM_USERNAME"]}</label>
+                    <input id="username" name="username" type="text"/>
+                    <label for="password">{$language["LOGIN_FORM_PASSWORD"]}</label>
+                    <input id="password" name="password" type="password"/>
+                    <button type="submit" name="submit">{$language["LOGIN_FORM_LOGIN"]}</button>
+                </form>
+            {/if}
         </div>
         <div id="shopping_cart">
-            <a id="style_navigation_pane" href="cart.html"></a>
+            <div class="title">{$language["SHOPPING_CART_NAME"]}</div>
+            <!-- TODO : display shopping cart items -->
         </div>
     </div>
 </div>
-<div id="preview_pane"></div>
+<div id="navigation_pane">
+    {foreach from=$navigation key=name item=label}
+        <a href="index.php?page={$name}" class="navigation_pane">{$label}</a>
+    {/foreach}
+</div>
+<div id="preview_pane">
+    {include file="$inner_template.tpl"}
+</div>
 </body>
 </html>

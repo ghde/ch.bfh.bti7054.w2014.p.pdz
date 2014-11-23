@@ -6,3 +6,24 @@ body {
     background-color: #CCFF99 !important;
     margin: 0 0 0 0 !important;
 }
+
+#login > form {
+    margin-top: 5px;
+}
+#login > form > label {
+    font-weight: bold;
+    color: white;
+}
+
+#login > form > input {
+    margin-bottom: 5px;
+}
+
+#login > form > button {
+    margin-top: 10px;
+}
+
+#shopping_cart > div.title {
+    font-weight: bold;
+    color: white;
+}

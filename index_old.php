@@ -2,7 +2,7 @@
 <?php include_once('php_functions/functions.php');?>
 <?php include('php_functions/authenticate.php');?>
 <?php include('php_functions/shopping_functions.php');?>
-<?php require_once('navigation.php');?>
+<?php require_once('navigation.php'); ?>
 
 <html>
 
