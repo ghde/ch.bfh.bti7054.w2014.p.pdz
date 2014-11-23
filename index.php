@@ -13,22 +13,16 @@
 
 if (isset($_SESSION['cart'])) {
 
-
 $_SESSION['cart']->display();
-
 
 }
 
 else {
 
-
 echo "Cart is empty";
+
 	$_SESSION['cart'] = new ShoppingCart;
-
 }
-
-$_SESSION['cart']->addItem(1,2);
-
 
 ?>
 
