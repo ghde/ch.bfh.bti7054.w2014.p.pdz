@@ -11,7 +11,6 @@ if($_POST["user"]=="John" && $_POST["pw"]=="php"
 
 function logout() {
 
-session_destroy();
 
 }
 

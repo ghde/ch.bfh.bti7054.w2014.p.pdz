@@ -1,10 +1,59 @@
-<?php session_start(); ?>
 <?php include_once('php_functions/functions.php');?>
 <?php include('php_functions/authenticate.php');?>
-<?php include('php_functions/shopping_functions.php');?>
-<?php require_once('navigation.php');?>
+<?php include('php_functions/ShoppingCart.php')?>
+<?php session_start();?>
 
 <html>
+
+<?php include('navigation.php');?>
+
+
+<?php
+
+
+
+if (isset($_SESSION['cart']) && isset($_GET['plantID']))
+{
+
+	$_SESSION['cart']->addItem($_GET['plantID'], 1);
+
+}
+
+if (isset($_SESSION['cart']) && isset($_GET['removeID']))
+
+{
+
+	$_SESSION['cart']->removeItem($_GET['removeID'], 1);
+
+}
+
+
+
+if (isset($_SESSION['cart'])) {
+
+	if(!$_SESSION['cart']->isEmpty())
+	{
+
+		$_SESSION['cart']->display();
+
+	}
+	else
+	{
+
+		echo "Cart is empty";
+
+	}
+}
+
+else
+{
+
+	echo "Cart is empty";
+
+}
+
+
+?>
 
 <div id="preview_pane">
 

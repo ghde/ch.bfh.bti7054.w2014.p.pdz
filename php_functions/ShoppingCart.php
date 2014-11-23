@@ -6,7 +6,7 @@
  * Time: 10:10
  */
 
-class shoppingcartOOP
+class ShoppingCart
 {
 
     private $items = array();
@@ -32,11 +32,21 @@ class shoppingcartOOP
     {
 
         echo "<table border=\"1\">";
-        echo "<tr><th>Article</th><th>Items</th></tr>";
+        echo "<tr><th>Article</th><th>Items</th><th>Remove</th></tr>";
         foreach ($this->items as $ID => $num)
-            echo "<tr><td>$ID</td><td>$num</td></tr>";
+            $button = "<button type='button' onclick=\"window.location.href='customize.php?removeID=$ID';\">Remove</button>";
+            echo "<tr><td>$ID</td><td>$num</td><td>$button</td></tr>";
         echo "</table>";
 
+    }
+
+    public function isEmpty()
+    {
+        if (sizeof($this->items) == 0) {
+
+            return true;
+
+        }
     }
 
 }
