@@ -52,15 +52,25 @@ function getLanguage()
  */
 function getNavigationElements()
 {
+    global $languageKeys;
+
     return array(
-        "home" => HOME,
-        "livingroom" => ROOM0,
-        "bathroom" => ROOM1,
-        "bedroom" => ROOM2,
-        "garden" => ROOM3,
-        "stairwell" => ROOM4,
-        "pots" => POTS,
-        "fertilizers" => FERTILIZERS,
-        "accessories" => ACCESSORIES
+        "home" => $languageKeys["NAVIGATION_HOME"],
+        "livingroom" => $languageKeys["NAVIGATION_ROOM_LIVING"],
+        "bathroom" => $languageKeys["NAVIGATION_ROOM_BATH"],
+        "bedroom" => $languageKeys["NAVIGATION_ROOM_BED"],
+        "garden" => $languageKeys["NAVIGATION_GARDEN"],
+        "stairwell" => $languageKeys["NAVIGATION_STAIRWELL"],
+        "pots" => $languageKeys["NAVIGATION_POTS"],
+        "fertilizers" => $languageKeys["NAVIGATION_FERTILIZERS"],
+        "accessories" => $languageKeys["NAVIGATION_ACCESSORIES"]
     );
 }
+
+
+
+define('PROMISE', 'Plants for your home - delivered to your home');
+define('LOGIN', 'Login');
+define('HELP', 'Help');
+define('CONTACT', 'Contact');
+define('CART', 'Cart');

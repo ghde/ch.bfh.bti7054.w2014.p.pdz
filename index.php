@@ -8,6 +8,8 @@ ini_set('display_errors', '0');
 
 // Include functions and classes.
 require_once 'php_classes/smarty/Smarty.class.php';
+require_once 'php_classes/Plant.class.php';
+require_once 'php_classes/ShoppingCart.class.php';
 require_once 'php_functions/functions.php';
 
 // Initialize PHP Session
@@ -19,6 +21,16 @@ if ($language) {
     require_once "language/$language.php";
 }
 
+// Get or create shopping cart
+if (array_key_exists("cart", $_SESSION)) {
+    $shoppingCart = $_SESSION["cart"];
+    $shoppingCartItems = $_SESSION["cart"]->getItems();
+} else {
+    $shoppingCart = new ShoppingCart;
+    $shoppingCartItems = $shoppingCart->getItems();
+    $_SESSION["cart"] = $shoppingCart;
+}
+
 // Load basic layout
 $smarty = new Smarty;
 $smarty->debugging = true;
@@ -27,6 +39,7 @@ $smarty->caching = false;
 
 // Assign common attributes
 $smarty->assign('url', $_SERVER["REQUEST_URI"]);
+$smarty->assign('cart_items', $shoppingCartItems);
 $smarty->assign('languages', getAvailableLanguages());
 $smarty->assign('language', $languageKeys);
 $smarty->assign('navigation', getNavigationElements());

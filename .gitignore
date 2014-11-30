@@ -1,6 +1,8 @@
 /.idea/
 /.settings/
+/templates_c/
 /.buildpath
 /.project
 /build.xml
+/error-log.txt
 /ch.bfh.bti7054.w2014.p.pdz.iml

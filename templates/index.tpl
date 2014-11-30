@@ -26,7 +26,7 @@
         <div id="login">
             {if $user}
                 {$language["LOGIN_HELLO"]} {$user["firstname"]} {$user["lastname"]}
-                <button type=button onclick="logoutj()">Logout!</button>
+                <button type="button">Logout!</button>
             {else}
                 <form action="" method="post">
                     <label for="username">{$language["LOGIN_FORM_USERNAME"]}</label>
@@ -39,7 +39,17 @@
         </div>
         <div id="shopping_cart">
             <div class="title">{$language["SHOPPING_CART_NAME"]}</div>
-            <!-- TODO : display shopping cart items -->
+            {if $cart_items|@count == 0}
+                {$language["SHOPPING_CART_NO_ITEMS"]}
+            {else}
+                {foreach from=$cart_items key=plantId item=plant}
+                    <form method="POST" action="index.php?page=removefromcart">
+                        <input type="hidden" name="plantID" value="{$plantId}" />
+                        <div>{$plant.num} x <strong>{$plant.name}</strong>
+                        <button type="submit">Delete</button></div>
+                    </form>
+                {/foreach}
+            {/if}
         </div>
     </div>
 </div>
