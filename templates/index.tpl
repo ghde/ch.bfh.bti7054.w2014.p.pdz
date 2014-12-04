@@ -24,17 +24,23 @@
     </div>
     <div id="sitemap">
         <div id="login">
-            {if $user}
-                {$language["LOGIN_HELLO"]} {$user["firstname"]} {$user["lastname"]}
-                <button type="button">Logout!</button>
+            {if $user->isLoggedIn()}
+                {$language["LOGIN_HELLO"]} {$user->getFirstname()} {$user->getLastname()}
+                <form action="{$url}" method="post">
+                    <button type="submit" name="logout">Logout!</button>
+                </form>
             {else}
-                <form action="" method="post">
+                <form action="{$url}" method="post">
                     <label for="username">{$language["LOGIN_FORM_USERNAME"]}</label>
                     <input id="username" name="username" type="text"/>
                     <label for="password">{$language["LOGIN_FORM_PASSWORD"]}</label>
                     <input id="password" name="password" type="password"/>
-                    <button type="submit" name="submit">{$language["LOGIN_FORM_LOGIN"]}</button>
+                    <button type="submit" name="login">{$language["LOGIN_FORM_LOGIN"]}</button>
                 </form>
+                {if $user->isFailedLoginTry()}
+                    <span class="failedlogin"><strong>{$language["LOGIN_ERROR_HINT"]}
+                            :</strong> {$language["LOGIN_ERROR_TEXT"]}</span>
+                {/if}
             {/if}
         </div>
         <div id="shopping_cart">
@@ -44,11 +50,17 @@
             {else}
                 {foreach from=$cart_items key=plantId item=plant}
                     <form method="POST" action="index.php?page=removefromcart">
-                        <input type="hidden" name="plantID" value="{$plantId}" />
+                        <input type="hidden" name="plantID" value="{$plantId}"/>
+
                         <div>{$plant.num} x <strong>{$plant.name}</strong>
-                        <button type="submit">Delete</button></div>
+                            <button type="submit">X</button>
+                        </div>
                     </form>
                 {/foreach}
+                <form action="index.php" method="GET">
+                    <input type="hidden" name="page" value="order"/>
+                    <button type="submit">{$language["SHOPPING_CART_ORDER"]}</button>
+                </form>
             {/if}
         </div>
     </div>

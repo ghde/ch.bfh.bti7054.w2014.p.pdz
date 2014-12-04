@@ -66,11 +66,3 @@ function getNavigationElements()
         "accessories" => $languageKeys["NAVIGATION_ACCESSORIES"]
     );
 }
-
-
-
-define('PROMISE', 'Plants for your home - delivered to your home');
-define('LOGIN', 'Login');
-define('HELP', 'Help');
-define('CONTACT', 'Contact');
-define('CART', 'Cart');
