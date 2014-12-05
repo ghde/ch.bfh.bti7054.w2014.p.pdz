@@ -1,0 +1,171 @@
+body {
+    margin: 0;
+    font-family: "Arial";
+    font-size: 12px;
+}
+
+h1 {
+    color: white;
+    font-size: 20px;
+}
+
+h2 {
+    color: white;
+    font-size: 13px;
+}
+
+h3 {
+    font-size: 13px;
+}
+
+div {
+
+    padding: 5px 8px;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box;
+
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: Verdana, Arial, sans-serif;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: green;
+}
+
+#promise {
+    background-color: #CCFF99;
+    font-size: 10px;
+    width: 100%;
+    position: relative;
+    padding: 25px 25px 25px 25px;
+    margin: 0 0 0 0;
+}
+
+#languages {
+    float: right;
+    margin-right: 10px;
+}
+
+#company {
+    background-color: green;
+    font-size: 10px;
+    width: 1024px;
+    height: 150px;
+    margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#logo_and_slogan {
+    background-color: gray;
+    font-size: 20px;
+    float: left;
+    width: 25%;
+    height: 140px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#sitemap {
+    background-color: gray;
+    font-size: 10px;
+    float: right;
+    width: 40%;
+    height: 100%;
+}
+
+#login {
+    background-color: red;
+    font-size: 12px;
+    float: left;
+    width: 60%;
+    height: 100%;
+}
+
+#shopping_cart {
+    background-color: red;
+    font-size: 12px;
+    float: right;
+    width: 40%;
+    height: 100%;
+}
+
+#navigation_pane {
+    background-color: black;
+    height: 25px;
+    width: 1024px;
+    margin: 20px auto 20px auto;
+}
+
+#preview_pane {
+    background-color: white;
+    height: auto;
+    width: 1024px;
+    margin: 20px auto 20px auto;
+}
+
+#preview_image {
+    width: 60%;
+    float: left;
+}
+
+#customizing {
+    width: 30%;
+    float: left;
+    padding-left: 50px;
+}
+
+.plant {
+    float: left;
+}
+
+p {
+    color: black;
+}
+
+#plants > div {
+    display: inline-block;
+    width: 200px;
+}
+
+#login > form {
+    margin-top: 5px;
+}
+
+#login > form > label {
+    font-weight: bold;
+    color: white;
+}
+
+#login > form > input {
+    margin-bottom: 5px;
+}
+
+#login > form > button {
+    margin-top: 10px;
+}
+
+#shopping_cart > div.title {
+    font-weight: bold;
+    color: white;
+}
+
+#order > div.split > div {
+    width: 300px;
+    float: left;
+}
+
+#order > div.split > div > label {
+    font-weight: bold;
+}
+
+#order > div.split > div > input {
+    margin-bottom: 5px;
+}
