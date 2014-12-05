@@ -17,11 +17,12 @@ DROP TABLE IF EXISTS `accessory`;
 DROP TABLE IF EXISTS `plantTx`;
 DROP TABLE IF EXISTS `plant`;
 DROP TABLE IF EXISTS `plantTypeTx`;
+DROP TABLE IF EXISTS `messages`;
 
 -- -----------------------------------------------------
--- Table `plantShop`.`order`
+-- Table `order`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `plantShop`.`order` (
+CREATE TABLE IF NOT EXISTS `order` (
   `orderId` INT NOT NULL,
   `accountName` VARCHAR(50) NOT NULL,
   `streetName` VARCHAR(50) NOT NULL,
@@ -33,9 +34,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `plantShop`.`customer`
+-- Table `customer`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `plantShop`.`customer` (
+CREATE TABLE IF NOT EXISTS `customer` (
   `accountName` VARCHAR(50) NOT NULL,
   `accountPassword` VARCHAR(50) NOT NULL,
   `firstName` VARCHAR(50) NOT NULL,
@@ -46,14 +47,15 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `plantShop`.`plant`
+-- Table `plant`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `plantShop`.`plant` (
+CREATE TABLE IF NOT EXISTS `plant` (
   `plantId` INT NOT NULL,
   `price` DECIMAL(10,2) NOT NULL,
   `pouringFrequency` INT NOT NULL,
   `sunlight` INT NOT NULL,
   `difficulty` INT NOT NULL,
+  `pictureName` VARCHAR(20) NOT NULL,
   `plantTypeId` INT NOT NULL,
   PRIMARY KEY (`plantId`),
   KEY fk_plant_plantTypeId (plantTypeId))
@@ -61,29 +63,29 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `plantShop`.`accessory`
+-- Table `accessory`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `plantShop`.`accessory` (
+CREATE TABLE IF NOT EXISTS `accessory` (
   `accessoryId` INT NOT NULL,
   `price` DECIMAL(10,2) NULL,
+  `pictureName` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`accessoryId`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `plantShop`.`plant_accessory`
+-- Table `plant_accessory`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `plantShop`.`plant_accessory` (
+CREATE TABLE IF NOT EXISTS `plant_accessory` (
   `plantId` INT NOT NULL,
   `accessoryId` INT NOT NULL,
   PRIMARY KEY (`plantId`, `accessoryId`))
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
--- Table `plantShop`.`plantTx`
+-- Table `plantTx`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `plantShop`.`plantTx` (
+CREATE TABLE IF NOT EXISTS `plantTx` (
   `plantId` INT NOT NULL,
   `language` CHAR(2) NOT NULL,
   `plantTitle` VARCHAR(50) NOT NULL,
@@ -93,9 +95,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `plantShop`.`customerSettings`
+-- Table `customerSettings`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `plantShop`.`customerSettings` (
+CREATE TABLE IF NOT EXISTS `customerSettings` (
   `accountName` VARCHAR(50) NOT NULL,
   `settingKey` VARCHAR(10) NOT NULL,
   `settingValue` VARCHAR(200) NOT NULL,
@@ -104,9 +106,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `plantShop`.`customerAddress`
+-- Table `customerAddress`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `plantShop`.`customerAddress` (
+CREATE TABLE IF NOT EXISTS `customerAddress` (
   `accountName` VARCHAR(50) NOT NULL,
   `streetName` VARCHAR(50) NOT NULL,
   `zipCode` INT NOT NULL,
@@ -116,9 +118,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `plantShop`.`orderPos`
+-- Table `orderPos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `plantShop`.`orderPos` (
+CREATE TABLE IF NOT EXISTS `orderPos` (
   `orderPosId` INT NOT NULL,
   `orderId` INT NOT NULL,
   `plantId` INT NOT NULL,
@@ -131,9 +133,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `plantShop`.`orderPosAddition`
+-- Table `orderPosAddition`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `plantShop`.`orderPosAddition` (
+CREATE TABLE IF NOT EXISTS `orderPosAddition` (
   `orderPosAdditionId` INT NOT NULL,
   `orderId` INT NOT NULL,
   `orderPosId` INT NULL,
@@ -148,9 +150,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `plantShop`.`plantTypeTx`
+-- Table `plantTypeTx`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `plantShop`.`plantTypeTx` (
+CREATE TABLE IF NOT EXISTS `plantTypeTx` (
   `plantTypeId` INT NOT NULL,
   `language` CHAR(2) NOT NULL,
   `plantTypeTitle` VARCHAR(50) NOT NULL,
@@ -160,14 +162,24 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `plantShop`.`accessoryTx`
+-- Table `accessoryTx`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `plantShop`.`accessoryTx` (
+CREATE TABLE IF NOT EXISTS `accessoryTx` (
   `accessoryId` INT NOT NULL,
   `language` CHAR(2) NOT NULL,
   `accessoryTitle` VARCHAR(50) NOT NULL,
   `accessoryDescription` VARCHAR(250) NULL,
   PRIMARY KEY (`accessoryId`, `language`))
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `messages`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `messages` (
+  `messageKey` VARCHAR(20) NOT NULL,
+  `language` CHAR(2) NOT NULL,
+  `message` TEXT NOT NULL,
+  PRIMARY KEY (`messageKey`, `language`))
 ENGINE = InnoDB;
 
 ALTER TABLE customerSettings
