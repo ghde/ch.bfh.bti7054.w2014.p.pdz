@@ -9,13 +9,21 @@ ini_set('display_errors', '0');
 // Include functions and classes.
 require_once 'php_classes/smarty/Smarty.class.php';
 require_once 'php_classes/Plant.class.php';
+require_once 'php_classes/PlantType.class.php';
 require_once 'php_classes/ShoppingCart.class.php';
 require_once 'php_classes/User.class.php';
+require_once 'php_classes/DBDao.class.php';
 require_once 'php_functions/functions.php';
 require_once 'php_functions/authenticate.php';
 
+// Include database connection.
+require_once '_mySql.php';
+
 // Initialize PHP Session
 session_start();
+
+// Create instance of DBDao
+$dbDao = new DBDao;
 
 // Get or create user
 if (array_key_exists("user", $_SESSION)) {

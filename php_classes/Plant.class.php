@@ -11,34 +11,159 @@ class Plant
 
     private $id;
 
-    private $name;
-
     private $picture;
+
+    private $title;
 
     private $description;
 
-    public function __construct($id, $name, $picture, $description)
+    private $pouringFrequency;
+
+    private $sunlight;
+
+    private $difficulty;
+
+    private $plantType;
+
+    public function __construct($id, $picture, $title, $description,
+                                $pouringFrequency, $sunlight, $difficulty, $plantType)
     {
         $this->id = $id;
-        $this->name = $name;
         $this->picture = $picture;
+        $this->title = $title;
         $this->description = $description;
+        $this->pouringFrequency = $pouringFrequency;
+        $this->sunlight = $sunlight;
+        $this->difficulty = $difficulty;
+        $this->plantType = $plantType;
     }
 
-    public function getId() {
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
         return $this->id;
     }
 
-    public function getName() {
-        return $this->name;
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
-    public function getDescription() {
+    /**
+     * @return mixed
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    /**
+     * @param mixed $picture
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param mixed $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
         return $this->description;
     }
 
-    public function getPicture() {
-        return $this->picture;
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPouringFrequency()
+    {
+        return $this->pouringFrequency;
+    }
+
+    /**
+     * @param mixed $pouringFrequency
+     */
+    public function setPouringFrequency($pouringFrequency)
+    {
+        $this->pouringFrequency = $pouringFrequency;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSunlight()
+    {
+        return $this->sunlight;
+    }
+
+    /**
+     * @param mixed $sunlight
+     */
+    public function setSunlight($sunlight)
+    {
+        $this->sunlight = $sunlight;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDifficulty()
+    {
+        return $this->difficulty;
+    }
+
+    /**
+     * @param mixed $difficulty
+     */
+    public function setDifficulty($difficulty)
+    {
+        $this->difficulty = $difficulty;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPlantType()
+    {
+        return $this->plantType;
+    }
+
+    /**
+     * @param mixed $plantType
+     */
+    public function setPlantType($plantType)
+    {
+        $this->plantType = $plantType;
     }
 
 }

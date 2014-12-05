@@ -1,0 +1,4 @@
+<?php
+
+$dbConnection = new mysqli("localhost", "dbuser", "password", "dbname");
+$dbConnection->set_charset("utf8");
