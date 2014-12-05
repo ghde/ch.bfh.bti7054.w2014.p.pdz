@@ -18,10 +18,7 @@ function getLanguage()
 {
 
     // Configure available/supported languages
-    $availableLang = array(
-        "de" => "deutsch",
-        "en" => "english"
-    );
+    $availableLang = array("de", "en");
 
     // Default language english
     $lang = "en";
@@ -42,7 +39,7 @@ function getLanguage()
         }
     }
 
-    return $availableLang[$lang];
+    return $lang;
 }
 
 /**
