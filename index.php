@@ -25,6 +25,12 @@ session_start();
 // Create instance of DBDao
 $dbDao = new DBDao;
 
+// Check & include language
+$language = getLanguage();
+if ($language) {
+    require_once "language/$language.php";
+}
+
 // Get or create user
 if (array_key_exists("user", $_SESSION)) {
     $user = $_SESSION["user"];
@@ -44,12 +50,6 @@ if (array_key_exists("cart", $_SESSION)) {
     $shoppingCart = new ShoppingCart;
     $shoppingCartItems = $shoppingCart->getItems();
     $_SESSION["cart"] = $shoppingCart;
-}
-
-// Check & include language
-$language = getLanguage();
-if ($language) {
-    require_once "language/$language.php";
 }
 
 // Load basic layout

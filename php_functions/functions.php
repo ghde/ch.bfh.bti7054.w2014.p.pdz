@@ -24,17 +24,17 @@ function getLanguage()
     $lang = "en";
 
     // Get the language from url and check if it is supported.
-    if (array_key_exists('lang', $_GET)) {
-        $langURL = $_GET ['lang'];
-        if (array_key_exists($langURL, $availableLang)) {
+    if (array_key_exists("lang", $_GET)) {
+        $langURL = $_GET ["lang"];
+        if (in_array($langURL, $availableLang)) {
             setcookie("language", "", time() - 1);
             setcookie("language", $langURL, time() + 60);
             $lang = $langURL;
         }
     } // If not defined in url take if from the cookie (if available).
-    else if (isset ($_COOKIE ['language'])) {
-        $langCookie = $_COOKIE ['language'];
-        if (array_key_exists($langCookie, $availableLang)) {
+    else if (isset ($_COOKIE ["language"])) {
+        $langCookie = $_COOKIE ["language"];
+        if (in_array($langCookie, $availableLang)) {
             $lang = $langCookie;
         }
     }
