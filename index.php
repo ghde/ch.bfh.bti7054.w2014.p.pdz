@@ -13,6 +13,7 @@ require_once 'php_classes/PlantType.class.php';
 require_once 'php_classes/ShoppingCart.class.php';
 require_once 'php_classes/User.class.php';
 require_once 'php_classes/DBDao.class.php';
+require_once 'php_classes/Customer.class.php';
 require_once 'php_functions/functions.php';
 require_once 'php_functions/authenticate.php';
 

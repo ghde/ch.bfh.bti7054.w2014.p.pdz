@@ -8,9 +8,6 @@
  */
 class User
 {
-
-    private $id;
-
     private $username;
 
     private $firstname;
@@ -20,16 +17,6 @@ class User
     private $loggedIn = false;
 
     private $failedLoginTry = false;
-
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    public function getId()
-    {
-        return $this->id;
-    }
 
     public function setUsername($username)
     {

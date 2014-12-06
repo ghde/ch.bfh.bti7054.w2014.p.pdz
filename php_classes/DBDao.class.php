@@ -56,4 +56,33 @@ class DBDao {
         }
         return $langKeys;
     }
+
+    /**
+     * @return customer.
+     */
+    function getCustomer($accountName, $password) {
+        global $dbConnection;
+
+        if ($accountName !== '' && $password !== '') {
+            $dbQuery = "
+              SELECT
+                c.accountName,
+                c.firstName,
+                c.lastName,
+                c.gender,
+                c.company
+              FROM customer c
+              WHERE
+                c.accountName = '$accountName'
+                AND c.accountPassword = '$password';";
+
+            if ($result = $dbConnection->query($dbQuery)) {
+                // fetch customer
+                $customer = $result->fetch_object("Customer");
+                // free result set
+                $result->close();
+            }
+        }
+        return $customer;
+    }
 }

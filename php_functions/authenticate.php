@@ -4,8 +4,7 @@
  * Handles login & logout of a user.
  */
 function handleLoginLogout() {
-
-	global $user;
+	global $user, $dbDao;
 
 	// Check for login post arguments.
 	if (array_key_exists("login", $_POST) //
@@ -16,17 +15,15 @@ function handleLoginLogout() {
 		$user = new User;
 
 		// Validate credentials
-		// TODO : get user data from database
-		if (($_POST["username"] == "peter" && $_POST["password"] == "pan")
-			|| ($_POST["username"] == "micky" && $_POST["password"] == "maus")) {
-
-			$user->setId(1);
-			$user->setUsername($_POST["username"]);
-			$user->setFirstname($_POST["username"]);
-			$user->setLastname($_POST["password"]);
-			$user->setLoggedIn(true);
-		} else {
+		$customer = $dbDao->getCustomer($_POST["username"], $_POST["password"]);
+		if (is_null($customer)) {
 			$user->setFailedLoginTry(true);
+		}
+		else {
+			$user->setUsername($customer->getAccountName());
+			$user->setFirstname($customer->getFirstName());
+			$user->setLastname($customer->getLastName());
+			$user->setLoggedIn(true);
 		}
 
 		// Save change user object, write & close session.
@@ -35,7 +32,6 @@ function handleLoginLogout() {
 
 		// Redirect user.
 		header("Location: " . $_SERVER["REQUEST_URI"]);
-
 
 	} else if (array_key_exists("logout", $_POST)) {
 

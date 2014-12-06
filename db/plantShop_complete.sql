@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `messages`;
 -- Table `order`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `order` (
-  `orderId` INT NOT NULL,
+  `orderId` INT NOT NULL AUTO_INCREMENT,
   `accountName` VARCHAR(50) NOT NULL,
   `streetName` VARCHAR(50) NOT NULL,
   `zipCode` INT NOT NULL,
@@ -31,7 +31,6 @@ CREATE TABLE IF NOT EXISTS `order` (
   PRIMARY KEY (`orderId`),
   KEY fk_order_accountName (accountName))
 ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `customer`
@@ -41,16 +40,16 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `accountPassword` VARCHAR(50) NOT NULL,
   `firstName` VARCHAR(50) NOT NULL,
   `lastName` VARCHAR(50) NOT NULL,
+  `gender` CHAR(1) NOT NULL,
   `company` VARCHAR(50) NULL,
   PRIMARY KEY (`accountName`))
 ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `plant`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `plant` (
-  `plantId` INT NOT NULL,
+  `plantId` INT NOT NULL AUTO_INCREMENT,
   `price` DECIMAL(10,2) NOT NULL,
   `pouringFrequency` INT NOT NULL,
   `sunlight` INT NOT NULL,
@@ -61,17 +60,15 @@ CREATE TABLE IF NOT EXISTS `plant` (
   KEY fk_plant_plantTypeId (plantTypeId))
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `accessory`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `accessory` (
-  `accessoryId` INT NOT NULL,
+  `accessoryId` INT NOT NULL AUTO_INCREMENT,
   `price` DECIMAL(10,2) NULL,
   `pictureName` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`accessoryId`))
 ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `plant_accessory`
@@ -93,7 +90,6 @@ CREATE TABLE IF NOT EXISTS `plantTx` (
   PRIMARY KEY (`plantId`, `language`))
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `customerSettings`
 -- -----------------------------------------------------
@@ -104,7 +100,6 @@ CREATE TABLE IF NOT EXISTS `customerSettings` (
   PRIMARY KEY (`accountName`, `settingKey`))
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `customerAddress`
 -- -----------------------------------------------------
@@ -112,16 +107,16 @@ CREATE TABLE IF NOT EXISTS `customerAddress` (
   `accountName` VARCHAR(50) NOT NULL,
   `streetName` VARCHAR(50) NOT NULL,
   `zipCode` INT NOT NULL,
-  `location` VARCHAR(50) NOT NULL,
+  `city` VARCHAR(50) NOT NULL,
+  `country` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`accountName`))
 ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `orderPos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `orderPos` (
-  `orderPosId` INT NOT NULL,
+  `orderPosId` INT NOT NULL AUTO_INCREMENT,
   `orderId` INT NOT NULL,
   `plantId` INT NOT NULL,
   `quantity` INT NOT NULL,
@@ -131,12 +126,11 @@ CREATE TABLE IF NOT EXISTS `orderPos` (
   KEY fk_orderPos_plantId (plantId))
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `orderPosAddition`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `orderPosAddition` (
-  `orderPosAdditionId` INT NOT NULL,
+  `orderPosAdditionId` INT NOT NULL AUTO_INCREMENT,
   `orderId` INT NOT NULL,
   `orderPosId` INT NULL,
   `accessoryId` INT NOT NULL,
@@ -147,7 +141,6 @@ CREATE TABLE IF NOT EXISTS `orderPosAddition` (
   KEY fk_orderPosAddition_orderPosId (orderPosId),
   KEY fk_orderPosAddition_accessoryId (accessoryId))
 ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `plantTypeTx`
@@ -301,3 +294,50 @@ ALTER TABLE orderPosAddition
 ADD CONSTRAINT fk_orderPosAddition_orderId FOREIGN KEY (orderId) REFERENCES `order` (orderId),
 ADD CONSTRAINT fk_orderPosAddition_orderPosId FOREIGN KEY (orderPosId) REFERENCES orderPos (orderPosId),
 ADD CONSTRAINT fk_orderPosAddition_accessoryId FOREIGN KEY (accessoryId) REFERENCES accessory (accessoryId);
+
+-- -----------------------------------------------------
+-- insert data
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- customer
+-- -----------------------------------------------------
+INSERT INTO customer
+  (accountName, accountPassword, firstName, lastName, gender, company)
+VALUES
+  ('peter.mueller@fakemail.com', 'pm', 'Peter', 'Müller', 'm', NULL),
+  ('grant.plant@fakemail.com', 'gp', 'Grant', 'Plant', 'm', NULL);
+-- -----------------------------------------------------
+-- customerAddress
+-- -----------------------------------------------------
+INSERT INTO customerAddress
+  (accountName, streetName, zipCode, city, country)
+VALUES
+  ('peter.mueller@fakemail.com', 'Poststrasse 3', 3000, 'Bern', 'Switzerland'),
+  ('grant.plant@fakemail.com', 'Gartenstrasse 33', 3001, 'Bern', 'Switzerland');
+-- -----------------------------------------------------
+-- plantTypeTx
+-- -----------------------------------------------------
+INSERT INTO plantTypeTx
+  (plantTypeId, language, plantTypeTitle, plantTypeDescription)
+VALUES
+  (1, 'de', 'Wohnzimmer', 'Zimmerpflanze blabla'),
+  (1, 'en', 'living room', 'plants blabla');
+-- -----------------------------------------------------
+-- plant
+-- -----------------------------------------------------
+INSERT INTO plant
+  (price, pouringFrequency, sunlight, difficulty, pictureName, plantTypeId)
+VALUES
+  (10.5, 3, 3, 2, 'plant1', 1),
+  (50.5, 2, 4, 3, 'plant2', 1);
+-- -----------------------------------------------------
+-- plantTx
+-- -----------------------------------------------------
+INSERT INTO plantTx
+(plantId, language, plantTitle, plantDescription)
+VALUES
+  (1, 'de', 'pflanze 1', 'pflanze1 beschreibung'),
+  (1, 'en', 'plant 1', 'plant1 description'),
+  (2, 'de', 'pflanze 2', 'pflanze2 beschreibung'),
+  (2, 'en', 'plant 2', 'plant2 description');
