@@ -32,7 +32,7 @@
             {else}
                 <form action="{$url}" method="post">
                     <label for="username">{$language["LOGIN_FORM_USERNAME"]}</label>
-                    <input id="username" name="username" type="text"/>
+                    <input id="username" name="username" type="text" l/>
                     <label for="password">{$language["LOGIN_FORM_PASSWORD"]}</label>
                     <input id="password" name="password" type="password"/>
                     <button type="submit" name="login">{$language["LOGIN_FORM_LOGIN"]}</button>

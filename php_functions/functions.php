@@ -12,7 +12,6 @@ function getAvailableLanguages()
 
 /**
  * Function which determines the language from cookie or page attribute and stores it in a cookie again.
- * After language was detected the corresponding language file is included.
  */
 function getLanguage()
 {
@@ -40,6 +39,26 @@ function getLanguage()
     }
 
     return $lang;
+}
+
+/**
+ * Gets the appropriate language keys from session or fills it to the session.
+ */
+function getLanguageKeys()
+{
+    global $dbDao, $language;
+
+    if (array_key_exists("lang", $_SESSION)
+        && array_key_exists("lang_keys", $_SESSION)
+        && $_SESSION["lang"] == $language
+    ) {
+        return $_SESSION["lang_keys"];
+    } else {
+        $languageKeys = $dbDao->getLanguageKeys();
+        $_SESSION["lang"] = $language;
+        $_SESSION["lang_keys"] = $languageKeys;
+        return $languageKeys;
+    }
 }
 
 /**

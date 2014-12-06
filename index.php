@@ -27,9 +27,7 @@ $dbDao = new DBDao;
 
 // Check & include language
 $language = getLanguage();
-if ($language) {
-    require_once "language/$language.php";
-}
+$languageKeys = getLanguageKeys($language);
 
 // Get or create user
 if (array_key_exists("user", $_SESSION)) {
@@ -54,7 +52,7 @@ if (array_key_exists("cart", $_SESSION)) {
 
 // Load basic layout
 $smarty = new Smarty;
-$smarty->debugging = true;
+$smarty->debugging = false;
 $smarty->caching = false;
 //$smarty->cache_lifetime = 120;
 

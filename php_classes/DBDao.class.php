@@ -41,4 +41,19 @@ class DBDao {
         }
         return $plants;
     }
+
+    /**
+     * @return array of language keys.
+     */
+    function getLanguageKeys() {
+        global $dbConnection, $language;
+
+        $langKeys = array();
+        $dbQuery = "select messageKey, message from messages where language = '$language'";
+        $dbRes = $dbConnection->query($dbQuery);
+        while ($row = $dbRes->fetch_object()) {
+            $langKeys[$row->messageKey] = $row->message;
+        }
+        return $langKeys;
+    }
 }
