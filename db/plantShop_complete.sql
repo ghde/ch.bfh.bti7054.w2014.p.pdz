@@ -175,10 +175,44 @@ CREATE TABLE IF NOT EXISTS `messages` (
   PRIMARY KEY (`messageKey`, `language`))
 ENGINE = InnoDB;
 
+ALTER TABLE customerSettings
+ADD CONSTRAINT fk_customerSettings_accountName FOREIGN KEY (accountName) REFERENCES customer (accountName);
+
+ALTER TABLE customerAddress
+ADD CONSTRAINT fk_customerAddress_accountName FOREIGN KEY (accountName) REFERENCES customer (accountName);
+
+ALTER TABLE plant
+ADD CONSTRAINT fk_plant_plantTypeId FOREIGN KEY (plantTypeId) REFERENCES plantTypeTx (plantTypeId);
+
+ALTER TABLE plantTx
+ADD CONSTRAINT fk_plantTx_plantId FOREIGN KEY (plantId) REFERENCES plant (plantId);
+
+ALTER TABLE accessoryTx
+ADD CONSTRAINT fk_accessoryTx_accessoryId FOREIGN KEY (accessoryId) REFERENCES accessory (accessoryId);
+
+ALTER TABLE plant_accessory
+ADD CONSTRAINT fk_plant_accessory_plantId FOREIGN KEY (plantId) REFERENCES plant (plantId),
+ADD CONSTRAINT fk_plant_accessory_accessoryId FOREIGN KEY (accessoryId) REFERENCES accessory (accessoryId);
+
+ALTER TABLE `order`
+ADD CONSTRAINT fk_order_accountName FOREIGN KEY (accountName) REFERENCES customer (accountName);
+
+ALTER TABLE orderPos
+ADD CONSTRAINT fk_orderPos_orderId FOREIGN KEY (orderId) REFERENCES `order` (orderId),
+ADD CONSTRAINT fk_orderPos_plantId FOREIGN KEY (plantId) REFERENCES plant (plantId);
+
+ALTER TABLE orderPosAddition
+ADD CONSTRAINT fk_orderPosAddition_orderId FOREIGN KEY (orderId) REFERENCES `order` (orderId),
+ADD CONSTRAINT fk_orderPosAddition_orderPosId FOREIGN KEY (orderPosId) REFERENCES orderPos (orderPosId),
+ADD CONSTRAINT fk_orderPosAddition_accessoryId FOREIGN KEY (accessoryId) REFERENCES accessory (accessoryId);
+
 -- -----------------------------------------------------
--- Fill table `messages`
+-- insert data
 -- -----------------------------------------------------
 
+-- -----------------------------------------------------
+-- messages
+-- -----------------------------------------------------
 INSERT INTO messages (messageKey, language, message) VALUES
   ("OUR_PROMISE", "de", "Pflanzen für ihr Zuhause - geliefert zu Ihnen nach Hause"),
   ("OUR_PROMISE", "en", "Plants for your home - delivered to your home"),
@@ -262,43 +296,6 @@ INSERT INTO messages (messageKey, language, message) VALUES
   ("ORDER_DELIVERY_NORMAL", "en", "Standard delivery"),
   ("ORDER_SAVED", "de", "Vielen Dank, wir haben ihre Bestellung erhalten!"),
   ("ORDER_SAVED", "en", "DE: We received your order. Thank you very much!");
-
-
-ALTER TABLE customerSettings
-ADD CONSTRAINT fk_customerSettings_accountName FOREIGN KEY (accountName) REFERENCES customer (accountName);
-
-ALTER TABLE customerAddress
-ADD CONSTRAINT fk_customerAddress_accountName FOREIGN KEY (accountName) REFERENCES customer (accountName);
-
-ALTER TABLE plant
-ADD CONSTRAINT fk_plant_plantTypeId FOREIGN KEY (plantTypeId) REFERENCES plantTypeTx (plantTypeId);
-
-ALTER TABLE plantTx
-ADD CONSTRAINT fk_plantTx_plantId FOREIGN KEY (plantId) REFERENCES plant (plantId);
-
-ALTER TABLE accessoryTx
-ADD CONSTRAINT fk_accessoryTx_accessoryId FOREIGN KEY (accessoryId) REFERENCES accessory (accessoryId);
-
-ALTER TABLE plant_accessory
-ADD CONSTRAINT fk_plant_accessory_plantId FOREIGN KEY (plantId) REFERENCES plant (plantId),
-ADD CONSTRAINT fk_plant_accessory_accessoryId FOREIGN KEY (accessoryId) REFERENCES accessory (accessoryId);
-
-ALTER TABLE `order`
-ADD CONSTRAINT fk_order_accountName FOREIGN KEY (accountName) REFERENCES customer (accountName);
-
-ALTER TABLE orderPos
-ADD CONSTRAINT fk_orderPos_orderId FOREIGN KEY (orderId) REFERENCES `order` (orderId),
-ADD CONSTRAINT fk_orderPos_plantId FOREIGN KEY (plantId) REFERENCES plant (plantId);
-
-ALTER TABLE orderPosAddition
-ADD CONSTRAINT fk_orderPosAddition_orderId FOREIGN KEY (orderId) REFERENCES `order` (orderId),
-ADD CONSTRAINT fk_orderPosAddition_orderPosId FOREIGN KEY (orderPosId) REFERENCES orderPos (orderPosId),
-ADD CONSTRAINT fk_orderPosAddition_accessoryId FOREIGN KEY (accessoryId) REFERENCES accessory (accessoryId);
-
--- -----------------------------------------------------
--- insert data
--- -----------------------------------------------------
-
 -- -----------------------------------------------------
 -- customer
 -- -----------------------------------------------------

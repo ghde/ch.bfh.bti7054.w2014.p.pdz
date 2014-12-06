@@ -15,7 +15,7 @@ class DBDao {
         global $dbConnection, $language;
 
         $plants = array();
-        $dbQuery = "select plant.plantId, plant.plantTypeId price, pouringFrequency, sunlight, difficulty,
+        $dbQuery = "select plant.plantId, plant.plantTypeId, price, pouringFrequency, sunlight, difficulty,
               plantTx.plantTitle, plantTx.plantDescription, plantTypeTx.plantTypeTitle, plantTypeTx.plantTypeDescription
             from plant
               inner join plantTx on plant.plantId = plantTx.plantId and plantTx.language = '$language'
