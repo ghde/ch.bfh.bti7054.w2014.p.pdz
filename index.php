@@ -14,6 +14,7 @@ require_once 'php_classes/ShoppingCart.class.php';
 require_once 'php_classes/User.class.php';
 require_once 'php_classes/DBDao.class.php';
 require_once 'php_classes/Customer.class.php';
+require_once 'php_classes/Accessory.class.php';
 require_once 'php_functions/functions.php';
 require_once 'php_functions/authenticate.php';
 
@@ -58,7 +59,7 @@ $smarty->caching = false;
 //$smarty->cache_lifetime = 120;
 
 // Check page attribute
-if (isset($_GET["page"]) && preg_match("/^([a-z])+$/", $_GET["page"]))
+if (isset($_GET["page"]) && preg_match("/^([a-z])+([A-Z])?([a-z])+$/", $_GET["page"]))
 {
     $pagePath = "pages/" . $_GET["page"] . ".php";
     if (file_exists($pagePath)) {

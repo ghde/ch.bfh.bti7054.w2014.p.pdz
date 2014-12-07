@@ -1,10 +1,14 @@
 <?php
+global $dbDao;
 
-// Create instance of plant
-$plant = new Plant(3, "Plant 3", "plant3.jpg", "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-            clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.");
-
+if (array_key_exists("plantId", $_GET)) {
+    //get plant by id
+    $plant = $dbDao->getPlant($_GET["plantId"]);
+    $accessories = $dbDao->getAccessoriesByPlant($_GET["plantId"]);
+} else {
+    $plant = null;
+    $accessories = null;
+}
 // Add plant to session
 $_SESSION["plant"] = $plant;
 
@@ -12,3 +16,4 @@ $_SESSION["plant"] = $plant;
 $smarty->assign('inner_template', 'product_details');
 $smarty->assign('inner_title', 'Order');
 $smarty->assign('inner_product', $plant);
+$smarty->assign('inner_accessories', $accessories);

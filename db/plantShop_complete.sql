@@ -254,14 +254,8 @@ INSERT INTO messages (messageKey, language, message) VALUES
   ("SHOPPING_CART_ORDER", "en", "Order now"),
   ("PRODUCT_SHOW_DETAILS", "de", "Details anzeigen"),
   ("PRODUCT_SHOW_DETAILS", "en", "Show details"),
-  ("DETAILS_EXPANSION", "de", "Zusatz"),
-  ("DETAILS_EXPANSION", "en", "Expansion"),
-  ("DETAILS_EXPANSION_POT", "de", "mit Topf"),
-  ("DETAILS_EXPANSION_POT", "en", "With pot"),
-  ("DETAILS_EXPANSION_NOPOT", "de", "ohne Topf"),
-  ("DETAILS_EXPANSION_NOPOT", "en", "Without pot"),
-  ("DETAILS_EXPANSION_PLANTA", "de", "mit Plantaflor"),
-  ("DETAILS_EXPANSION_PLANTA", "en", "With plantaflor"),
+  ("DETAILS_ACCESSORY", "de", "Zubehör"),
+  ("DETAILS_ACCESSORY", "en", "Accessories"),
   ("DETAILS_ADD_TO_CART", "de", "in den Warenkorb"),
   ("DETAILS_ADD_TO_CART", "en", "Add to cart"),
   ("ORDER_NOTLOGGEDIN", "de", "Bitte einloggen um bestellen zu können!"),
@@ -326,8 +320,8 @@ VALUES
 INSERT INTO plant
   (price, pouringFrequency, sunlight, difficulty, pictureName, plantTypeId)
 VALUES
-  (10.5, 3, 3, 2, 'plant1', 1),
-  (50.5, 2, 4, 3, 'plant2', 1);
+  (10.5, 3, 3, 2, 'plant1.jpg', 1),
+  (50.5, 2, 4, 3, 'plant2.jpg', 1);
 -- -----------------------------------------------------
 -- plantTx
 -- -----------------------------------------------------
@@ -338,3 +332,38 @@ VALUES
   (1, 'en', 'plant 1', 'plant1 description'),
   (2, 'de', 'pflanze 2', 'pflanze2 beschreibung'),
   (2, 'en', 'plant 2', 'plant2 description');
+  
+-- -----------------------------------------------------
+-- accessory
+-- -----------------------------------------------------
+INSERT INTO accessory
+(price, pictureName)
+VALUES
+ (25.30, 'accessory1.jpg'),
+ (33.30, 'accessory2.jpg'),
+ (13.30, 'accessory3.jpg');
+
+-- -----------------------------------------------------
+-- accessoryTx
+-- -----------------------------------------------------
+INSERT INTO accessoryTx
+(accessoryId, language, accessoryTitle, accessoryDescription)
+VALUES
+  (1, 'de', 'Zubehör 1', 'Zubehör 1 Beschreibung'),
+  (1, 'en', 'accessory 1', 'accessory 1 description'),
+  (2, 'de', 'Zubehör 2', 'Zubehör 1 Beschreibung'),
+  (2, 'en', 'accessory 2', 'accessory 2 description'),
+  (3, 'de', 'Zubehör 3', 'Zubehör 3 Beschreibung'),
+  (3, 'en', 'accessory 3', 'accessory 3 description');
+  
+-- -----------------------------------------------------
+-- plant_accessory
+-- -----------------------------------------------------
+INSERT INTO plant_accessory
+(plantId, accessoryId)
+VALUES
+(1, 1),
+(1, 2),
+(2, 1),
+(2, 2),
+(2, 3);

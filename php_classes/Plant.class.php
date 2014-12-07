@@ -11,7 +11,7 @@ class Plant
 
     private $id;
 
-    private $picture;
+    private $pictureName;
 
     private $title;
 
@@ -25,17 +25,20 @@ class Plant
 
     private $plantType;
 
-    public function __construct($id, $picture, $title, $description,
-                                $pouringFrequency, $sunlight, $difficulty, $plantType)
+    private $price;
+
+    public function __construct($id, $pictureName, $title, $description,
+                                $pouringFrequency, $sunlight, $difficulty, $plantType, $price)
     {
         $this->id = $id;
-        $this->picture = $picture;
+        $this->pictureName = $pictureName;
         $this->title = $title;
         $this->description = $description;
         $this->pouringFrequency = $pouringFrequency;
         $this->sunlight = $sunlight;
         $this->difficulty = $difficulty;
         $this->plantType = $plantType;
+        $this->price = $price;
     }
 
     /**
@@ -57,17 +60,17 @@ class Plant
     /**
      * @return mixed
      */
-    public function getPicture()
+    public function getPictureName()
     {
-        return $this->picture;
+        return $this->pictureName;
     }
 
     /**
-     * @param mixed $picture
+     * @param mixed $pictureName
      */
-    public function setPicture($picture)
+    public function setPictureName($pictureName)
     {
-        $this->picture = $picture;
+        $this->pictureName = $pictureName;
     }
 
     /**
@@ -166,4 +169,19 @@ class Plant
         $this->plantType = $plantType;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param mixed $price
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    }
 }
