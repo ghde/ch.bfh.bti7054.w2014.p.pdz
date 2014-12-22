@@ -40,7 +40,7 @@ class User
 
     public function setLastname($lastname)
     {
-        $this->firstlastnamename = $lastname;
+        $this->lastname = $lastname;
     }
 
     public function getLastname()
