@@ -11,6 +11,7 @@ DROP TABLE IF EXISTS `order`;
 DROP TABLE IF EXISTS `customerSettings`;
 DROP TABLE IF EXISTS `customerAddress`;
 DROP TABLE IF EXISTS `customer`;
+DROP TABLE IF EXISTS `admin`;
 DROP TABLE IF EXISTS `plant_accessory`;
 DROP TABLE IF EXISTS `accessoryTx`;
 DROP TABLE IF EXISTS `accessory`;
@@ -24,6 +25,7 @@ DROP TABLE IF EXISTS `messages`;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `order` (
   `orderId` INT NOT NULL AUTO_INCREMENT,
+  `status` INT NOT NULL DEFAULT 1,
   `accountName` VARCHAR(50) NOT NULL,
   `streetName` VARCHAR(50) NOT NULL,
   `zipCode` INT NOT NULL,
@@ -44,6 +46,15 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `company` VARCHAR(50) NULL,
   PRIMARY KEY (`accountName`))
 ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `admin`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `admin` (
+  `accountName` VARCHAR(50) NOT NULL,
+  `accountPassword` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`accountName`))
+  ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `plant`
@@ -306,6 +317,13 @@ INSERT INTO customerAddress
 VALUES
   ('peter.mueller@fakemail.com', 'Poststrasse 3', 3000, 'Bern', 'Switzerland'),
   ('grant.plant@fakemail.com', 'Gartenstrasse 33', 3001, 'Bern', 'Switzerland');
+-- -----------------------------------------------------
+-- customer
+-- -----------------------------------------------------
+INSERT INTO admin
+  (accountName, accountPassword)
+VALUES
+  ('admin@fakemail.com', 'admin');
 -- -----------------------------------------------------
 -- plantTypeTx
 -- -----------------------------------------------------

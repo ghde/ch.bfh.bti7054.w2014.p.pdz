@@ -169,3 +169,20 @@ p {
 #order > div.split > div > input {
     margin-bottom: 5px;
 }
+
+#aOrder>div {
+    margin: 10px;
+    width: 400px;
+}
+#aOrder>div.new {
+    border: 2px solid grey;
+    background-color: lightgrey;
+}
+#aOrder>div.confirmed {
+    border: 2px solid blue;
+    background-color: lightblue;
+}
+#aOrder>div.payed {
+    border: 2px solid green;
+    background-color: lightgreen;
+}

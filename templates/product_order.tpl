@@ -15,7 +15,7 @@
                 <input id="lastname" name="lastname" type="text" value="{$user->getLastname()}"/><br/>
 
                 <label for="email">{$language["ORDER_EMAIL"]}</label><br/>
-                <input id="email" name="email" type="text"/>
+                <input id="email" name="email" type="text" value="{$user->getUsername()}"/>
             </div>
             <div>
                 <h3>{$language["ORDER_SHIPPING_ADDRESS"]}</h3>

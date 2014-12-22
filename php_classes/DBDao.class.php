@@ -234,4 +234,32 @@ class DBDao {
         return $customer;
     }
     //endregion customer
+
+    /**
+     * @param $accountName
+     * @param $password
+     * @return admin.
+     */
+    function getAdmin($accountName, $password) {
+        global $dbConnection;
+
+        if ($accountName !== '' && $password !== '') {
+            $dbQuery = "
+              SELECT
+                a.accountName
+              FROM admin a
+              WHERE
+                a.accountName = '$accountName'
+                AND a.accountPassword = '$password';";
+
+            if ($result = $dbConnection->query($dbQuery)) {
+                // fetch customer
+                $customer = $result->fetch_object("Customer");
+                // free result set
+                $result->close();
+            }
+        }
+        return $customer;
+    }
+
 }
