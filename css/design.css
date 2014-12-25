@@ -97,6 +97,16 @@ a:hover {
     height: 100%;
 }
 
+#shopping_cart > div.elements {
+    overflow-y: scroll;
+    height: 80px;
+}
+
+#shopping_cart > div.elements > form > div {
+    margin: 0px;
+    padding: 0px;
+}
+
 #navigation_pane {
     background-color: black;
     height: 25px;
@@ -170,19 +180,30 @@ p {
     margin-bottom: 5px;
 }
 
-#aOrder>div {
-    margin: 10px;
+#aOrder > div {
+    margin-top: 10px;
+    margin-left: 10px;
+    border: 2px solid black;
+    width: 420px;
+    float: left;
+}
+
+#aOrder > div > div {
+    margin-top: 5px;
     width: 400px;
 }
-#aOrder>div.new {
+
+#aOrder > div > div.new {
     border: 2px solid grey;
     background-color: lightgrey;
 }
-#aOrder>div.confirmed {
+
+#aOrder > div > div.confirmed {
     border: 2px solid blue;
     background-color: lightblue;
 }
-#aOrder>div.payed {
+
+#aOrder > div > div.payed {
     border: 2px solid green;
     background-color: lightgreen;
 }

@@ -45,10 +45,8 @@ handleLoginLogout();
 // Get or create shopping cart
 if (array_key_exists("cart", $_SESSION)) {
     $shoppingCart = $_SESSION["cart"];
-    $shoppingCartItems = $_SESSION["cart"]->getItems();
 } else {
     $shoppingCart = new ShoppingCart;
-    $shoppingCartItems = $shoppingCart->getItems();
     $_SESSION["cart"] = $shoppingCart;
 }
 
@@ -75,7 +73,7 @@ if (isset($_GET["page"]) && preg_match("/^([a-z])+([A-Z])?([a-z])+$/", $_GET["pa
 // Assign common attributes
 $smarty->assign('url', $_SERVER["REQUEST_URI"]);
 $smarty->assign('user', $user);
-$smarty->assign('cart_items', $shoppingCartItems);
+$smarty->assign('cart', $shoppingCart);
 $smarty->assign('languages', getAvailableLanguages());
 $smarty->assign('language', $languageKeys);
 $smarty->assign('navigation', getNavigationElements());

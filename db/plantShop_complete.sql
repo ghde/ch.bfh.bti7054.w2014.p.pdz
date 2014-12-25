@@ -307,23 +307,23 @@ INSERT INTO messages (messageKey, language, message) VALUES
 INSERT INTO customer
   (accountName, accountPassword, firstName, lastName, gender, company)
 VALUES
-  ('peter.mueller@fakemail.com', 'pm', 'Peter', 'Müller', 'm', NULL),
-  ('grant.plant@fakemail.com', 'gp', 'Grant', 'Plant', 'm', NULL);
+  ('peter.mueller@p3n.ch', 'pm', 'Peter', 'Müller', 'm', NULL),
+  ('grant.plant@p3n.ch', 'gp', 'Grant', 'Plant', 'm', NULL);
 -- -----------------------------------------------------
 -- customerAddress
 -- -----------------------------------------------------
 INSERT INTO customerAddress
   (accountName, streetName, zipCode, city, country)
 VALUES
-  ('peter.mueller@fakemail.com', 'Poststrasse 3', 3000, 'Bern', 'Switzerland'),
-  ('grant.plant@fakemail.com', 'Gartenstrasse 33', 3001, 'Bern', 'Switzerland');
+  ('peter.mueller@p3n.ch', 'Poststrasse 3', 3000, 'Bern', 'Switzerland'),
+  ('grant.plant@p3n.ch', 'Gartenstrasse 33', 3001, 'Bern', 'Switzerland');
 -- -----------------------------------------------------
 -- customer
 -- -----------------------------------------------------
 INSERT INTO admin
   (accountName, accountPassword)
 VALUES
-  ('admin@fakemail.com', 'admin');
+  ('admin@p3n.ch', 'admin');
 -- -----------------------------------------------------
 -- plantTypeTx
 -- -----------------------------------------------------

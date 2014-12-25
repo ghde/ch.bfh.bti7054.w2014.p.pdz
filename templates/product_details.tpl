@@ -6,9 +6,9 @@
     <form action="index.php?page=addtocart" method="POST">
         <h3>{$language["DETAILS_ACCESSORY"]}</h3>
 
-        <input type="hidden" name="plant" value="{$product["id"]}"/>
         {foreach from=$inner_accessories item=accessory}
-            <input type="checkbox" name="addons" value="{$accessory->getId()}"/>{$accessory->getTitle()}<br/>
+            <input type="checkbox" name="accessory_{$accessory->getId()}" />{$accessory->getTitle()}
+            <br/>
         {/foreach}
         <input type="submit" value="{$language["DETAILS_ADD_TO_CART"]}"/>
     </form>

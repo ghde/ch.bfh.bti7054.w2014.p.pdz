@@ -45,18 +45,35 @@
         </div>
         <div id="shopping_cart">
             <div class="title">{$language["SHOPPING_CART_NAME"]}</div>
-            {if $cart_items|@count == 0}
+            {if $cart->getPlants()|@count == 0 && $cart->getAccessories()|@count == 0}
                 {$language["SHOPPING_CART_NO_ITEMS"]}
             {else}
-                {foreach from=$cart_items key=plantId item=plant}
-                    <form method="POST" action="index.php?page=removefromcart">
-                        <input type="hidden" name="plantID" value="{$plantId}"/>
+                <div class="elements">
+                    {if $cart->getPlants()|@count > 0}
+                        {foreach from=$cart->getPlants() item=plant}
+                            <form method="POST" action="index.php?page=removefromcart">
+                                <input type="hidden" name="plantId" value="{$plant.plant->getId()}"/>
 
-                        <div>{$plant.num} x <strong>{$plant.name}</strong>
-                            <button type="submit">X</button>
-                        </div>
-                    </form>
-                {/foreach}
+                                <div>{$plant.quantity} x <a
+                                            href="index.php?page=details&plantId={$plant.plant->getId()}">{$plant.plant->getTitle()}</a>
+                                    <button type="submit">X</button>
+                                </div>
+                            </form>
+                        {/foreach}
+                    {/if}
+                    {if $cart->getAccessories()|@count > 0}
+                        {foreach from=$cart->getAccessories() item=accessory}
+                            <form method="POST" action="index.php?page=removefromcart">
+                                <input type="hidden" name="accessoryId" value="{$accessory.accessory->getId()}"/>
+
+                                <div>{$accessory.quantity} x <a
+                                            href="index.php?page=accessoryDetails&accessoryId={$accessory.accessory->getId()}">{$accessory.accessory->getTitle()}</a>
+                                    <button type="submit">X</button>
+                                </div>
+                            </form>
+                        {/foreach}
+                    {/if}
+                </div>
                 <form action="index.php" method="GET">
                     <input type="hidden" name="page" value="order"/>
                     <button type="submit">{$language["SHOPPING_CART_ORDER"]}</button>
@@ -71,7 +88,11 @@
     {/foreach}
 </div>
 <div id="preview_pane">
-    {include file="$inner_template.tpl"}
+    {if isset($inner_template)}
+        {include file="$inner_template.tpl"}
+    {else}
+        Nothing here.
+    {/if}
 </div>
 </body>
 </html>

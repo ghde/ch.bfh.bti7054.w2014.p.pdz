@@ -1,13 +1,25 @@
 <?php
 
 // Get plant from session
-$plantID = $_POST["plantID"];
+if (array_key_exists("plantId", $_POST)) {
 
-// Add element to shopping cart
-$shoppingCart->removeItem($plantID);
+    $plantId = intval($_POST["plantId"]);
+    $shoppingCart->removePlant($plantId);
 
-// Close session
-session_write_close();
+    // Write and close session
+    session_write_close();
 
-// Redirect
-header("Location: index.php?page=details&plantID=" . $plantID);
+    // Redirect to plant details
+    header("Location: index.php?page=details&plantId=" . $plantId);
+
+} else if (array_key_exists("accessoryId", $_POST)) {
+
+    $accessoryId = intval($_POST["accessoryId"]);
+    $shoppingCart->removeAccessory($accessoryId);
+
+    // Write and close session
+    session_write_close();
+
+    // Redirect to plant details
+    header("Location: index.php?page=accessory&accessoryId=" . $accessoryId);
+}

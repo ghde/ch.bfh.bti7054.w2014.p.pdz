@@ -11,6 +11,7 @@ if (array_key_exists("plantId", $_GET)) {
 }
 // Add plant to session
 $_SESSION["plant"] = $plant;
+$_SESSION["accessories"] = $accessories;
 
 // Assign to the template
 $smarty->assign('inner_template', 'product_details');
