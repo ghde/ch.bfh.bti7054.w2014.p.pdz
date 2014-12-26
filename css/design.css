@@ -207,3 +207,87 @@ p {
     border: 2px solid green;
     background-color: lightgreen;
 }
+#search {
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    top: 6px;
+}
+#searchPreview {
+    padding: 0;
+}
+#searchPreview > table {
+    border-collapse: collapse;
+    text-align: left;
+    background: #fff;
+    border: 1px solid #36752D;
+}
+#searchPreview > table td, #searchPreview > table th {
+    padding: 3px 10px;
+}
+#searchBtn {
+    background: transparent url(../pictures/search.png) center no-repeat;
+    width: 16px;
+    height: 16px;
+    border-style: none;
+}
+
+#searchPreview table thead th {
+    background-color: #36752D;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: bold;
+    border-left: 1px solid #36752D;
+}
+
+#searchPreview table thead th:first-child {
+    border: none;
+}
+
+#searchPreview table tbody {
+    display: block;
+    height: auto;
+    width: auto;
+    min-width: 200px;
+    max-width: 500px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#searchPreview table tbody td {
+    color: #275420;
+    border-left: 1px solid #C6FFC2;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+#searchPreview table tbody .alt td {
+    background: #DFFFDE;
+    color: #275420;
+}
+
+#searchPreview table tbody td:first-child {
+    border-left: none;
+}
+#searchPreview table tbody td:last-child {
+    text-align: right;
+}
+#searchPreview table tbody tr {
+    border-bottom: 1px dashed #36752D;
+}
+#searchPreview table tbody tr:last-child td {
+    border-bottom: none;
+}
+#searchPreview table tbody td.noResult {
+    font-style: italic;
+}
+
+#searchPreview a {
+    color: #275420;
+    text-decoration: none;
+    font-family: Verdana, Arial, sans-serif;
+}
+
+#searchPreview a:hover {
+    text-decoration: underline;
+}

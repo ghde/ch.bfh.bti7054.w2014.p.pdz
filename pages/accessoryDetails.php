@@ -1,9 +1,9 @@
 <?php
 global $dbDao;
 
-if (array_key_exists("accessoryId", $_GET)) {
+if (array_key_exists("Id", $_GET)) {
     //get plant by id
-    $accessory = $dbDao->getAccessory($_GET["accessoryId"]);
+    $accessory = $dbDao->getAccessory($_GET["Id"]);
 } else {
     $accessory = null;
 }

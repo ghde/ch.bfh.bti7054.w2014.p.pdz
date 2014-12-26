@@ -15,6 +15,7 @@ require_once 'php_classes/User.class.php';
 require_once 'php_classes/DBDao.class.php';
 require_once 'php_classes/Customer.class.php';
 require_once 'php_classes/Accessory.class.php';
+require_once 'php_classes/Product.class.php';
 require_once 'php_functions/functions.php';
 require_once 'php_functions/authenticate.php';
 

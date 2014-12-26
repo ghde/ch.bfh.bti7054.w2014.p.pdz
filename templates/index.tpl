@@ -86,6 +86,15 @@
     {foreach from=$navigation key=name item=label}
         <a href="index.php?page={$name}" class="navigation_pane">{$label}</a>
     {/foreach}
+    <div id="search">
+        <form method="GET" action="search.php">
+            <input id="searchInput" name="searchInput" type="text" oninput="searchPreview(this.value)"
+                   onfocus="searchPreview(this.value)" onblur="leaveSearch()"/>
+            <input id="searchBtn" type="submit" value="" />
+        </form>
+        <div id="searchPreview">
+        </div>
+    </div>
 </div>
 <div id="preview_pane">
     {if isset($inner_template)}

@@ -8,7 +8,7 @@
 
             <form action="index.php" method="GET">
                 <input type="hidden" name="page" value="details"/>
-                <input type="hidden" name="plantId" value="{$plant->getId()}"/>
+                <input type="hidden" name="Id" value="{$plant->getId()}"/>
                 <button type="submit">{$language["PRODUCT_SHOW_DETAILS"]}</button>
             </form>
         </div>

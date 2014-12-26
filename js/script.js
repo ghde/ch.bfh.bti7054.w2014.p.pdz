@@ -44,3 +44,25 @@ function validateOrderForm(form) {
         return false;
     }
 }
+
+function searchPreview(str) {
+    var preview = document.getElementById("searchPreview");
+    if (str.length < 2) {
+        preview.innerHTML = "";
+        preview.visibility = "hidden";
+        return;
+    } else {
+        preview.visibility = "visible";
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                preview.innerHTML = xmlhttp.responseText;
+            }
+        }
+        xmlhttp.open("GET", "search.php?q=" + str, true);
+        xmlhttp.send();
+    }
+}
+function leaveSearch(){
+    searchPreview('');//TODO don't hide search result if no element outside div is focused
+}

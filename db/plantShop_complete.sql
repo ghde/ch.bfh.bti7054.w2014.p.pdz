@@ -300,7 +300,9 @@ INSERT INTO messages (messageKey, language, message) VALUES
   ("ORDER_DELIVERY_NORMAL", "de", "Standard Lieferung"),
   ("ORDER_DELIVERY_NORMAL", "en", "Standard delivery"),
   ("ORDER_SAVED", "de", "Vielen Dank, wir haben ihre Bestellung erhalten!"),
-  ("ORDER_SAVED", "en", "DE: We received your order. Thank you very much!");
+  ("ORDER_SAVED", "en", "DE: We received your order. Thank you very much!"),
+  ("SEARCH_NORESULT", "de", "keine Ergebnisse gefunden"),
+  ("SEARCH_NORESULT", "en", "no results found");
 -- -----------------------------------------------------
 -- customer
 -- -----------------------------------------------------

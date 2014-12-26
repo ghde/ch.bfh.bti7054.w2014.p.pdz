@@ -212,6 +212,9 @@ class DBDao {
         global $dbConnection;
 
         if ($accountName !== '' && $password !== '') {
+            //real_escape_string --> else sql code can be injected (password like 'or'1'='1 will work...)
+            $accountName = $dbConnection->real_escape_string($accountName);
+            $password = $dbConnection->real_escape_string($password);
             $dbQuery = "
               SELECT
                 c.accountName,
@@ -244,6 +247,9 @@ class DBDao {
         global $dbConnection;
 
         if ($accountName !== '' && $password !== '') {
+            //real_escape_string --> else sql code can be injected (password like 'or'1'='1 will work...)
+            $accountName = $dbConnection->real_escape_string($accountName);
+            $password = $dbConnection->real_escape_string($password);
             $dbQuery = "
               SELECT
                 a.accountName
@@ -262,4 +268,44 @@ class DBDao {
         return $customer;
     }
 
+    function getSearchPreview($searchTxt){
+        global $dbConnection, $language;
+        if ($searchTxt !== '') {
+            $searchTxt = addcslashes($dbConnection->real_escape_string($searchTxt), '%_');
+            $dbQuery = "
+                (SELECT
+                    p.plantId AS productId,
+                    p.price AS productPrice,
+                    pTx.plantTitle AS productTitle,
+                    pTx.plantDescription AS productDescription,
+                    1 AS productType
+                FROM plant p
+                INNER JOIN plantTx pTx
+                  ON pTx.plantId = p.plantId
+                  AND pTx.language = '$language'
+                  AND (pTx.plantTitle LIKE '$searchTxt%' OR pTx.plantDescription LIKE '%$searchTxt%'))
+                UNION
+                (SELECT
+                    a.accessoryId AS productId,
+                    a.price AS productPrice,
+                    aTx.accessoryTitle AS productTitle,
+                    aTx.accessoryDescription AS productDescription,
+                    2 AS productType
+                FROM accessory a
+                INNER JOIN accessoryTx aTx
+                  ON aTx.accessoryId = a.accessoryId
+                  AND aTx.language = '$language'
+                  AND (aTx.accessoryTitle LIKE '%$searchTxt%' OR aTx.accessoryDescription LIKE '%$searchTxt%'))
+                ORDER BY productTitle LIMIT 10";
+        }
+        $products = array();
+        if($dbRes = $dbConnection->query($dbQuery)) {
+            while ($product = $dbRes->fetch_object("Product")) {
+                array_push($products, $product);
+            }
+            // free result set
+            $dbRes->close();
+        }
+        return $products;
+    }
 }
