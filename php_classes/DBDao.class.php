@@ -72,13 +72,18 @@ class DBDao {
     }
 
     /**
+     * @param $plantTypeId
      * @return array of plants.
      */
-    function getAllPlants() {
+    function getAllPlants($plantTypeId) {
         global $dbConnection;
 
         $plants = array();
-        $dbQuery = $this->getPlantSelectQuery() . "ORDER by plant.plantId";
+        $dbQuery = $this->getPlantSelectQuery();
+        if (isset($plantTypeId)) {
+            $dbQuery .= "AND plantTypeTx.plantTypeId = '$plantTypeId'";
+        }
+        $dbQuery .= 'ORDER by plant.plantId';
         if ($dbRes = $dbConnection->query($dbQuery)) {
             while ($row = $dbRes->fetch_object()) {
                 // Create plant type and plant

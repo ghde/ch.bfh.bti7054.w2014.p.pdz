@@ -332,8 +332,16 @@ VALUES
 INSERT INTO plantTypeTx
   (plantTypeId, language, plantTypeTitle, plantTypeDescription)
 VALUES
-  (1, 'de', 'Wohnzimmer', 'Zimmerpflanze blabla'),
-  (1, 'en', 'living room', 'plants blabla');
+  (1, 'de', 'Wohnzimmer', 'Pflanzen für das Wohnzimmer'),
+  (1, 'en', 'Living Room', 'plants for the living room'),
+  (2, 'de', 'Badezimmer', 'Pflanzen für das Badezimmer.'),
+  (2, 'en', 'Bathroom', 'plants for the bathroom'),
+  (3, 'de', 'Schlafzimmer', 'Pflanzen für das Schlafzimmer.'),
+  (3, 'en', 'Bedroom', 'plants for the bedroom'),
+  (4, 'de', 'Garten', 'Pflanzen für den Garten.'),
+  (4, 'en', 'Garden', 'plants for the garden'),
+  (5, 'de', 'Treppenhaus', 'Pflanzen für das Treppenhaus.'),
+  (5, 'en', 'Stairwell', 'plants for the stairwell');
 -- -----------------------------------------------------
 -- plant
 -- -----------------------------------------------------
@@ -341,7 +349,14 @@ INSERT INTO plant
   (price, pouringFrequency, sunlight, difficulty, pictureName, plantTypeId)
 VALUES
   (10.5, 3, 3, 2, 'plant1.jpg', 1),
-  (50.5, 2, 4, 3, 'plant2.jpg', 1);
+  (50.0, 2, 4, 3, 'plant2.jpg', 1),
+  (30.6, 3, 2, 2, 'plant3.jpg', 2),
+  (40.8, 1, 2, 3, 'plant4.jpg', 2),
+  (50.95, 4, 3, 2, 'plant5.jpg', 3),
+  (60.0, 5, 4, 3, 'plant6.jpg', 4),
+  (20.6, 2, 2, 1, 'plant7.jpg', 5),
+  (90.5, 3, 3, 4, 'plant8.jpg', 3),
+  (89.4, 3, 3, 2, 'plant9.jpg', 1);
 -- -----------------------------------------------------
 -- plantTx
 -- -----------------------------------------------------
@@ -351,7 +366,21 @@ VALUES
   (1, 'de', 'pflanze 1', 'pflanze1 beschreibung'),
   (1, 'en', 'plant 1', 'plant1 description'),
   (2, 'de', 'pflanze 2', 'pflanze2 beschreibung'),
-  (2, 'en', 'plant 2', 'plant2 description');
+  (2, 'en', 'plant 2', 'plant2 description'),
+  (3, 'de', 'pflanze 3', 'pflanze3 beschreibung'),
+  (3, 'en', 'plant 3', 'plant3 description'),
+  (4, 'de', 'pflanze 4', 'pflanze4 beschreibung'),
+  (4, 'en', 'plant 4', 'plant4 description'),
+  (5, 'de', 'pflanze 5', 'pflanze5 beschreibung'),
+  (5, 'en', 'plant 5', 'plant5 description'),
+  (6, 'de', 'pflanze 6', 'pflanze6 beschreibung'),
+  (6, 'en', 'plant 6', 'plant6 description'),
+  (7, 'de', 'pflanze 7', 'pflanze7 beschreibung'),
+  (7, 'en', 'plant 7', 'plant7 description'),
+  (8, 'de', 'pflanze 8', 'pflanze8 beschreibung'),
+  (8, 'en', 'plant 8', 'plant8 description'),
+  (9, 'de', 'pflanze 9', 'pflanze9 beschreibung'),
+  (9, 'en', 'plant 9', 'plant9 description');
   
 -- -----------------------------------------------------
 -- accessory
@@ -386,4 +415,16 @@ VALUES
 (1, 2),
 (2, 1),
 (2, 2),
-(2, 3);
+(2, 3),
+(3, 2),
+(3, 3),
+(4, 2),
+(5, 1),
+(5, 2),
+(5, 3),
+(6, 2),
+(7, 1),
+(7, 2),
+(8, 1),
+(8, 2),
+(9, 3);
