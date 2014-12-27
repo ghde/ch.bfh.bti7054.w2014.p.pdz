@@ -62,7 +62,7 @@ function searchPreview(str) {
                 preview.innerHTML = xmlhttp.responseText;
             }
         }
-        xmlhttp.open("GET", "search.php?q=" + str, true);
+        xmlhttp.open("GET", "quickSearch.php?q=" + str, true);
         xmlhttp.send();
     }
 }

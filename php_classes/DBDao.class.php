@@ -308,4 +308,46 @@ class DBDao {
         }
         return $products;
     }
+    function getSearchPreviewExt($searchTxt){
+        global $dbConnection, $language;
+        if ($searchTxt !== '') {
+            $searchTxt = addcslashes($dbConnection->real_escape_string($searchTxt), '%_');
+            $dbQuery = "
+                    (SELECT
+                        p.plantId AS productId,
+                        p.price AS productPrice,
+                        p.pictureName AS productPictureName,
+                        pTx.plantTitle AS productTitle,
+                        pTx.plantDescription AS productDescription,
+                        1 AS productType
+                    FROM plant p
+                    INNER JOIN plantTx pTx
+                      ON pTx.plantId = p.plantId
+                      AND pTx.language = '$language'
+                      AND (pTx.plantTitle LIKE '$searchTxt%' OR pTx.plantDescription LIKE '%$searchTxt%'))
+                    UNION
+                    (SELECT
+                        a.accessoryId AS productId,
+                        a.price AS productPrice,
+                        a.pictureName AS productPictureName,
+                        aTx.accessoryTitle AS productTitle,
+                        aTx.accessoryDescription AS productDescription,
+                        2 AS productType
+                    FROM accessory a
+                    INNER JOIN accessoryTx aTx
+                      ON aTx.accessoryId = a.accessoryId
+                      AND aTx.language = '$language'
+                      AND (aTx.accessoryTitle LIKE '%$searchTxt%' OR aTx.accessoryDescription LIKE '%$searchTxt%'))
+                    ORDER BY productTitle LIMIT 10";
+        }
+        $products = array();
+        if($dbRes = $dbConnection->query($dbQuery)) {
+            while ($product = $dbRes->fetch_object("Product")) {
+                array_push($products, $product);
+            }
+            // free result set
+            $dbRes->close();
+        }
+        return $products;
+    }
 }

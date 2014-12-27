@@ -46,9 +46,6 @@ if (array_key_exists("q", $_REQUEST)) {
     }
     echo "<table>$tableData</table>";
 }
-else if (array_key_exists("searchInput", $_GET)) {
-    echo TODO;
-}
 
 // Write and close session
 session_write_close();

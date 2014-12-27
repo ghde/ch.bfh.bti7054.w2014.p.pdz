@@ -56,7 +56,6 @@ $smarty = new Smarty;
 $smarty->debugging = false;
 $smarty->caching = false;
 //$smarty->cache_lifetime = 120;
-
 // Check page attribute
 if (isset($_GET["page"]) && preg_match("/^([a-z])+([A-Z])?([a-z])+$/", $_GET["page"]))
 {
@@ -70,7 +69,6 @@ if (isset($_GET["page"]) && preg_match("/^([a-z])+([A-Z])?([a-z])+$/", $_GET["pa
 } else {
     header("Location: index.php?page=home");
 }
-
 // Assign common attributes
 $smarty->assign('url', $_SERVER["REQUEST_URI"]);
 $smarty->assign('user', $user);

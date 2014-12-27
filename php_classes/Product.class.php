@@ -17,6 +17,8 @@ class Product
 
     private $productType;
 
+    private $productPictureName;
+
     /**
      * @return mixed
      */
@@ -95,5 +97,21 @@ class Product
     public function setProductType($productType)
     {
         $this->productType = $productType;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProductPictureName()
+    {
+        return $this->productPictureName;
+    }
+
+    /**
+     * @param mixed $productPictureName
+     */
+    public function setProductPictureName($productPictureName)
+    {
+        $this->productPictureName = $productPictureName;
     }
 }

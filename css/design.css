@@ -144,6 +144,30 @@ p {
     display: inline-block;
     width: 200px;
 }
+#accessories > div {
+    display: inline-block;
+    width: 200px;
+}
+#search_results > div {
+    display: inline-block;
+    width: 33%;
+    font-family: Verdana, Arial, sans-serif;
+}
+#search_results a {
+    color: #275420;
+    text-decoration: none;
+}
+
+#search_results a:hover {
+    text-decoration: underline;
+}
+#search_results img {
+    margin-right: 3px;
+}
+#search_results p.noResult {
+    color: #275420;
+    font-style: italic;
+}
 
 #login > form {
     margin-top: 5px;

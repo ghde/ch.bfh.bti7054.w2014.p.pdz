@@ -86,7 +86,8 @@
         <a href="index.php?page={$name}" class="navigation_pane">{$label}</a>
     {/foreach}
     <div id="search">
-        <form method="GET" action="search.php">
+        <form method="GET" action="index.php">
+            <input type="hidden" name="page" value="search"/>
             <input id="searchInput" name="searchInput" type="text"
                    onfocus="searchPreview(this.value)" onkeydown="checkKey(event)" oninput="searchPreview(this.value)"/>
             <input id="searchBtn" type="submit" value="" />
