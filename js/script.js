@@ -47,14 +47,17 @@ function validateOrderForm(form) {
 
 function searchPreview(str) {
     var preview = document.getElementById("searchPreview");
+    var closeBtn = document.getElementById("previewCloseBtn");
     if (str.length < 2) {
         preview.innerHTML = "";
         preview.visibility = "hidden";
+        closeBtn.visibility = "hidden";
         return;
     } else {
         preview.visibility = "visible";
+        closeBtn.visibility = "visible";
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
+        xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 preview.innerHTML = xmlhttp.responseText;
             }
@@ -63,6 +66,14 @@ function searchPreview(str) {
         xmlhttp.send();
     }
 }
-function leaveSearch(){
-    searchPreview('');//TODO don't hide search result if no element outside div is focused
+function checkKey(keyEvent)
+{
+    var pressedKeyValue = keyEvent.keyCode;
+    if(pressedKeyValue == 27)
+    {
+        closeSearch();
+    }
+}
+function closeSearch(){
+    searchPreview('');
 }

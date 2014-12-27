@@ -3,7 +3,6 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Plants for your home</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="design.css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="css/design.css"/>
     <script type="text/javascript" src="js/script.js"></script>
 </head>
@@ -88,9 +87,10 @@
     {/foreach}
     <div id="search">
         <form method="GET" action="search.php">
-            <input id="searchInput" name="searchInput" type="text" oninput="searchPreview(this.value)"
-                   onfocus="searchPreview(this.value)" onblur="leaveSearch()"/>
+            <input id="searchInput" name="searchInput" type="text"
+                   onfocus="searchPreview(this.value)" onkeydown="checkKey(event)" oninput="searchPreview(this.value)"/>
             <input id="searchBtn" type="submit" value="" />
+            <input id="previewCloseBtn" class="closeBtn" type="button" value="" onclick="closeSearch()" />
         </form>
         <div id="searchPreview">
         </div>

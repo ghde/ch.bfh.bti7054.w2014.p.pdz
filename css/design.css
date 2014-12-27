@@ -230,6 +230,14 @@ p {
     width: 16px;
     height: 16px;
     border-style: none;
+    margin: 0px 3px 0px 3px;
+}
+#previewCloseBtn {
+    background: transparent url(../pictures/close.png) center no-repeat;
+    width: 16px;
+    height: 16px;
+    border-style: none;
+    margin: 0px 3px 0px 3px;
 }
 
 #searchPreview table thead th {
