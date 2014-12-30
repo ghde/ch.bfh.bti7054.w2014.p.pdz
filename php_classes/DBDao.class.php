@@ -118,11 +118,11 @@ class DBDao {
 
         $dbQuery = "
         SELECT
-            a.accessoryId,
+            a.accessoryId AS id,
             a.pictureName,
             a.price,
-            aTx.accessoryTitle,
-            aTx.accessoryDescription
+            aTx.accessoryTitle AS title,
+            aTx.accessoryDescription AS description
         FROM accessory a";
 
         if (!empty($plantId)) {
@@ -279,10 +279,10 @@ class DBDao {
             $searchTxt = addcslashes($dbConnection->real_escape_string($searchTxt), '%_');
             $dbQuery = "
                 (SELECT
-                    p.plantId AS productId,
-                    p.price AS productPrice,
-                    pTx.plantTitle AS productTitle,
-                    pTx.plantDescription AS productDescription,
+                    p.plantId AS id,
+                    p.price AS price,
+                    pTx.plantTitle AS title,
+                    pTx.plantDescription AS description,
                     1 AS productType
                 FROM plant p
                 INNER JOIN plantTx pTx
@@ -291,17 +291,17 @@ class DBDao {
                   AND (pTx.plantTitle LIKE '$searchTxt%' OR pTx.plantDescription LIKE '%$searchTxt%'))
                 UNION
                 (SELECT
-                    a.accessoryId AS productId,
-                    a.price AS productPrice,
-                    aTx.accessoryTitle AS productTitle,
-                    aTx.accessoryDescription AS productDescription,
+                    a.accessoryId AS id,
+                    a.price AS price,
+                    aTx.accessoryTitle AS title,
+                    aTx.accessoryDescription AS description,
                     2 AS productType
                 FROM accessory a
                 INNER JOIN accessoryTx aTx
                   ON aTx.accessoryId = a.accessoryId
                   AND aTx.language = '$language'
                   AND (aTx.accessoryTitle LIKE '%$searchTxt%' OR aTx.accessoryDescription LIKE '%$searchTxt%'))
-                ORDER BY productTitle LIMIT 10";
+                ORDER BY title LIMIT 10";
         }
         $products = array();
         if($dbRes = $dbConnection->query($dbQuery)) {
@@ -319,11 +319,11 @@ class DBDao {
             $searchTxt = addcslashes($dbConnection->real_escape_string($searchTxt), '%_');
             $dbQuery = "
                     (SELECT
-                        p.plantId AS productId,
-                        p.price AS productPrice,
-                        p.pictureName AS productPictureName,
-                        pTx.plantTitle AS productTitle,
-                        pTx.plantDescription AS productDescription,
+                        p.plantId AS id,
+                        p.price AS price,
+                        p.pictureName AS pictureName,
+                        pTx.plantTitle AS title,
+                        pTx.plantDescription AS description,
                         1 AS productType
                     FROM plant p
                     INNER JOIN plantTx pTx
@@ -332,18 +332,18 @@ class DBDao {
                       AND (pTx.plantTitle LIKE '$searchTxt%' OR pTx.plantDescription LIKE '%$searchTxt%'))
                     UNION
                     (SELECT
-                        a.accessoryId AS productId,
-                        a.price AS productPrice,
-                        a.pictureName AS productPictureName,
-                        aTx.accessoryTitle AS productTitle,
-                        aTx.accessoryDescription AS productDescription,
+                        a.accessoryId AS id,
+                        a.price AS price,
+                        a.pictureName AS pictureName,
+                        aTx.accessoryTitle AS title,
+                        aTx.accessoryDescription AS description,
                         2 AS productType
                     FROM accessory a
                     INNER JOIN accessoryTx aTx
                       ON aTx.accessoryId = a.accessoryId
                       AND aTx.language = '$language'
                       AND (aTx.accessoryTitle LIKE '%$searchTxt%' OR aTx.accessoryDescription LIKE '%$searchTxt%'))
-                    ORDER BY productTitle LIMIT 10";
+                    ORDER BY title LIMIT 10";
         }
         $products = array();
         if($dbRes = $dbConnection->query($dbQuery)) {

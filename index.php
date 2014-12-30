@@ -8,6 +8,7 @@ ini_set('display_errors', '0');
 
 // Include functions and classes.
 require_once 'php_classes/smarty/Smarty.class.php';
+require_once 'php_classes/Product.class.php';
 require_once 'php_classes/Plant.class.php';
 require_once 'php_classes/PlantType.class.php';
 require_once 'php_classes/ShoppingCart.class.php';
@@ -15,7 +16,6 @@ require_once 'php_classes/User.class.php';
 require_once 'php_classes/DBDao.class.php';
 require_once 'php_classes/Customer.class.php';
 require_once 'php_classes/Accessory.class.php';
-require_once 'php_classes/Product.class.php';
 require_once 'php_functions/functions.php';
 require_once 'php_functions/authenticate.php';
 

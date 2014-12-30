@@ -6,24 +6,14 @@
  * Date: 07.12.2014
  * Time: 13:56
  */
-class Accessory
+class Accessory extends Product
 {
-    private $accessoryId;
-
-    private $pictureName;
-
-    private $accessoryTitle;
-
-    private $accessoryDescription;
-
-    private $price;
-
     /**
      * @return mixed
      */
     public function getId()
     {
-        return $this->accessoryId;
+        return $this->id;
     }
 
     /**
@@ -31,7 +21,7 @@ class Accessory
      */
     public function setId($accessoryId)
     {
-        $this->accessoryId = $accessoryId;
+        $this->id = $accessoryId;
     }
 
     /**
@@ -55,7 +45,7 @@ class Accessory
      */
     public function getTitle()
     {
-        return $this->accessoryTitle;
+        return $this->title;
     }
 
     /**
@@ -63,7 +53,7 @@ class Accessory
      */
     public function setTitle($accessoryTitle)
     {
-        $this->accessoryTitle = $accessoryTitle;
+        $this->title = $accessoryTitle;
     }
 
     /**
@@ -71,7 +61,7 @@ class Accessory
      */
     public function getDescription()
     {
-        return $this->accessoryDescription;
+        return $this->description;
     }
 
     /**
@@ -79,7 +69,7 @@ class Accessory
      */
     public function setDescription($accessoryDescription)
     {
-        $this->accessoryDescription = $accessoryDescription;
+        $this->description = $accessoryDescription;
     }
 
     /**
@@ -96,5 +86,19 @@ class Accessory
     public function setPrice($price)
     {
         $this->price = $price;
+    }
+
+    /**
+     * @return int
+     */
+    public function getProductType(){
+        return 2;//accessory
+    }
+
+    /**
+     * @param mixed $productType
+     */
+    public function setProductType($productType){
+        //do nothing
     }
 }

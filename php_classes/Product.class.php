@@ -7,80 +7,80 @@
  */
 class Product
 {
-    private $productId;
+    protected $id;
 
-    private $productTitle;
+    protected $title;
 
-    private $productDescription;
+    protected $description;
 
-    private $productPrice;
+    protected $price;
 
-    private $productType;
+    protected $productType;
 
-    private $productPictureName;
-
-    /**
-     * @return mixed
-     */
-    public function getProductId()
-    {
-        return $this->productId;
-    }
-
-    /**
-     * @param mixed $productId
-     */
-    public function setProductId($productId)
-    {
-        $this->productId = $productId;
-    }
+    protected $pictureName;
 
     /**
      * @return mixed
      */
-    public function getProductTitle()
+    public function getId()
     {
-        return $this->productTitle;
+        return $this->id;
     }
 
     /**
-     * @param mixed $productTitle
+     * @param mixed $id
      */
-    public function setProductTitle($productTitle)
+    public function setId($id)
     {
-        $this->productTitle = $productTitle;
+        $this->id = $id;
     }
 
     /**
      * @return mixed
      */
-    public function getProductDescription()
+    public function getTitle()
     {
-        return $this->productDescription;
+        return $this->title;
     }
 
     /**
-     * @param mixed $productDescription
+     * @param mixed $title
      */
-    public function setProductDescription($productDescription)
+    public function setTitle($title)
     {
-        $this->productDescription = $productDescription;
+        $this->title = $title;
     }
 
     /**
      * @return mixed
      */
-    public function getProductPrice()
+    public function getDescription()
     {
-        return $this->productPrice;
+        return $this->description;
     }
 
     /**
-     * @param mixed $productPrice
+     * @param mixed $description
      */
-    public function setProductPrice($productPrice)
+    public function setDescription($description)
     {
-        $this->productPrice = $productPrice;
+        $this->description = $description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param mixed $price
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
     }
 
     /**
@@ -102,16 +102,16 @@ class Product
     /**
      * @return mixed
      */
-    public function getProductPictureName()
+    public function getPictureName()
     {
-        return $this->productPictureName;
+        return $this->pictureName;
     }
 
     /**
-     * @param mixed $productPictureName
+     * @param mixed $pictureName
      */
-    public function setProductPictureName($productPictureName)
+    public function setPictureName($pictureName)
     {
-        $this->productPictureName = $productPictureName;
+        $this->pictureName = $pictureName;
     }
 }

@@ -33,11 +33,11 @@ if (array_key_exists("q", $_REQUEST)) {
             else{
                 $page = "accessoryDetails";
             }
-            $link = "index.php?page=$page&Id={$product->getProductId()}";
+            $link = "index.php?page=$page&Id={$product->getId()}";
             $tableData .= "
                 <tr>
-                    <td><a href=\"$link\">{$product->getProductTitle()}</a><p>{$product->getProductDescription()}</p></td>
-                    <td>CHF {$product->getProductPrice()}</td>
+                    <td><a href=\"$link\">{$product->getTitle()}</a><p>{$product->getDescription()}</p></td>
+                    <td>CHF {$product->getPrice()}</td>
                 </tr>";
         }
     }

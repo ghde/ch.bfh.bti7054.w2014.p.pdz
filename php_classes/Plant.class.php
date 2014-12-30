@@ -6,17 +6,8 @@
  * Date: 30.11.2014
  * Time: 21:06
  */
-class Plant
+class Plant extends Product
 {
-
-    private $id;
-
-    private $pictureName;
-
-    private $title;
-
-    private $description;
-
     private $pouringFrequency;
 
     private $sunlight;
@@ -24,8 +15,6 @@ class Plant
     private $difficulty;
 
     private $plantType;
-
-    private $price;
 
     public function __construct($id, $pictureName, $title, $description,
                                 $pouringFrequency, $sunlight, $difficulty, $plantType, $price)
@@ -183,5 +172,19 @@ class Plant
     public function setPrice($price)
     {
         $this->price = $price;
+    }
+
+    /**
+     * @return int
+     */
+    public function getProductType(){
+        return 1;//plant
+    }
+
+    /**
+     * @param mixed $productType
+     */
+    public function setProductType($productType){
+        //do nothing
     }
 }
