@@ -131,7 +131,13 @@ a:hover {
     float: left;
     padding-left: 50px;
 }
-
+#quantity {
+    margin-top: 6px;
+    width: 45%;
+}
+#addToCart {
+    width: 50%;
+}
 .plant {
     float: left;
 }

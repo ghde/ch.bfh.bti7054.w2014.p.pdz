@@ -4,6 +4,8 @@
 </div>
 <div id="customizing">
     <form action="index.php?page=addtocart" method="POST">
-        <input type="submit" value="{$language["DETAILS_ADD_TO_CART"]}"/>
+        <input type="hidden" value="1" name="isAccessory" />
+        <input type="number" name="quantity" />
+        <input type="submit" name="addToCart" value="{$language["DETAILS_ADD_TO_CART"]}"/>
     </form>
 </div>

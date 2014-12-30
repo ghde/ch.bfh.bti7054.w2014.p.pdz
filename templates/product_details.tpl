@@ -10,6 +10,7 @@
             <input type="checkbox" name="accessory_{$accessory->getId()}" />{$accessory->getTitle()}
             <br/>
         {/foreach}
-        <input type="submit" value="{$language["DETAILS_ADD_TO_CART"]}"/>
+        <input type="number" id="quantity" name="quantity" />
+        <input type="submit" id="addToCart" value="{$language["DETAILS_ADD_TO_CART"]}"/>
     </form>
 </div>

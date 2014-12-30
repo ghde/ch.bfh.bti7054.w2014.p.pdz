@@ -8,6 +8,9 @@ if (array_key_exists("Id", $_GET)) {
     $accessory = null;
 }
 
+// Add plant to session
+$_SESSION["accessory"] = $accessory;
+
 // Assign to the template
 $smarty->assign('inner_template', 'accessory_details');
 $smarty->assign('inner_title', 'Order');
