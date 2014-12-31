@@ -15,7 +15,10 @@ require_once 'php_classes/ShoppingCart.class.php';
 require_once 'php_classes/User.class.php';
 require_once 'php_classes/DBDao.class.php';
 require_once 'php_classes/Customer.class.php';
+require_once 'php_classes/CustomerAddress.class.php';
 require_once 'php_classes/Accessory.class.php';
+require_once 'php_classes/Order.class.php';
+require_once 'php_classes/OrderPos.class.php';
 require_once 'php_functions/functions.php';
 require_once 'php_functions/authenticate.php';
 

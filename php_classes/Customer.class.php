@@ -46,7 +46,7 @@ class Customer
         $this->gender = $gender;
     }
 
-    public function getGender($gender) {
+    public function getGender() {
         return $this->gender;
     }
 

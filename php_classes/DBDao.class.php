@@ -5,7 +5,6 @@
  * Date: 05.12.14
  * Time: 10:43
  */
-
 class DBDao {
 
     //region plant
@@ -42,7 +41,7 @@ class DBDao {
      * @return Plant
      */
     function getPlant($plantId) {
-        global $dbConnection;
+        $dbConnection = getDBConnection();
 
         if (empty($plantId)){
             return null;
@@ -76,7 +75,7 @@ class DBDao {
      * @return array of plants.
      */
     function getAllPlants($plantTypeId) {
-        global $dbConnection;
+        $dbConnection = getDBConnection();
 
         $plants = array();
         $dbQuery = $this->getPlantSelectQuery();
@@ -137,7 +136,7 @@ class DBDao {
      * @return array of accessories
      */
     function getAccessoriesByPlant($plantId) {
-        global $dbConnection;
+        $dbConnection = getDBConnection();
 
         if (empty($plantId)){
             return null;
@@ -159,7 +158,7 @@ class DBDao {
      * @return array of accessories
      */
     function getAllAccessories() {
-        global $dbConnection;
+        $dbConnection = getDBConnection();
 
         $accessories = array();
         $dbQuery = $this->getAccessorySelectQuery(null);
@@ -177,7 +176,7 @@ class DBDao {
      * @return array of accessories
      */
     function getAccessory($accessoryId) {
-        global $dbConnection;
+        $dbConnection = getDBConnection();
 
         $dbQuery = $this->getAccessorySelectQuery(null);
         $dbQuery .= "WHERE a.accessoryId = '$accessoryId'";
@@ -189,6 +188,84 @@ class DBDao {
         return $accessory;
     }
     //endregion accessory
+
+    //region order
+    /**
+     * @param $order
+     */
+    function insertOrder($order) {
+        $dbConnection = getDBConnection();
+
+        if (isset($order) && $order instanceof Order) {
+            $orderPosArray = $order->getOrderPosArray();
+            if (!empty($orderPosArray)) {
+                //set autocommit off
+                $dbConnection->autocommit(FALSE);
+                $dbQuery = "
+                  INSERT INTO `order`
+                  (
+                    accountName,
+                    streetName,
+                    zipCode,
+                    city,
+                    country
+                  )
+                  VALUES
+                  (
+                    '{$order->getAccountName()}',
+                    '{$order->getStreetName()}',
+                    '{$order->getZipCode()}',
+                    '{$order->getCity()}',
+                    '{$order->getCountry()}'
+                  )";
+
+                if ($dbConnection->query($dbQuery) === TRUE) {
+                    //success
+                    $order->setId($dbConnection->insert_id);
+                    //prepare statement
+                    $orderId = $order->getId();
+                    $orderPlantId = null;
+                    $accessoryId = null;
+                    $quantity = null;
+                    $unitPrice = null;
+                    $stmt = $dbConnection->prepare("
+                        INSERT INTO `orderPos`
+                        (
+                            orderId,
+                            plantId,
+                            accessoryId,
+                            quantity,
+                            unitPrice
+                        )
+                        VALUES(?,?,?,?,?)");
+                    //bind variables --> set in foreach
+                    $stmt->bind_param('iiiid', $orderId, $orderPlantId, $accessoryId, $quantity, $unitPrice);
+                    foreach($orderPosArray as $orderPos) {
+                        $orderPlantId = $orderPos->getPlantId();
+                        $accessoryId = $orderPos->getAccessoryId();
+                        $quantity = $orderPos->getQuantity();
+                        $unitPrice = $orderPos->getUnitPrice();
+                        if ($stmt->execute() === TRUE) {
+                            //success
+                            $orderPos->setId($dbConnection->insert_id);
+                        }
+                        else {
+                            print($dbConnection->error);
+                            $dbConnection->rollback();
+                            $dbConnection->close();
+                            return;
+                        }
+                    }
+                    $dbConnection->commit();
+                }
+                else {
+                    print($dbConnection->error);
+                }
+                $dbConnection->close();
+            }
+        }
+    }
+    //endregion order
 
     //region config
     /**
@@ -214,7 +291,9 @@ class DBDao {
      * @return customer.
      */
     function getCustomer($accountName, $password) {
-        global $dbConnection;
+        $dbConnection = getDBConnection();
+
+        $customer = null;
 
         if ($accountName !== '' && $password !== '') {
             //real_escape_string --> else sql code can be injected (password like 'or'1'='1 will work...)
@@ -241,15 +320,76 @@ class DBDao {
         }
         return $customer;
     }
+
+    /**
+     * @param $accountName
+     * @return null|object|stdClass
+     */
+    function getCustomerAddress($accountName) {
+        $dbConnection = getDBConnection();
+
+        $customerAddress = null;
+
+        if ($accountName !== ''){
+            //real_escape_string --> else sql code can be injected
+            $accountName = $dbConnection->real_escape_string($accountName);
+            $dbQuery = "
+              SELECT
+                a.accountName,
+                a.streetName,
+                a.zipCode,
+                a.city,
+                a.country
+              FROM customerAddress a
+              WHERE
+                a.accountName = '$accountName'";
+
+            if ($result = $dbConnection->query($dbQuery)) {
+                // fetch customer address
+                $customerAddress = $result->fetch_object("CustomerAddress");
+                // free result set
+                $result->close();
+            }
+        }
+        return $customerAddress;
+    }
+
+    /**
+     * @param $customerAddress
+     */
+    function updateCustomerAddress($customerAddress) {
+        $dbConnection = getDBConnection();
+
+        if (isset($customerAddress) && $customerAddress instanceof CustomerAddress){
+            $dbQuery = "
+              UPDATE customerAddress
+              SET
+                streetName = '{$customerAddress->getStreetName()}',
+                zipCode = '{$customerAddress->getZipCode()}',
+                city = '{$customerAddress->getCity()}',
+                country = '{$customerAddress->getCountry()}'
+              WHERE
+                accountName = '{$customerAddress->getAccountName()}'";
+
+            if ($dbConnection->query($dbQuery) === TRUE) {
+                //success
+            }
+            else {
+                echo $dbConnection->error;
+            }
+            $dbConnection->close();
+        }
+    }
     //endregion customer
 
+    //region admin
     /**
      * @param $accountName
      * @param $password
      * @return admin.
      */
     function getAdmin($accountName, $password) {
-        global $dbConnection;
+        $dbConnection = getDBConnection();
 
         if ($accountName !== '' && $password !== '') {
             //real_escape_string --> else sql code can be injected (password like 'or'1'='1 will work...)
@@ -272,7 +412,9 @@ class DBDao {
         }
         return $customer;
     }
+    //endregion admin
 
+    //region search
     function getSearchPreview($searchTxt){
         global $dbConnection, $language;
         if ($searchTxt !== '') {
@@ -355,4 +497,5 @@ class DBDao {
         }
         return $products;
     }
+    //endregion search
 }

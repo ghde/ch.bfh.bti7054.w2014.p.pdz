@@ -51,10 +51,10 @@
                     {if $cart->getPlants()|@count > 0}
                         {foreach from=$cart->getPlants() item=plant}
                             <form method="POST" action="index.php?page=removefromcart">
-                                <input type="hidden" name="plantId" value="{$plant.plant->getId()}"/>
+                                <input type="hidden" name="plantId" value="{$plant.product->getId()}"/>
 
                                 <div>{$plant.quantity} x <a
-                                            href="index.php?page=details&plantId={$plant.plant->getId()}">{$plant.plant->getTitle()}</a>
+                                            href="index.php?page=details&plantId={$plant.product->getId()}">{$plant.product->getTitle()}</a>
                                     <button type="submit">X</button>
                                 </div>
                             </form>
@@ -63,10 +63,10 @@
                     {if $cart->getAccessories()|@count > 0}
                         {foreach from=$cart->getAccessories() item=accessory}
                             <form method="POST" action="index.php?page=removefromcart">
-                                <input type="hidden" name="accessoryId" value="{$accessory.accessory->getId()}"/>
+                                <input type="hidden" name="accessoryId" value="{$accessory.product->getId()}"/>
 
                                 <div>{$accessory.quantity} x <a
-                                            href="index.php?page=accessoryDetails&accessoryId={$accessory.accessory->getId()}">{$accessory.accessory->getTitle()}</a>
+                                            href="index.php?page=accessoryDetails&accessoryId={$accessory.product->getId()}">{$accessory.product->getTitle()}</a>
                                     <button type="submit">X</button>
                                 </div>
                             </form>

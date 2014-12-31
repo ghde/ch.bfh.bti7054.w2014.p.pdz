@@ -24,7 +24,7 @@ class ShoppingCart
         if (array_key_exists($plant->getId(), $this->plants)) {
             $this->plants[$plant->getId()]["quantity"] += $quantity;
         } else {
-            $this->plants[$plant->getId()]["plant"] = $plant;
+            $this->plants[$plant->getId()]["product"] = $plant;
             $this->plants[$plant->getId()]["quantity"] = $quantity;
         }
         $this->calculatePrice();
@@ -39,7 +39,7 @@ class ShoppingCart
         if (array_key_exists($accessory->getId(), $this->accessories)) {
             $this->accessories[$accessory->getId()]["quantity"] += $quantity;
         } else {
-            $this->accessories[$accessory->getId()]["accessory"] = $accessory;
+            $this->accessories[$accessory->getId()]["product"] = $accessory;
             $this->accessories[$accessory->getId()]["quantity"] = $quantity;
         }
         $this->calculatePrice();
@@ -71,12 +71,12 @@ class ShoppingCart
         $this->totalPrice = 0.0;
         foreach ($this->plants as $plantData) {
             $quantity = doubleval($plantData["quantity"]);
-            $plantPrice = doubleval($plantData["plant"]->getPrice());
+            $plantPrice = doubleval($plantData["product"]->getPrice());
             $this->totalPrice += ($quantity * $plantPrice);
         }
         foreach ($this->accessories as $accessoryData) {
             $quantity = doubleval($accessoryData["quantity"]);
-            $accessoryPrice = doubleval($accessoryData["accessory"]->getPrice());
+            $accessoryPrice = doubleval($accessoryData["product"]->getPrice());
             $this->totalPrice += ($quantity * $accessoryPrice);
         }
     }
@@ -102,6 +102,13 @@ class ShoppingCart
      */
     public function getTotalPrice() {
         return $this->totalPrice;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEmpty() {
+        return empty($this->plants) && empty($this->accessories);
     }
 
     /**

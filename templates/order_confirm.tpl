@@ -1,48 +1,87 @@
+<div id="order_confirm" class="noPadding">
 {if $isOrderSaved}
-    <div>{$language["ORDER_SAVED"]}</div>
-{elseif !$user->isLoggedIn()}
-    <div>{$language["ORDER_NOTLOGGEDIN"]}</div>
+    <h2>{$language["ORDER_SAVED"]}</h2>
 {else}
     <form id="order" action="index.php?page=order" onsubmit="return validateOrderForm(this)" method="post">
         <div class="split">
             <div>
-                <h3>{$language["ORDER_PERSONAL_INFO"]}</h3>
-
-                <label for="firstname">{$language["ORDER_FIRSTNAME"]}</label><br/>
-                <input id="firstname" name="firstname" type="text" value="{$user->getFirstname()}"/><br/>
-
-                <label for="lastname">{$language["ORDER_LASTNAME"]}</label><br/>
-                <input id="lastname" name="lastname" type="text" value="{$user->getLastname()}"/><br/>
-
-                <label for="email">{$language["ORDER_EMAIL"]}</label><br/>
-                <input id="email" name="email" type="text" value="{$user->getUsername()}"/>
+                <h2>{$language["ORDER_PERSONAL_INFO"]}</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label for="firstName">{$language["ORDER_FIRSTNAME"]}: </label>
+                            </td>
+                            <td>
+                                <input id="firstName" name="firstName" type="text" value="{$user->getFirstname()}" disabled />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="lastName">{$language["ORDER_LASTNAME"]}: </label>
+                            </td>
+                            <td>
+                                <input id="lastName" name="lastName" type="text" value="{$user->getLastname()}" disabled />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="email">{$language["ORDER_EMAIL"]}: </label>
+                            </td>
+                            <td>
+                                <input id="email" name="email" type="text" value="{$user->getUsername()}" disabled />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div>
-                <h3>{$language["ORDER_SHIPPING_ADDRESS"]}</h3>
-
-                <label for="street">{$language["ORDER_STREET"]}</label><br/>
-                <input id="street" name="street" type="text"/><br/>
-
-                <label for="city">{$language["ORDER_CITY"]}</label><br/>
-                <input id="city" name="city" type="text"/><br/>
-
-                <label for="city">{$language["ORDER_PLZ"]}</label><br/>
-                <input id="city" name="city" type="text"/><br/>
-
-                <label for="country">{$language["ORDER_COUNTRY"]}</label><br/>
-                <select id="country" name="country">
-                    <option value="Switzerland">Switzerland</option>
-                    <option value="Germany">Germany</option>
-                    <option value="Austria" selected>Austria</option>
-                </select>
-            </div>
-            <div>
-                <h3>{$language["ORDER_COMMENT"]}</h3>
-                <textarea id="comment" name="comment" rows="10" cols="30">Put your comment in here.</textarea><br/>
-
-
+            <div class="right">
+                <h2>{$language["ORDER_SHIPPING_ADDRESS"]}</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label for="streetName">{$language["ORDER_STREET"]}: </label>
+                            </td>
+                            <td>
+                                <input id="streetName" name="streetName" type="text" value="{$inner_address->getStreetName()}" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="zipCode">{$language["ORDER_PLZ"]}: </label>
+                            </td>
+                            <td>
+                                <input id="zipCode" name="zipCode" type="text" value="{$inner_address->getZipCode()}" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="city">{$language["ORDER_CITY"]}: </label>
+                            </td>
+                            <td>
+                                <input id="city" name="city" type="text" value="{$inner_address->getCity()}" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="country">{$language["ORDER_COUNTRY"]}: </label>
+                            </td>
+                            <td>
+                                <input id="country" name="country" type="text" value="{$inner_address->getCountry()}" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <label for="saveAddress">{$language["ORDER_SAVEADDRESS"]}: </label>
+                                <input type="checkbox" name="saveAddress" value="TRUE" checked />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-        <button type="submit" name="order">{$language["ORDER_CONFIRM"]}</button>
+        <input type="submit" name="order" value="{$language["ORDER_CONFIRM"]}" />
     </form>
 {/if}
+</div>

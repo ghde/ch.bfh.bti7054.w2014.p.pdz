@@ -5,7 +5,6 @@ CREATE DATABASE IF NOT EXISTS `plantShop` DEFAULT CHARACTER SET utf8 COLLATE utf
 GRANT ALL ON plantShop.* TO gardener@localhost IDENTIFIED BY 'plants4home';
 USE plantShop;
 
-DROP TABLE IF EXISTS `orderPosAddition`;
 DROP TABLE IF EXISTS `orderPos`;
 DROP TABLE IF EXISTS `order`;
 DROP TABLE IF EXISTS `customerSettings`;
@@ -29,7 +28,8 @@ CREATE TABLE IF NOT EXISTS `order` (
   `accountName` VARCHAR(50) NOT NULL,
   `streetName` VARCHAR(50) NOT NULL,
   `zipCode` INT NOT NULL,
-  `location` VARCHAR(50) NOT NULL,
+  `city` VARCHAR(50) NOT NULL,
+  `country` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`orderId`),
   KEY fk_order_accountName (accountName))
 ENGINE = InnoDB;
@@ -129,28 +129,14 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `orderPos` (
   `orderPosId` INT NOT NULL AUTO_INCREMENT,
   `orderId` INT NOT NULL,
-  `plantId` INT NOT NULL,
+  `plantId` INT NULL,
+  `accessoryId` INT NULL,
   `quantity` INT NOT NULL,
   `unitPrice` DECIMAL(10,2) NOT NULL,
   PRIMARY KEY (`orderPosId`),
   KEY fk_orderPos_orderId (orderId),
-  KEY fk_orderPos_plantId (plantId))
-ENGINE = InnoDB;
-
--- -----------------------------------------------------
--- Table `orderPosAddition`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `orderPosAddition` (
-  `orderPosAdditionId` INT NOT NULL AUTO_INCREMENT,
-  `orderId` INT NOT NULL,
-  `orderPosId` INT NULL,
-  `accessoryId` INT NOT NULL,
-  `quantity` INT NOT NULL,
-  `unitPrice` DECIMAL(10,2) NOT NULL,
-  PRIMARY KEY (`orderPosAdditionId`),
-  KEY fk_orderPosAddition_orderId (orderId),
-  KEY fk_orderPosAddition_orderPosId (orderPosId),
-  KEY fk_orderPosAddition_accessoryId (accessoryId))
+  KEY fk_orderPos_plantId (plantId),
+  KEY fk_orderPos_accessoryId (accessoryId))
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
@@ -210,12 +196,9 @@ ADD CONSTRAINT fk_order_accountName FOREIGN KEY (accountName) REFERENCES custome
 
 ALTER TABLE orderPos
 ADD CONSTRAINT fk_orderPos_orderId FOREIGN KEY (orderId) REFERENCES `order` (orderId),
-ADD CONSTRAINT fk_orderPos_plantId FOREIGN KEY (plantId) REFERENCES plant (plantId);
-
-ALTER TABLE orderPosAddition
-ADD CONSTRAINT fk_orderPosAddition_orderId FOREIGN KEY (orderId) REFERENCES `order` (orderId),
-ADD CONSTRAINT fk_orderPosAddition_orderPosId FOREIGN KEY (orderPosId) REFERENCES orderPos (orderPosId),
-ADD CONSTRAINT fk_orderPosAddition_accessoryId FOREIGN KEY (accessoryId) REFERENCES accessory (accessoryId);
+ADD CONSTRAINT fk_orderPos_plantId FOREIGN KEY (plantId) REFERENCES plant (plantId),
+ADD CONSTRAINT fk_orderPos_accessoryId FOREIGN KEY (accessoryId) REFERENCES accessory (accessoryId),
+ADD CONSTRAINT ck_orderPos_product CHECK((plantId IS NULL AND accessoryId IS NOT NULL) OR (plantId IS NOT NULL AND accessoryId IS NULL));
 
 -- -----------------------------------------------------
 -- insert data
@@ -239,6 +222,8 @@ INSERT INTO messages (messageKey, language, message) VALUES
   ("LOGIN_ERROR_HINT", "en", "Error"),
   ("LOGIN_ERROR_TEXT", "de", "Ungültiger Benutzername und/oder Password!"),
   ("LOGIN_ERROR_TEXT", "en", "Invalid credentials!"),
+  ("LOGIN_REQUIRED", "de", "Bitte melden Sie sich an um mit der Bestellung fortzufahren."),
+  ("LOGIN_REQUIRED", "en", "Please login to continue with your order."),
   ("NAVIGATION_HOME", "de", "Startseite"),
   ("NAVIGATION_HOME", "en", "Home"),
   ("NAVIGATION_ROOM_LIVING", "de", "Wohnzimmer"),
@@ -258,7 +243,7 @@ INSERT INTO messages (messageKey, language, message) VALUES
   ("NAVIGATION_ACCESSORIES", "de", "Zubehör"),
   ("NAVIGATION_ACCESSORIES", "en", "Accessories"),
   ("SHOPPING_CART_NAME", "de", "Warenkorb"),
-  ("SHOPPING_CART_NAME", "en", "Shopping-Cart"),
+  ("SHOPPING_CART_NAME", "en", "Shopping Cart"),
   ("SHOPPING_CART_NO_ITEMS", "de", "Worenkorb ist leer"),
   ("SHOPPING_CART_NO_ITEMS", "en", "No items"),
   ("SHOPPING_CART_ORDER", "de", "Jetzt bestellen"),
@@ -269,16 +254,20 @@ INSERT INTO messages (messageKey, language, message) VALUES
   ("DETAILS_ACCESSORY", "en", "Accessories"),
   ("DETAILS_ADD_TO_CART", "de", "in den Warenkorb"),
   ("DETAILS_ADD_TO_CART", "en", "Add to cart"),
+  ("ORDER_CONTINUE", "de", "weiter"),
+  ("ORDER_CONTINUE", "en", "continue"),
   ("ORDER_NOTLOGGEDIN", "de", "Bitte einloggen um bestellen zu können!"),
   ("ORDER_NOTLOGGEDIN", "en", "Please login to order!"),
-  ("ORDER_PERSONAL_INFO", "de", "Bitte persönliche Informationen eingeben"),
-  ("ORDER_PERSONAL_INFO", "en", "Enter your personal information"),
+  ("ORDER_PERSONAL_INFO", "de", "Persönliche Informationen"),
+  ("ORDER_PERSONAL_INFO", "en", "Personal Information"),
   ("ORDER_FIRSTNAME", "de", "Vorname"),
   ("ORDER_FIRSTNAME", "en", "Firstname"),
   ("ORDER_LASTNAME", "de", "Nachname"),
   ("ORDER_LASTNAME", "en", "Lastname"),
   ("ORDER_EMAIL", "de", "E-Mail"),
   ("ORDER_EMAIL", "en", "E-Mail"),
+  ("ORDER_SAVEADDRESS", "de", "Lieferadresse für nächste Bestellung speichern"),
+  ("ORDER_SAVEADDRESS", "en", "save Shipping Address for next order"),
   ("ORDER_SHIPPING_ADDRESS", "de", "Lieferadresse"),
   ("ORDER_SHIPPING_ADDRESS", "en", "Shipping Address"),
   ("ORDER_STREET", "de", "Strasse & Nummer"),
@@ -299,8 +288,20 @@ INSERT INTO messages (messageKey, language, message) VALUES
   ("ORDER_DELIVERY_EXPRESS", "en", "Express delivery"),
   ("ORDER_DELIVERY_NORMAL", "de", "Standard Lieferung"),
   ("ORDER_DELIVERY_NORMAL", "en", "Standard delivery"),
-  ("ORDER_SAVED", "de", "Vielen Dank, wir haben ihre Bestellung erhalten!"),
-  ("ORDER_SAVED", "en", "DE: We received your order. Thank you very much!"),
+  ("ORDER_DETAILS_TITLE", "de", "Momentan in Ihrem Warenkorb:"),
+  ("ORDER_DETAILS_TITLE", "en", "Currently in Your Shopping Cart:"),
+  ("ORDER_DETAILS_TBL_TITLE", "de", "Titel"),
+  ("ORDER_DETAILS_TBL_TITLE", "en", "Title"),
+  ("ORDER_DETAILS_TBL_DESC", "de", "Beschreibung"),
+  ("ORDER_DETAILS_TBL_DESC", "en", "Description"),
+  ("ORDER_DETAILS_TBL_PRICE", "de", "Preis"),
+  ("ORDER_DETAILS_TBL_PRICE", "en", "Price"),
+  ("ORDER_DETAILS_TBL_QUAN", "de", "Anzahl"),
+  ("ORDER_DETAILS_TBL_QUAN", "en", "Quantity"),
+  ("ORDER_DETAILS_TBL_TOT", "de", "Total"),
+  ("ORDER_DETAILS_TBL_TOT", "en", "Total"),
+  ("ORDER_SAVED", "de", "Vielen Dank für Ihre Bestellung! Wir haben Ihnen eine Bestellbestätigung an Ihre Emailaddresse gesendet."),
+  ("ORDER_SAVED", "en", "Thank you for your order! We have sent you an order confirmation to your email address."),
   ("SEARCH_NORESULT", "de", "keine Ergebnisse gefunden"),
   ("SEARCH_NORESULT", "en", "no results found");
 -- -----------------------------------------------------

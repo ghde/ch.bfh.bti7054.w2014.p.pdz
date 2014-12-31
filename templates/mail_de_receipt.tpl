@@ -6,14 +6,14 @@ Eine Auftragsbestaetigung erhalten Sie in der Regeln innerhalb von 2 Arbeitstage
 {if $cart->getPlants()|@count > 0}
     Bestellte Pflanzen:
     {foreach from=$cart->getPlants() item=plant}
-        {$plant.quantity} x {$plant.plant->getTitle()}
+        {$plant.quantity} x {$plant.product->getTitle()}
     {/foreach}
 {/if}
 
 {if $cart->getAccessories()|@count > 0}
     Bestelltes Zubehoer:
     {foreach from=$cart->getAccessories() item=accessory}
-        {$accessory.quantity} x {$accessory.accessory->getTitle()}
+        {$accessory.quantity} x {$accessory.product->getTitle()}
     {/foreach}
 {/if}
 
