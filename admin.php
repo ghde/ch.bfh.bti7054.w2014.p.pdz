@@ -49,10 +49,8 @@ handleAdminLoginLogout();
 // Get or create shopping cart
 if (array_key_exists("cart", $_SESSION)) {
     $shoppingCart = $_SESSION["cart"];
-    $shoppingCartItems = $_SESSION["cart"]->getItems();
 } else {
     $shoppingCart = new ShoppingCart;
-    $shoppingCartItems = $shoppingCart->getItems();
     $_SESSION["cart"] = $shoppingCart;
 }
 

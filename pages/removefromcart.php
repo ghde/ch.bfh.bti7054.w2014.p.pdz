@@ -10,7 +10,7 @@ if (array_key_exists("plantId", $_POST)) {
     session_write_close();
 
     // Redirect to plant details
-    header("Location: index.php?page=details&plantId=" . $plantId);
+    header("Location: index.php?page=details&Id=" . $plantId);
 
 } else if (array_key_exists("accessoryId", $_POST)) {
 
@@ -21,5 +21,5 @@ if (array_key_exists("plantId", $_POST)) {
     session_write_close();
 
     // Redirect to plant details
-    header("Location: index.php?page=accessory&accessoryId=" . $accessoryId);
+    header("Location: index.php?page=accessoryDetails&Id=" . $accessoryId);
 }
