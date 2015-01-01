@@ -1,4 +1,11 @@
 <?php
 
-$dbConnection = new mysqli("localhost", "dbuser", "password", "dbname");
-$dbConnection->set_charset("utf8");
+/**
+ * @return mysqli
+ */
+function getDBConnection(){
+    $dbConnection = new mysqli("localhost", "dbuser", "password", "dbname");
+    $dbConnection->set_charset("utf8");
+
+    return $dbConnection;
+}
