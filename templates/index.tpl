@@ -54,7 +54,7 @@
                                 <input type="hidden" name="plantId" value="{$plant.product->getId()}"/>
 
                                 <div>{$plant.quantity} x <a
-                                            href="index.php?page=details&plantId={$plant.product->getId()}">{$plant.product->getTitle()}</a>
+                                            href="index.php?page=details&Id={$plant.product->getId()}">{$plant.product->getTitle()}</a>
                                     <button type="submit">X</button>
                                 </div>
                             </form>
@@ -66,7 +66,7 @@
                                 <input type="hidden" name="accessoryId" value="{$accessory.product->getId()}"/>
 
                                 <div>{$accessory.quantity} x <a
-                                            href="index.php?page=accessoryDetails&accessoryId={$accessory.product->getId()}">{$accessory.product->getTitle()}</a>
+                                            href="index.php?page=accessoryDetails&Id={$accessory.product->getId()}">{$accessory.product->getTitle()}</a>
                                     <button type="submit">X</button>
                                 </div>
                             </form>
