@@ -189,6 +189,54 @@ class DBDao {
     }
     //endregion accessory
 
+    function getOrder($orderId) {
+        $dbConnection = getDBConnection();
+
+        $orderRes = $dbConnection->query("SELECT * FROM `order` WHERE orderId = $orderId");
+        $order = $orderRes->fetch_object('Order');
+
+        $orderPosArr = array();
+        $orderPosRes = $dbConnection->query("SELECT * FROM orderpos WHERE orderId = '{$order->getId()}' ORDER BY orderPosId");
+        while ($orderPos = $orderPosRes->fetch_object('OrderPos')) {
+            if ($orderPos->getPlantId() != null) {
+                $orderPos->setPlant($this->getPlant($orderPos->getPlantId()));
+            } else if ($orderPos->getAccessoryId() != null) {
+                $orderPos->setAccessory($this->getAccessory($orderPos->getAccessoryId()));
+            }
+            array_push($orderPosArr, $orderPos);
+        }
+        $order->setOrderPosArray($orderPosArr);
+        return $order;
+    }
+
+    function setOrderStatus($orderId, $newStatus) {
+        $dbConnection = getDBConnection();
+
+        $dbConnection->query("UPDATE `order` SET `status` = $newStatus WHERE orderId = $orderId");
+    }
+
+    function getActiveOrders() {
+        $dbConnection = getDBConnection();
+
+        $orderArr = array();
+        $orderRes = $dbConnection->query("SELECT * FROM `order` WHERE `status` < 4 ORDER BY status ASC, orderId ASC");
+        while ($order = $orderRes->fetch_object('Order')) {
+            $orderPosArr = array();
+            $orderPosRes = $dbConnection->query("SELECT * FROM orderpos WHERE orderId = '{$order->getId()}' ORDER BY orderPosId");
+            while ($orderPos = $orderPosRes->fetch_object('OrderPos')) {
+                if ($orderPos->getPlantId() != null) {
+                    $orderPos->setPlant($this->getPlant($orderPos->getPlantId()));
+                } else if ($orderPos->getAccessoryId() != null) {
+                    $orderPos->setAccessory($this->getAccessory($orderPos->getAccessoryId()));
+                }
+                array_push($orderPosArr, $orderPos);
+            }
+            $order->setOrderPosArray($orderPosArr);
+            array_push($orderArr, $order);
+        }
+        return $orderArr;
+    }
+
     //region order
     /**
      * @param $order
@@ -272,7 +320,8 @@ class DBDao {
      * @return array of language keys.
      */
     function getLanguageKeys() {
-        global $dbConnection, $language;
+        global $language;
+        $dbConnection = getDBConnection();
 
         $langKeys = array();
         $dbQuery = "select messageKey, message from messages where language = '$language'";
@@ -317,6 +366,31 @@ class DBDao {
                 // free result set
                 $result->close();
             }
+        }
+        return $customer;
+    }
+
+    function getCustomerByAccountName($accountName) {
+        $dbConnection = getDBConnection();
+
+        $customer = null;
+        $accountName = $dbConnection->real_escape_string($accountName);
+        $dbQuery = "
+          SELECT
+            c.accountName,
+            c.firstName,
+            c.lastName,
+            c.gender,
+            c.company
+          FROM customer c
+          WHERE
+            c.accountName = '$accountName';";
+
+        if ($result = $dbConnection->query($dbQuery)) {
+            // fetch customer
+            $customer = $result->fetch_object("Customer");
+            // free result set
+            $result->close();
         }
         return $customer;
     }

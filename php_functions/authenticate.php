@@ -47,7 +47,7 @@ function handleLoginLogout() {
  * Handles login & logout of a user.
  */
 function handleAdminLoginLogout() {
-	global $user, $dbDao;
+	global $admin, $dbDao;
 
 	// Check for login post arguments.
 	if (array_key_exists("login", $_POST) //
@@ -55,20 +55,21 @@ function handleAdminLoginLogout() {
 		&& array_key_exists("password", $_POST)) {
 
 		// Create new user object = logout.
-		$user = new User;
+		$admin = new User;
 
 		// Validate credentials
-		$admin = $dbDao->getAdmin($_POST["username"], $_POST["password"]);
-		if (is_null($admin)) {
-			$user->setFailedLoginTry(true);
+		$customer = $dbDao->getAdmin($_POST["username"], $_POST["password"]);
+		if (is_null($customer)) {
+			$admin->setFailedLoginTry(true);
 		}
 		else {
-			$user->setUsername($admin->getAccountName());
-			$user->setLoggedIn(true);
+			$admin->setUsername($customer->getAccountName());
+			$admin->setLoggedIn(true);
 		}
 
+		print_r($admin);
 		// Save change user object, write & close session.
-		$_SESSION["admin"] = $user;
+		$_SESSION["admin"] = $admin;
 		session_write_close();
 
 		// Redirect user.

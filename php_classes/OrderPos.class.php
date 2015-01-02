@@ -12,7 +12,11 @@ class OrderPos
 
     private $orderId;
 
+    private $plant;
+
     private $plantId;
+
+    private $accessory;
 
     private $accessoryId;
 
@@ -21,86 +25,131 @@ class OrderPos
     private $unitPrice;
 
     /**
-     * @param $orderPosId
+     * @return mixed
      */
-    public function setId($orderPosId) {
+    public function getId()
+    {
+        return $this->orderPosId;
+    }
+
+    /**
+     * @param mixed $orderPosId
+     */
+    public function setId($orderPosId)
+    {
         $this->orderPosId = $orderPosId;
     }
 
     /**
      * @return mixed
      */
-    public function getId() {
-        return $this->orderPosId;
+    public function getOrderId()
+    {
+        return $this->orderId;
     }
 
     /**
-     * @param $orderId
+     * @param mixed $orderId
      */
-    public function setOrderId($orderId) {
+    public function setOrderId($orderId)
+    {
         $this->orderId = $orderId;
     }
 
     /**
      * @return mixed
      */
-    public function getOrderId() {
-        return $this->orderId;
+    public function getPlant()
+    {
+        return $this->plant;
     }
 
     /**
-     * @param $plantId
+     * @param mixed $plant
      */
-    public function setPlantId($plantId) {
+    public function setPlant($plant)
+    {
+        $this->plant = $plant;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPlantId()
+    {
+        return $this->plantId;
+    }
+
+    /**
+     * @param mixed $plantId
+     */
+    public function setPlantId($plantId)
+    {
         $this->plantId = $plantId;
     }
 
     /**
      * @return mixed
      */
-    public function getPlantId() {
-        return $this->plantId;
+    public function getAccessory()
+    {
+        return $this->accessory;
     }
 
     /**
-     * @param $accessoryId
+     * @param mixed $accessory
      */
-    public function setAccessoryId($accessoryId) {
+    public function setAccessory($accessory)
+    {
+        $this->accessory = $accessory;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAccessoryId()
+    {
+        return $this->accessoryId;
+    }
+
+    /**
+     * @param mixed $accessoryId
+     */
+    public function setAccessoryId($accessoryId)
+    {
         $this->accessoryId = $accessoryId;
     }
 
     /**
      * @return mixed
      */
-    public function getAccessoryId() {
-        return $this->accessoryId;
+    public function getQuantity()
+    {
+        return $this->quantity;
     }
 
     /**
-     * @param $quantity
+     * @param mixed $quantity
      */
-    public function setQuantity($quantity) {
+    public function setQuantity($quantity)
+    {
         $this->quantity = $quantity;
     }
 
     /**
      * @return mixed
      */
-    public function getQuantity() {
-        return $this->quantity;
+    public function getUnitPrice()
+    {
+        return $this->unitPrice;
     }
 
     /**
-     * @param $unitPrice
+     * @param mixed $unitPrice
      */
-    public function setUnitPrice($unitPrice) {
+    public function setUnitPrice($unitPrice)
+    {
         $this->unitPrice = $unitPrice;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getUnitPrice() {
-        return $this->unitPrice;
-    }
 }

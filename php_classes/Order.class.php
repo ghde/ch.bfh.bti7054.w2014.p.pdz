@@ -135,4 +135,42 @@ class Order
     public function getOrderPosArray() {
         return $this->orderPosArray;
     }
+
+    /**
+     * @param $user User.
+     * Sends payment mail.
+     */
+    public function sendPaymentMail($user) {
+        global $smarty;
+
+        $smarty->assign('user', $user);
+        $smarty->assign('order', $this);
+        $smarty->assign('price', $this->calculatePrice());
+
+        $mailOutput = $smarty->fetch('mail_payment.tpl');
+        mail($user->getAccountName(), "Plants for your Home", $mailOutput, "From: plants-for-your-home@no-host");
+    }
+
+    /**
+     * @param $user User.
+     * Sends payment mail.
+     */
+    public function sendDeliveryMail($user) {
+        global $smarty;
+
+        $smarty->assign('user', $user);
+        $smarty->assign('order', $this);
+        $smarty->assign('date', new DateTime());
+
+        $mailOutput = $smarty->fetch('mail_delivery.tpl');
+        mail($user->getAccountName(), "Plants for your Home", $mailOutput, "From: plants-for-your-home@no-host");
+    }
+
+    private function calculatePrice() {
+        $price = 0.0;
+        foreach ($this->orderPosArray as $orderPos) {
+            $price += $orderPos->getQuantity() * $orderPos->getUnitPrice();
+        }
+        return $price;
+    }
 }
