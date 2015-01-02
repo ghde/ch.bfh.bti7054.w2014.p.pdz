@@ -4,7 +4,7 @@
  * @return mysqli
  */
 function getDBConnection(){
-    $dbConnection = new mysqli("localhost", "dbuser", "password", "dbname");
+    $dbConnection = new mysqli("localhost", "gardener", "plants4home", "plantShop");
     $dbConnection->set_charset("utf8");
 
     return $dbConnection;
