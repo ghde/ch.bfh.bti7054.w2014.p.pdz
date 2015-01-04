@@ -26,6 +26,7 @@ div {
     box-sizing: border-box;
 
 }
+
 div .noPadding {
 
     padding: 0;
@@ -139,13 +140,16 @@ a:hover {
     float: left;
     padding-left: 50px;
 }
+
 #quantity {
     margin-top: 6px;
     width: 45%;
 }
+
 #addToCart {
     width: 50%;
 }
+
 .plant {
     float: left;
 }
@@ -162,13 +166,16 @@ p.loginRequired {
     display: inline-block;
     width: 200px;
 }
+
 #accessories > div {
     display: inline-block;
     width: 200px;
 }
+
 #order_details h1 {
     color: #275420;
 }
+
 #order_details > table {
     border-collapse: collapse;
     text-align: left;
@@ -176,14 +183,18 @@ p.loginRequired {
     border: 1px solid #36752D;
     width: 100%;
 }
+
 #order_details table td.right {
     text-align: right;
 }
+
 #order_details > table td, #order_details > table th {
     padding: 3px 10px;
 }
+
 #order_details table thead {
 }
+
 #order_details table thead th {
     background-color: #36752D;
     color: #FFFFFF;
@@ -192,42 +203,52 @@ p.loginRequired {
     font-weight: bold;
     border-left: 1px solid #36752D;
 }
+
 #order_details table thead th:first-child {
     border: none;
 }
+
 #order_details table tbody {
     height: auto;
     width: auto;
     max-height: 600px;
     overflow-y: auto;
 }
+
 #order_details table tbody td {
     color: #275420;
     border-left: 1px solid #C6FFC2;
     font-size: 12px;
     font-weight: normal;
 }
+
 #order_details table tbody td:first-child {
     border-left: none;
 }
+
 #order_details table tbody tr {
     border-bottom: 1px dashed #36752D;
 }
+
 #order_details table tbody tr:last-child td {
     border-bottom: none;
 }
+
 #order_details table tfoot td {
     color: #275420;
     font-size: 12px;
     font-weight: bold;
 }
+
 #order_details a {
     color: #275420;
     text-decoration: none;
 }
+
 #order_details a:hover {
     text-decoration: underline;
 }
+
 #order_details input {
     margin-top: 3px;
     float: right;
@@ -236,25 +257,30 @@ p.loginRequired {
 #order_confirm h2 {
     color: #275420;
 }
+
 #order_confirm > table {
     text-align: left;
     background: #FFFFFF;
     width: 100%;
 }
+
 #order_confirm table td.right {
     text-align: right;
 }
+
 #order_confirm table tbody {
     height: auto;
     width: auto;
     max-height: 600px;
     overflow-y: auto;
 }
+
 #order_confirm table tbody td {
     color: #275420;
     font-size: 12px;
     font-weight: normal;
 }
+
 #order_confirm input {
     margin-top: 3px;
     float: right;
@@ -282,6 +308,7 @@ p.loginRequired {
     width: 33%;
     font-family: Verdana, Arial, sans-serif;
 }
+
 #search_results a {
     color: #275420;
     text-decoration: none;
@@ -290,9 +317,11 @@ p.loginRequired {
 #search_results a:hover {
     text-decoration: underline;
 }
+
 #search_results img {
     margin-right: 3px;
 }
+
 #search_results p.noResult {
     color: #275420;
     font-style: italic;
@@ -347,24 +376,40 @@ p.loginRequired {
     border: 2px solid green;
     background-color: lightgreen;
 }
+
+#aOrder > div > div.apiKey {
+    border: 1px solid black;
+}
+
+#aOrder div.invalidAddress {
+    border: 1px solid red;
+    background-color: lightcoral;
+    margin: 5px;
+    padding: 5px;
+}
+
 #search {
     margin: 0px;
     padding: 0px;
     position: relative;
     top: 6px;
 }
+
 #searchPreview {
     padding: 0;
 }
+
 #searchPreview > table {
     border-collapse: collapse;
     text-align: left;
     background: #fff;
     border: 1px solid #36752D;
 }
+
 #searchPreview > table td, #searchPreview > table th {
     padding: 3px 10px;
 }
+
 #searchBtn {
     background: transparent url(../pictures/search.png) center no-repeat;
     width: 16px;
@@ -372,6 +417,7 @@ p.loginRequired {
     border-style: none;
     margin: 0px 3px 0px 3px;
 }
+
 #previewCloseBtn {
     background: transparent url(../pictures/close.png) center no-repeat;
     width: 16px;
@@ -412,15 +458,19 @@ p.loginRequired {
 #searchPreview table tbody td:first-child {
     border-left: none;
 }
+
 #searchPreview table tbody td:last-child {
     text-align: right;
 }
+
 #searchPreview table tbody tr {
     border-bottom: 1px dashed #36752D;
 }
+
 #searchPreview table tbody tr:last-child td {
     border-bottom: none;
 }
+
 #searchPreview table tbody td.noResult {
     font-style: italic;
 }

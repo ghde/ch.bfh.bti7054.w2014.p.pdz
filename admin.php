@@ -52,10 +52,13 @@ $smarty->debugging = false;
 $smarty->caching = false;
 //$smarty->cache_lifetime = 120;
 
+// Fetch orders
+$orders = $dbDao->getActiveOrders();
+
 // Handle admin requests
 if (array_key_exists("proceedOrder", $_POST)
-    || array_key_exists("orderId", $_POST)
-    || array_key_exists("newStatus", $_POST)) {
+    && array_key_exists("orderId", $_POST)
+    && array_key_exists("newStatus", $_POST)) {
 
     $orderId = intval($_POST["orderId"]);
     $newStatus = intval($_POST["newStatus"]);
@@ -72,10 +75,61 @@ if (array_key_exists("proceedOrder", $_POST)
 
     // Redirect user.
     header("Location: " . $_SERVER["REQUEST_URI"]);
-}
 
-// Fetch orders
-$orders = $dbDao->getActiveOrders();
+} else if (array_key_exists("validateDeliveryAddresses", $_POST)) {
+
+    $googleApiUrl = "https://maps.googleapis.com/maps/api/geocode/json?address={address}&sensor=false";
+    foreach ($orders as $order) {
+
+        // Get address parts.
+        $streetName = $order->getStreetName();
+        $zipCode = $order->getZipCode();
+        $city = $order->getCity();
+        $country = $order->getCountry();
+
+        // Url encode address and call googleapis.
+        $addressToCheck = urlencode($streetName . ", " . $zipCode . ' ' . $city . ', ' . $country);
+        $currentGoogleApiUrl = str_replace("{address}", $addressToCheck, $googleApiUrl);
+        $jsonObject = json_decode(file_get_contents($currentGoogleApiUrl));
+        if ($jsonObject && $jsonObject->status == "OK") {
+            $result = $jsonObject->results[0];
+
+            $gStreetNumber = null;
+            $gStreetName = null;
+            $gStreet = null;
+            $gLocality = null;
+            $gCountry = null;
+            $gPostalCode = null;
+
+            foreach ($result->address_components as $addressComponent) {
+                if (in_array("street_number", $addressComponent->types)) {
+                    $gStreetNumber = $addressComponent->long_name;
+                } else if (in_array("route", $addressComponent->types)) {
+                    $gStreetName = $addressComponent->long_name;
+                } else if (in_array("locality", $addressComponent->types)) {
+                    $gLocality = $addressComponent->long_name;
+                } else if (in_array("country", $addressComponent->types)) {
+                    $gCountry = $addressComponent->long_name;
+                } else if (in_array("postal_code", $addressComponent->types)) {
+                    $gPostalCode = $addressComponent->long_name;
+                }
+            }
+
+            // Set formatted address
+            $order->setFormattedAddress($result->formatted_address);
+
+            // Check validity of address
+            if ($gStreetNumber != null && $gStreetName != null && $gLocality != null && $gCountry != null && $gPostalCode != null) {
+                $gStreet = $gStreetName . " " . $gStreetNumber;
+                if ($streetName == $gStreet && $zipCode == $gPostalCode && $city == $gLocality && $country == $gCountry) {
+                    $order->setValidAddress(true);
+                }
+            }
+        }
+    }
+
+
+}
 
 // Assign common attributes
 $smarty->assign('url', $_SERVER["REQUEST_URI"]);

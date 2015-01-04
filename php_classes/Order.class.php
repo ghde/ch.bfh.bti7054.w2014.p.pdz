@@ -22,6 +22,10 @@ class Order
 
     private $country;
 
+    private $validAddress = false;
+
+    private $formattedAddress;
+
     private $orderPosArray;
 
     /**
@@ -120,6 +124,38 @@ class Order
      */
     public function getCountry() {
         return $this->country;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isValidAddress()
+    {
+        return $this->validAddress;
+    }
+
+    /**
+     * @param boolean $validAddress
+     */
+    public function setValidAddress($validAddress)
+    {
+        $this->validAddress = $validAddress;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFormattedAddress()
+    {
+        return $this->formattedAddress;
+    }
+
+    /**
+     * @param mixed $formattedAddress
+     */
+    public function setFormattedAddress($formattedAddress)
+    {
+        $this->formattedAddress = $formattedAddress;
     }
 
     /**
