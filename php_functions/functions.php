@@ -77,8 +77,8 @@ function getNavigationElements()
         "bedroom" => $languageKeys["NAVIGATION_ROOM_BED"],
         "garden" => $languageKeys["NAVIGATION_GARDEN"],
         "stairwell" => $languageKeys["NAVIGATION_STAIRWELL"],
-        "pots" => $languageKeys["NAVIGATION_POTS"],
-        "fertilizers" => $languageKeys["NAVIGATION_FERTILIZERS"],
+        //"pots" => $languageKeys["NAVIGATION_POTS"],
+        //"fertilizers" => $languageKeys["NAVIGATION_FERTILIZERS"],
         "accessories" => $languageKeys["NAVIGATION_ACCESSORIES"]
     );
 }

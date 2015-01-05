@@ -490,7 +490,8 @@ class DBDao {
 
     //region search
     function getSearchPreview($searchTxt){
-        global $dbConnection, $language;
+        global $language;
+        $dbConnection = getDBConnection();
         if ($searchTxt !== '') {
             $searchTxt = addcslashes($dbConnection->real_escape_string($searchTxt), '%_');
             $dbQuery = "
@@ -530,7 +531,8 @@ class DBDao {
         return $products;
     }
     function getSearchPreviewExt($searchTxt){
-        global $dbConnection, $language;
+        global $language;
+        $dbConnection = getDBConnection();
         if ($searchTxt !== '') {
             $searchTxt = addcslashes($dbConnection->real_escape_string($searchTxt), '%_');
             $dbQuery = "
