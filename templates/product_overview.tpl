@@ -1,6 +1,6 @@
 <div id="plants">
     {foreach from=$inner_plants item=plant}
-        <div>
+        <div id="plantOverview">
             <h3>{$plant->getTitle()}</h3>
             <img class="plant" src="pictures/{$plant->getPictureName()}" width="200" height="200" border="0"/>
 
