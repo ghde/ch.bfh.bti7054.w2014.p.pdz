@@ -11,15 +11,14 @@
     {$language["OUR_PROMISE"]}
     <div id="languages">
         {foreach from=$languages key=short item=label}
-            <a href="?lang={$short}">&raquo; {$label}</a>
+            <a class="lang" href="?lang={$short}">&raquo; {$label}</a>
         {/foreach}
     </div>
 </div>
 <div id="company">
     <div id="logo_and_slogan">
-        <img id="logo" src="pictures/Logo_Plant_Front.png" width="110" height="80" border="0"/>
-
-        <h1>Plants for your home</h1>
+        <img id="logo" src="pictures/Logo_Plant_Front.png" width="110" height="90" border="0"/>
+        <h1>PLANTS FOR YOUR HOME</h1>
     </div>
     <div id="sitemap">
         <div id="login">
@@ -83,7 +82,7 @@
 </div>
 <div id="navigation_pane">
     {foreach from=$navigation key=name item=label}
-        <a href="index.php?page={$name}" class="navigation_pane">{$label}</a>
+        <a class="nav" href="index.php?page={$name}" class="navigation_pane">{$label}</a>
     {/foreach}
     <div id="search">
         <form method="GET" action="index.php">
