@@ -30,6 +30,17 @@ div .readOnly {
 
 }
 
+input:required:invalid, input:focus:invalid {
+    background-image: url(../pictures/invalid.png);
+    background-position: right top;
+    background-repeat: no-repeat;
+}
+input:required:valid {
+    background-image: url(../pictures/valid.png);
+    background-position: right top;
+    background-repeat: no-repeat;
+}
+
 .lang {
     color: #275420;
 }
@@ -164,6 +175,55 @@ a.nav:hover {
 
 #addToCart {
     width: 50%;
+}
+
+#signup h2 {
+    color: #275420;
+}
+
+#signup > table {
+    text-align: left;
+    background: #FFFFFF;
+    width: 100%;
+}
+
+#signup table td.right {
+    text-align: right;
+}
+
+#signup table tbody {
+    height: auto;
+    width: auto;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+#signup table tbody td {
+    color: #275420;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+#signup input {
+    margin-top: 3px;
+    float: right;
+}
+
+#user > div.split > div {
+    width: 50%;
+    float: left;
+}
+
+#user > div.split > div > label {
+    font-weight: bold;
+    position: relative;
+    left: 0;
+}
+
+#user > div.split > div > input {
+    margin-bottom: 5px;
+    position: relative;
+    right: 0;
 }
 
 .plant {

@@ -24,6 +24,8 @@ require_once 'php_functions/authenticate.php';
 
 // Include database connection.
 require_once '_mySql.php';
+// report mysql errors
+mysqli_report(MYSQLI_REPORT_ERROR);
 
 // Initialize PHP Session
 session_start();

@@ -298,7 +298,7 @@ class DBDao {
                             $orderPos->setId($dbConnection->insert_id);
                         }
                         else {
-                            print($dbConnection->error);
+                            echo($dbConnection->error);
                             $dbConnection->rollback();
                             $dbConnection->close();
                             return;
@@ -307,7 +307,7 @@ class DBDao {
                     $dbConnection->commit();
                 }
                 else {
-                    print($dbConnection->error);
+                    echo($dbConnection->error);
                 }
                 $dbConnection->close();
             }
@@ -370,6 +370,10 @@ class DBDao {
         return $customer;
     }
 
+    /**
+     * @param $accountName
+     * @return null|object|stdClass
+     */
     function getCustomerByAccountName($accountName) {
         $dbConnection = getDBConnection();
 
@@ -395,6 +399,75 @@ class DBDao {
         return $customer;
     }
 
+    /**
+     * inserts a new customer with a new customer address
+     * @param $customer customer with customer address
+     */
+    function insertCustomer($customer) {
+        $dbConnection = getDBConnection();
+
+        if (isset($customer) && $customer instanceof Customer) {
+            $customerAddress = $customer->getCustomerAddress();
+            if (isset($customerAddress) && $customerAddress instanceof CustomerAddress) {
+                //set autocommit off
+                $dbConnection->autocommit(FALSE);
+
+                //insert customer
+                $dbQuery = "
+                  INSERT INTO `customer`
+                  (
+                      accountName,
+                      accountPassword,
+                      firstName,
+                      lastName,
+                      gender,
+                      company
+                  )
+                  VALUES
+                  (
+                    '{$customer->getAccountName()}',
+                    '{$customer->getPassword()}',
+                    '{$customer->getFirstName()}',
+                    '{$customer->getLastName()}',
+                    '{$customer->getGender()}',
+                    '{$customer->getCompany()}'
+                  )";
+
+                if ($dbConnection->query($dbQuery) === TRUE) {
+                    //insert customer address
+                    $dbQuery = "
+                      INSERT INTO `customerAddress`
+                      (
+                          accountName,
+                          streetName,
+                          zipCode,
+                          city,
+                          country
+                      )
+                      VALUES
+                      (
+                        '{$customerAddress->getAccountName()}',
+                        '{$customerAddress->getStreetName()}',
+                        '{$customerAddress->getZipCode()}',
+                        '{$customerAddress->getCity()}',
+                        '{$customerAddress->getCountry()}'
+                      )";
+
+                    if ($dbConnection->query($dbQuery) === TRUE) {
+                        $dbConnection->commit();
+                    }
+                    else {
+                        echo($dbConnection->error);
+                        $dbConnection->rollback();
+                    }
+                }
+                else {
+                    echo($dbConnection->error);
+                }
+                $dbConnection->close();
+            }
+        }
+    }
     /**
      * @param $accountName
      * @return null|object|stdClass

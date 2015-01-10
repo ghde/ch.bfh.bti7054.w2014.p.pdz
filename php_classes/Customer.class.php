@@ -18,6 +18,10 @@ class Customer
 
     private $company;
 
+    private $password;
+
+    private $customerAddress;
+
     public function setAccountName($accountName) {
         $this->accountName = $accountName;
     }
@@ -56,5 +60,20 @@ class Customer
 
     public function getCompany() {
         return $this->company;
+    }
+
+    public function setPassword($password) {
+        $this->password = $password;
+    }
+
+    public function getPassword() {
+        return $this->password;
+    }
+
+    public function setCustomerAddress($customerAddress){
+        $this->customerAddress = $customerAddress;
+    }
+    public function getCustomerAddress(){
+        return $this->customerAddress;
     }
 }
