@@ -1,46 +1,32 @@
-<div id="quiz">
+<div id="plantwizard">
+   {if $quiz[4] == '1'}
+      <h3>{$language['PLANTWIZARD_DESC']}</h3>
+   {/if}
    <div id="question">
-
-      {$language[$quiz[0]]}
-
+      <h2>{$language[$quiz[0]]}</h2>
    </div>
 
    <div id="answerContainer">
-
-      <div id="answer">
-
-         <img id="logo" src="pictures/{$quiz[1]}.png" width="300" height="300" border="0"/>
-
-         <form action="index.php?page=plantwizard" method="post">
-            <input type="hidden" name="answer" value="{$quiz[1]}"/>
-            <input type="hidden" name="qpart" value="{$quiz[4]}"/>
-            <button id="answerButton" type="submit">{$language[$quiz[1]]}</button>
-         </form>
-
-      </div>
-
-      <div id="answer">
-
-         <img id="logo" src="pictures/{$quiz[2]}.png" width="300" height="300" border="0"/>
-
-         <form action="index.php?page=plantwizard" method="post">
-            <input type="hidden" name="answer" value="{$quiz[2]}"/>
-            <input type="hidden" name="qpart" value="{$quiz[4]}"/>
-            <button id="answerButton" type="submit">{$language[$quiz[2]]}</button>
-         </form>
-
-      </div>
-
-      <div id="answer">
-
-         <img id="logo" src="pictures/{$quiz[3]}.png" width="300" height="300" border="0"/>
-
-         <form action="index.php?page=plantwizard" method="post">
-            <input type="hidden" name="answer" value="{$quiz[3]}"/>
-            <input type="hidden" name="qpart" value="{$quiz[4]}"/>
-            <button id="answerButton" type="submit">{$language[$quiz[3]]}</button>
-         </form>
-
-      </div>
+      <form action="index.php?page=plantwizard" method="post">
+         <input type="hidden" name="qpart" value="{$quiz[4]}"/>
+         <div class="answer">
+            <img id="logo" src="pictures/{$quiz[1]}.png" width="300" height="300" border="0" />
+            <button type="submit" class="answerButton" name="answer" value="{$quiz[5][0]}">
+               {$language[$quiz[1]]}
+            </button>
+         </div>
+         <div class="answer">
+            <img id="logo" src="pictures/{$quiz[2]}.png" width="300" height="300" border="0" />
+            <button type="submit" class="answerButton" name="answer" value="{$quiz[5][1]}">
+               {$language[$quiz[2]]}
+            </button>
+         </div>
+         <div class="answer">
+            <img id="logo" src="pictures/{$quiz[3]}.png" width="300" height="300" border="0" />
+            <button type="submit" class="answerButton" name="answer" value="{$quiz[5][2]}">
+               {$language[$quiz[3]]}
+            </button>
+         </div>
+      </form>
    </div>
 </div>

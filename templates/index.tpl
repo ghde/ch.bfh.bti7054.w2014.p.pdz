@@ -97,6 +97,7 @@
                    onfocus="searchPreview(this.value)" onkeydown="checkKey(event)" oninput="searchPreview(this.value)"/>
             <input id="searchBtn" type="submit" value="" />
             <input id="previewCloseBtn" class="closeBtn" type="button" value="" onclick="closeSearch()" />
+            <a href="index.php?page=plantwizard">{$language["PLANTWIZARD"]}</a>
         </form>
         <div id="searchPreview">
         </div>

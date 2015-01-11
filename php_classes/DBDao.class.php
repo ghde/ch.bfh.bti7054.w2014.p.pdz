@@ -189,6 +189,7 @@ class DBDao {
     }
     //endregion accessory
 
+    //region order
     function getOrder($orderId) {
         $dbConnection = getDBConnection();
 
@@ -237,7 +238,6 @@ class DBDao {
         return $orderArr;
     }
 
-    //region order
     /**
      * @param $order
      */
@@ -634,7 +634,46 @@ class DBDao {
                       ON aTx.accessoryId = a.accessoryId
                       AND aTx.language = '$language'
                       AND (aTx.accessoryTitle LIKE '%$searchTxt%' OR aTx.accessoryDescription LIKE '%$searchTxt%'))
-                    ORDER BY title LIMIT 10";
+                    ORDER BY title";
+        }
+        $products = array();
+        if($dbRes = $dbConnection->query($dbQuery)) {
+            while ($product = $dbRes->fetch_object("Product")) {
+                array_push($products, $product);
+            }
+            // free result set
+            $dbRes->close();
+        }
+        return $products;
+    }
+
+    /**
+     * search for plants matching the specified criteria
+     * @param $sunlight
+     * @param $pouringfreq
+     * @param $difficulty
+     * @return array of Product
+     */
+    function getSearchPreviewForWizard($sunlight, $pouringfreq, $difficulty){
+        global $language;
+        $dbConnection = getDBConnection();
+        if (is_numeric($sunlight) && is_numeric($pouringfreq) && is_numeric($difficulty)) {
+            $dbQuery = "
+                    SELECT
+                        p.plantId AS id,
+                        p.price AS price,
+                        p.pictureName AS pictureName,
+                        pTx.plantTitle AS title,
+                        pTx.plantDescription AS description,
+                        1 AS productType
+                    FROM plant p
+                    INNER JOIN plantTx pTx
+                      ON pTx.plantId = p.plantId
+                      AND pTx.language = '$language'
+                    WHERE
+                      p.sunlight <= '$sunlight'
+                      AND p.pouringFrequency <= '$pouringfreq'
+                      AND p.difficulty <= '$difficulty'";
         }
         $products = array();
         if($dbRes = $dbConnection->query($dbQuery)) {

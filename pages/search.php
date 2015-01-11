@@ -4,6 +4,12 @@ global $dbDao;
 if (array_key_exists("searchInput", $_GET) && !empty($_GET["searchInput"])) {
     $results = $dbDao->getSearchPreviewExt($_GET["searchInput"]);
 }
+else if (array_key_exists("sunlight", $_GET)
+        && array_key_exists("pouringfreq", $_GET)
+        && array_key_exists("difficulty", $_GET)){
+
+    $results = $dbDao->getSearchPreviewForWizard($_GET["sunlight"], $_GET["pouringfreq"], $_GET["difficulty"]);
+}
 else {
     $results = null;
 }
