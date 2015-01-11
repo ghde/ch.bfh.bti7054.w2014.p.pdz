@@ -14,11 +14,31 @@ h2 {
     font-size: 13px;
 }
 
+h3 {
+
+    color: black;
+    font-size: 12px;
+}
+
+
+.descriptor {
+    color:black;
+    font-weight: bold;
+}
+
 div {
     padding: 5px 8px;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box; /* Firefox, other Gecko */
     box-sizing: border-box;
+}
+
+button {
+    background-color: #98bf21;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 1px solid;
 }
 
 div .noPadding {
@@ -76,7 +96,6 @@ a.nav {
     padding-right: 8px;
     padding-top: 4px;
     padding-bottom: 5px;
-
     font-family: Verdana, Arial, sans-serif;
 }
 
@@ -176,15 +195,32 @@ a.nav:hover {
     width:600px;
 }
 
-#preview_image {
-    width: 60%;
+#selected_plant {
     float: left;
+}
+
+#preview_image {
+    float: left;
+}
+
+#preview_description {
+    color: black;
+    float: left;
+    border-radius: 2px;
+    border-color: #275420;
+    border: 1px solid;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 6px;
+    margin-left: 20px;
+    width: 250px;
 }
 
 #customizing {
     width: 30%;
-    float: left;
-    padding-left: 50px;
+    float: right;
+    padding-left: 5px;
+    padding-top: 0;
 }
 
 #quantity {
