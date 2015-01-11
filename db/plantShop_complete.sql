@@ -319,7 +319,7 @@ INSERT INTO messages (messageKey, language, message) VALUES
   ("ORDER_SAVED", "de", "Vielen Dank für Ihre Bestellung! Wir haben Ihnen eine Bestellbestätigung an Ihre Emailaddresse gesendet."),
   ("ORDER_SAVED", "en", "Thank you for your order! We have sent you an order confirmation to your email address."),
   ("SEARCH_NORESULT", "de", "keine Ergebnisse gefunden"),
-  ("SEARCH_NORESULT", "en", "no results found");
+  ("SEARCH_NORESULT", "en", "no results found"),
   ("QUESTION_1", "de", "Wie hell ist der Raum, in dem Sie die Pflanze aufstellen möchten?"),
   ("ANSWER_1_1", "de", "Der Raum ist sehr hell und verfügt über mehrere Fenster"),
   ("ANSWER_1_2", "de", "Der Raum verfügt über mehr als ein Fenster"),
@@ -343,7 +343,7 @@ INSERT INTO messages (messageKey, language, message) VALUES
   ("QUESTION_3", "en", "Wie gut kennen Sie sich aus mit der Pflege von Pflanzen?"),
   ("ANSWER_3_1", "en", "Eher wenig - leider gehen mir meine Pflanzen regelmässig ein"),
   ("ANSWER_3_2", "en", "Durchschnittlich - ich kenne mich ein wenig aus"),
-  ("ANSWER_3_3", "en", "Grüner Daumen: Meine Orchideen blühen fast das ganze Jahr")
+  ("ANSWER_3_3", "en", "Grüner Daumen: Meine Orchideen blühen fast das ganze Jahr");
 
 -- -----------------------------------------------------
 -- customer
