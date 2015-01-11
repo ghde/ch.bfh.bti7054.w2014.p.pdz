@@ -320,6 +320,31 @@ INSERT INTO messages (messageKey, language, message) VALUES
   ("ORDER_SAVED", "en", "Thank you for your order! We have sent you an order confirmation to your email address."),
   ("SEARCH_NORESULT", "de", "keine Ergebnisse gefunden"),
   ("SEARCH_NORESULT", "en", "no results found");
+  ("QUESTION_1", "de", "Wie hell ist der Raum, in dem Sie die Pflanze aufstellen möchten?"),
+  ("ANSWER_1_1", "de", "Der Raum ist sehr hell und verfügt über mehrere Fenster"),
+  ("ANSWER_1_2", "de", "Der Raum verfügt über mehr als ein Fenster"),
+  ("ANSWER_1_3", "de", "Der Raum ist eher dunkel und verfügt nur über ein Fenster"),
+  ("QUESTION_2", "de", "Wie oft sind Sie Zuhause?"),
+  ("ANSWER_2_1", "de", "Ich bin teilweise mehrere Wochen ausser Haus"),
+  ("ANSWER_2_2", "de", "Bis auf gelegentliche Kurzaufenthalte und Ferien bin ich oft Zuhause"),
+  ("ANSWER_2_3", "de", "Bis auf Ferien bin ich regelmässig Zuhause"),
+  ("QUESTION_3", "de", "Wie gut kennen Sie sich aus mit der Pflege von Pflanzen?"),
+  ("ANSWER_3_1", "de", "Eher wenig - leider gehen mir meine Pflanzen regelmässig ein"),
+  ("ANSWER_3_2", "de", "Durchschnittlich - ich kenne mich ein wenig aus"),
+  ("ANSWER_3_3", "de", "Grüner Daumen: Meine Orchideen blühen fast das ganze Jahr"),
+  ("QUESTION_1", "en", "Wie hell ist der Raum, in dem Sie die Pflanze aufstellen möchten?"),
+  ("ANSWER_1_1", "en", "Der Raum ist sehr hell und verfügt über mehrere Fenster"),
+  ("ANSWER_1_2", "en", "Der Raum verfügt über mehr als ein Fenster"),
+  ("ANSWER_1_3", "en", "Der Raum ist eher dunkel und verfügt nur über ein Fenster"),
+  ("QUESTION_2", "en", "Wie oft sind Sie Zuhause?"),
+  ("ANSWER_2_1", "en", "Ich bin teilweise mehrere Wochen ausser Haus"),
+  ("ANSWER_2_2", "en", "Bis auf gelegentliche Kurzaufenthalte und Ferien bin ich oft Zuhause"),
+  ("ANSWER_2_3", "en", "Bis auf Ferien bin ich regelmässig Zuhause"),
+  ("QUESTION_3", "en", "Wie gut kennen Sie sich aus mit der Pflege von Pflanzen?"),
+  ("ANSWER_3_1", "en", "Eher wenig - leider gehen mir meine Pflanzen regelmässig ein"),
+  ("ANSWER_3_2", "en", "Durchschnittlich - ich kenne mich ein wenig aus"),
+  ("ANSWER_3_3", "en", "Grüner Daumen: Meine Orchideen blühen fast das ganze Jahr")
+
 -- -----------------------------------------------------
 -- customer
 -- -----------------------------------------------------
