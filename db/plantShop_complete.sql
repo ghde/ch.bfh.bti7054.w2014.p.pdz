@@ -409,31 +409,31 @@ VALUES
   (60.0, 5, 4, 3, 'plant6.jpg', 4),
   (20.6, 2, 2, 1, 'plant7.jpg', 5),
   (90.5, 3, 3, 4, 'plant8.jpg', 3),
-  (89.4, 3, 3, 2, 'plant9.jpg', 1);
+  (89.4, 1, 1, 1, 'plant9.jpg', 1);
 -- -----------------------------------------------------
 -- plantTx
 -- -----------------------------------------------------
 INSERT INTO plantTx
 (plantId, language, plantTitle, plantDescription)
 VALUES
-  (1, 'de', 'pflanze 1', 'pflanze1 beschreibung'),
-  (1, 'en', 'plant 1', 'plant1 description'),
-  (2, 'de', 'pflanze 2', 'pflanze2 beschreibung'),
-  (2, 'en', 'plant 2', 'plant2 description'),
-  (3, 'de', 'pflanze 3', 'pflanze3 beschreibung'),
-  (3, 'en', 'plant 3', 'plant3 description'),
-  (4, 'de', 'pflanze 4', 'pflanze4 beschreibung'),
-  (4, 'en', 'plant 4', 'plant4 description'),
-  (5, 'de', 'pflanze 5', 'pflanze5 beschreibung'),
-  (5, 'en', 'plant 5', 'plant5 description'),
-  (6, 'de', 'pflanze 6', 'pflanze6 beschreibung'),
-  (6, 'en', 'plant 6', 'plant6 description'),
-  (7, 'de', 'pflanze 7', 'pflanze7 beschreibung'),
-  (7, 'en', 'plant 7', 'plant7 description'),
-  (8, 'de', 'pflanze 8', 'pflanze8 beschreibung'),
-  (8, 'en', 'plant 8', 'plant8 description'),
-  (9, 'de', 'pflanze 9', 'pflanze9 beschreibung'),
-  (9, 'en', 'plant 9', 'plant9 description');
+  (1, 'de', 'Exotische Pflanze', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.'),
+  (1, 'en', 'Exotic plant', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.'),
+  (2, 'de', 'Brasilianische Pflanze', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.'),
+  (2, 'en', 'Brasilian plant', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.'),
+  (3, 'de', 'Palme 1', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.'),
+  (3, 'en', 'Palm 1', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.'),
+  (4, 'de', 'Gummipflanze', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.'),
+  (4, 'en', 'Gum plant', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.'),
+  (5, 'de', 'Palme 2', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.'),
+  (5, 'en', 'Palm 1', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.'),
+  (6, 'de', 'Dekogras', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.'),
+  (6, 'en', 'Decorative grass', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.'),
+  (7, 'de', 'Elefantenfuss', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.'),
+  (7, 'en', 'Elephantfeet', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.'),
+  (8, 'de', 'Kakteenset', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.'),
+  (8, 'en', 'Cactus set', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.'),
+  (9, 'de', 'Gestrüpp', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.'),
+  (9, 'en', 'Scrub', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.');
   
 -- -----------------------------------------------------
 -- accessory
@@ -441,22 +441,36 @@ VALUES
 INSERT INTO accessory
 (price, pictureName)
 VALUES
- (25.30, 'accessory1.jpg'),
- (33.30, 'accessory2.jpg'),
- (13.30, 'accessory3.jpg');
-
+ (25.30, 'WHITE_POT.jpg'),
+ (33.30, 'METAL_POT.jpg'),
+ (13.30, 'GREEN_POT.jpg'),
+ (9.90, 'UNDER_POT.jpg'),
+ (49.90, 'ANTIQUE_POT.jpg'),
+ (66.60, 'HIPSTER_POT.jpg'),
+ (4.90, 'FERTILIZER_1.jpg'),
+ (6.90, 'PLANT_EARTH_1.jpg');
 -- -----------------------------------------------------
 -- accessoryTx
 -- -----------------------------------------------------
 INSERT INTO accessoryTx
 (accessoryId, language, accessoryTitle, accessoryDescription)
 VALUES
-  (1, 'de', 'Zubehör 1', 'Zubehör 1 Beschreibung'),
-  (1, 'en', 'accessory 1', 'accessory 1 description'),
-  (2, 'de', 'Zubehör 2', 'Zubehör 1 Beschreibung'),
-  (2, 'en', 'accessory 2', 'accessory 2 description'),
-  (3, 'de', 'Zubehör 3', 'Zubehör 3 Beschreibung'),
-  (3, 'en', 'accessory 3', 'accessory 3 description');
+  (1, 'de', 'Weisser Topf', 'Zubehör 1 Beschreibung'),
+  (1, 'en', 'White pot', 'accessory 1 description'),
+  (2, 'de', 'Metalltopf', 'Zubehör 2 Beschreibung'),
+  (2, 'en', 'Metal pot', 'accessory 2 description'),
+  (3, 'de', 'Grüner Topf', 'Zubehör 3 Beschreibung'),
+  (3, 'en', 'Green pot', 'accessory 3 description'),
+  (4, 'de', 'Untertopf', 'Zubehör 4 Beschreibung'),
+  (4, 'en', 'Underpot', 'accessory 4 description'),
+  (5, 'de', 'Antiker Topf', 'Zubehör 5 Beschreibung'),
+  (5, 'en', 'Antique pot', 'accessory 5 description'),
+  (6, 'de', 'Hipster Topf', 'Zubehör 6 Beschreibung'),
+  (6, 'en', 'Hipster pot', 'accessory 6 description'),
+  (7, 'de', 'Dünger', 'Zubehör 7 Beschreibung'),
+  (7, 'en', 'Fertilizer', 'accessory 7 description'),
+  (8, 'de', 'Pflanzenerde', 'Zubehör 8 Beschreibung'),
+  (8, 'en', 'Plant earth', 'accessory 8 description');
   
 -- -----------------------------------------------------
 -- plant_accessory
@@ -466,18 +480,37 @@ INSERT INTO plant_accessory
 VALUES
 (1, 1),
 (1, 2),
+(1, 3),
+(1, 4),
+(1, 5),
+(1, 8),
 (2, 1),
 (2, 2),
+(2, 7),
+(2, 8),
 (2, 3),
 (3, 2),
-(3, 3),
+(3, 8),
 (4, 2),
 (5, 1),
+(5, 5),
+(5, 8),
 (5, 2),
 (5, 3),
 (6, 2),
+(6, 5),
+(6, 8),
 (7, 1),
 (7, 2),
+(7, 4),
+(7, 5),
 (8, 1),
-(8, 2),
-(9, 3);
+(8, 5),
+(8, 6),
+(8, 7),
+(8, 8),
+(8, 4),
+(9, 3),
+(9, 6),
+(9, 7),
+(9, 8);

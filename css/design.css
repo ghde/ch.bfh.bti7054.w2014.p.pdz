@@ -41,6 +41,10 @@ button {
     border: 1px solid;
 }
 
+input {
+    border-radius: 5px;
+}
+
 div .noPadding {
 
     padding: 0;
