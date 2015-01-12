@@ -4,15 +4,15 @@
 
 <div id="preview_description">
         <h1>{$inner_product->getTitle()}</h1>
-        <h3 class="descriptors">Short description:</h3>
+        <h3 class="descriptors">{$language["ORDER_DETAILS_TBL_DESC"]}:</h3>
         {$inner_product->getDescription()}
-        <h3 class="descriptors">Pouring frequency</h3>
-        {$inner_product->getPouringFrequency()} (pro Woche / per week)
-        <h3 class="descriptors">Sunlight</h3>
+        <h3 class="descriptors">{$language["POURING_FREQUENCY"]}</h3>
+        {$inner_product->getPouringFrequency()}
+        <h3 class="descriptors">{$language["SUNLIGHT"]}</h3>
         {$inner_product->getSunlight()}
-        <h3 class="descriptors">Difficulty</h3>
+        <h3 class="descriptors">{$language["DIFFICULTY"]}</h3>
         {$inner_product->getDifficulty()}
-        <h3 class="descriptors">Price</h3>
+        <h3 class="descriptors">{$language["ORDER_DETAILS_TBL_PRICE"]}</h3>
         {$inner_product->getPrice()}
 </div>
 
