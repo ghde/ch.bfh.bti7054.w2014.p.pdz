@@ -9,3 +9,6 @@ function getDBConnection(){
 
     return $dbConnection;
 }
+
+// report mysql errors
+mysqli_report(MYSQLI_REPORT_ERROR);
