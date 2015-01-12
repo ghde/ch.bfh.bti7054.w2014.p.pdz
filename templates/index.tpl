@@ -11,7 +11,7 @@
     {$language["OUR_PROMISE"]}
     <div id="languages">
         {foreach from=$languages key=short item=label}
-            <a class="lang" href="?lang={$short}">&raquo; {$label}</a>
+            <a class="lang" href="?page=changelang&amp;lang={$short}">&raquo; {$label}</a>
         {/foreach}
     </div>
 </div>

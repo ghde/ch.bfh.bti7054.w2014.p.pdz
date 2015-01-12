@@ -7,7 +7,7 @@
  */
 function getAvailableLanguages()
 {
-    return array("de" => "Deutsch", "en" => "English");
+    return array("en" => "English", "de" => "Deutsch");
 }
 
 /**
@@ -15,30 +15,42 @@ function getAvailableLanguages()
  */
 function getLanguage()
 {
-
-    // Configure available/supported languages
-    $availableLang = array("de", "en");
-
     // Default language english
     $lang = "en";
 
-    // Get the language from url and check if it is supported.
-    if (array_key_exists("lang", $_GET)) {
-        $langURL = $_GET ["lang"];
-        if (in_array($langURL, $availableLang)) {
-            setcookie("language", "", time() - 1);
-            setcookie("language", $langURL, time() + 60);
-            $lang = $langURL;
-        }
-    } // If not defined in url take if from the cookie (if available).
-    else if (isset ($_COOKIE ["language"])) {
+    // Get the language from the cookie.
+    if (array_key_exists("language", $_COOKIE)) {
         $langCookie = $_COOKIE ["language"];
-        if (in_array($langCookie, $availableLang)) {
+        if (array_key_exists($langCookie, getAvailableLanguages())) {
             $lang = $langCookie;
+
+            // Update the Cookie and make it live for longer
+            setLanguageCookie($lang);
         }
     }
 
     return $lang;
+}
+
+/**
+ * Function which forces the language switch.
+ *
+ * @param $lang the language to switch to.
+ */
+function forceLanguageSwitch($lang)
+{
+    setLanguageCookie($lang);
+    session_destroy();
+    header("Location: index.php?page=home");
+}
+
+/**
+ * @param $lang the language for the cookie
+ */
+function setLanguageCookie($lang)
+{
+    $cookieLifetime = 60 * 3600;
+    setcookie("language", $lang, time() + $cookieLifetime);
 }
 
 /**

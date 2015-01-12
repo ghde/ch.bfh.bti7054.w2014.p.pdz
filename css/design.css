@@ -654,3 +654,8 @@ div#answerContainer>form>div.answer > button {
     font-weight: bold;
     border-radius: 10px;
 }
+
+div#changeLang>div.errors>div.lang {
+    margin: 10px;
+    border: 1px dotted #275420;
+}
