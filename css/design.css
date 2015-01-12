@@ -634,6 +634,11 @@ p.loginRequired {
 #plantwizard h2, h3 {
     color: #275420;
 }
+
+div#answerContainer>form>div.answer > button {
+    cursor: pointer;
+}
+
 .answer {
     width: 33%;
     height: 100%;
