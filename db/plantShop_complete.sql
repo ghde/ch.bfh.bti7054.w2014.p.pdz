@@ -353,7 +353,7 @@ INSERT INTO messages (messageKey, language, message) VALUES
   ("QUESTION_3", "en", "How experienced are you with taking care of plants?"),
   ("ANSWER_3_1", "en", "Rather inexperienced - my plants die quite regularly"),
   ("ANSWER_3_2", "en", "Average - I know which one I have to pour and how often"),
-  ("ANSWER_3_3", "en", "I do have a green thumb: My orchis bloom all year long");
+  ("ANSWER_3_3", "en", "I do have a green thumb: My orchids bloom all year long");
 
 
 -- -----------------------------------------------------
