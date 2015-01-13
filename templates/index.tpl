@@ -28,13 +28,13 @@
                     <button type="submit" name="logout">Logout!</button>
                 </form>
             {else}
-                <div >
+                <div>
                     <form action="{$url}" method="post">
-                        <label for="username">{$language["LOGIN_FORM_USERNAME"]}</label>
+                        <label class="login" for="username">{$language["LOGIN_FORM_USERNAME"]}</label>
                         <input id="username" name="username" type="text" l/>
-                        <label for="password">{$language["LOGIN_FORM_PASSWORD"]}</label>
+                        <label class="login" for="password">{$language["LOGIN_FORM_PASSWORD"]}</label>
                         <input id="password" name="password" type="password"/>
-                        <button type="submit" name="login">{$language["LOGIN_FORM_LOGIN"]}</button>
+                        <button id="submit" type="submit" name="login">{$language["LOGIN_FORM_LOGIN"]}</button>
                         {if $user->isFailedLoginTry()}
                             <span class="failedlogin"><strong>{$language["LOGIN_ERROR_HINT"]}
                                     :</strong> {$language["LOGIN_ERROR_TEXT"]}</span>
@@ -42,7 +42,7 @@
                     </form>
                     <form action="index.php" method="GET">
                         <input type="hidden" name="page" value="signup"/>
-                        <input type="submit" value="{$language["SIGNUP"]}" />
+                        <button id="submit" type="submit" value="{$language["SIGNUP"]}">SIGNUP</button>
                     </form>
                 </div>
             {/if}
