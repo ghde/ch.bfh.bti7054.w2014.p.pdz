@@ -109,8 +109,8 @@
                     </tr>
                 </tbody>
             </table>
+            <input class="input-left" type="submit" name="userSignUp" value="{$language["SIGNUP"]}" />
         </div>
     </div>
-    <input type="submit" name="userSignUp" value="{$language["SIGNUP"]}" />
 </form>
 </div>

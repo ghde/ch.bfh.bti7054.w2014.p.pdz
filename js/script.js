@@ -69,7 +69,8 @@ function validateSignUpForm(form) {
         return false;
     }
 }
-function validateOrderForm(form) {
+function validateOrderForm() {
+    var form = document.getElementById("orderForm");
     var street = form.streetName.value;
     if (street == null || street.length === 0) {
         form.streetName.focus();
@@ -93,6 +94,24 @@ function validateOrderForm(form) {
         form.country.focus();
         return false;
     }
+
+    showConfirmOrderDlg();
+}
+function showConfirmOrderDlg() {
+    //confirm terms and conditions
+    var winW = window.innerWidth;
+    var winH = window.innerHeight;
+    var confirmOrderOverlay = document.getElementById('confirmOrderOverlay');
+    var confirmOrderDialog = document.getElementById('confirmOrderDialog');
+    confirmOrderOverlay.style.display = "block";
+    confirmOrderOverlay.style.height = winH+"px";
+    confirmOrderDialog.style.left = (winW/2) - (550 * .5)+"px";
+    confirmOrderDialog.style.top = "100px";
+    confirmOrderDialog.style.display = "block";
+}
+function hideConfirmOrderDlg() {
+    document.getElementById('confirmOrderOverlay').style.display = "none";
+    document.getElementById('confirmOrderDialog').style.display = "none";
 }
 
 function searchPreview(str) {

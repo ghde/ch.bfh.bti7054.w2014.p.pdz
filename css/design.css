@@ -320,6 +320,11 @@ a.nav:hover {
     float: right;
 }
 
+#signup .input-left {
+    margin-top: 3px;
+    float: left;
+}
+
 #user > div.split > div {
     width: 50%;
     float: left;
@@ -468,26 +473,57 @@ p.loginRequired {
     font-weight: normal;
 }
 
-#order_confirm input {
+#order_confirm input, button {
     margin-top: 3px;
     float: right;
 }
 
-#order > div.split > div {
+#orderForm > div.split > div {
     width: 50%;
     float: left;
 }
 
-#order > div.split > div > label {
+#orderForm > div.split > div > label {
     font-weight: bold;
     position: relative;
     left: 0;
 }
 
-#order > div.split > div > input {
+#orderForm > div.split > div > input {
     margin-bottom: 5px;
     position: relative;
     right: 0;
+}
+#confirmOrderOverlay{
+    display: none;
+    opacity: .9;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background: #FFF;
+    width: 100%;
+    z-index: 10;
+}
+#confirmOrderDialog {
+    display: none;
+    position: fixed;
+    border-style: solid;
+    border-radius:7px;
+    background: #FAFAFA;
+    width: 400px;
+}
+#confirmOrderDialog > div{
+    margin:6px;
+}
+#confirmOrderDialog > #confirmOrderHead {
+
+}
+#confirmOrderDialog > #confirmOrderBody {
+    overflow-y: scroll;
+    max-height: 300px;
+}
+#confirmOrderDialog > #confirmOrderFoot {
+    text-align:right;
 }
 
 #search_results > div {
