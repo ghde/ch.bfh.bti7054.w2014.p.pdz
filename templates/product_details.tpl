@@ -3,17 +3,29 @@
 </div>
 
 <div id="preview_description">
-        <h1>{$inner_product->getTitle()}</h1>
-        <h3 class="descriptors">{$language["ORDER_DETAILS_TBL_DESC"]}:</h3>
-        {$inner_product->getDescription()}
-        <h3 class="descriptors">{$language["POURING_FREQUENCY"]}</h3>
-        {$inner_product->getPouringFrequency()}
-        <h3 class="descriptors">{$language["SUNLIGHT"]}</h3>
-        {$inner_product->getSunlight()}
-        <h3 class="descriptors">{$language["DIFFICULTY"]}</h3>
-        {$inner_product->getDifficulty()}
-        <h3 class="descriptors">{$language["ORDER_DETAILS_TBL_PRICE"]}</h3>
-        {$inner_product->getPrice()}
+    <h1>{$inner_product->getTitle()}</h1>
+    <h3 class="descriptors">{$language["ORDER_DETAILS_TBL_DESC"]}:</h3>
+    {$inner_product->getDescription()}
+    <h3 class="descriptors">{$language["POURING_FREQUENCY"]}</h3>
+    <p class="plant_progressbar_text">{$inner_product->getPouringFrequency()} / 5</p>
+    <div class="plant_value">
+        <div class="plant_progressbar" role="progressbar" style="width: {$inner_product->getPouringFrequency() / 5 * 100}%">
+        </div>
+    </div>
+    <h3 class="descriptors">{$language["SUNLIGHT"]}</h3>
+    <p class="plant_progressbar_text">{$inner_product->getSunlight()} / 5</p>
+    <div class="plant_value">
+        <div class="plant_progressbar" role="progressbar" style="width: {$inner_product->getSunlight() / 5 * 100}%">
+        </div>
+    </div>
+    <h3 class="descriptors">{$language["DIFFICULTY"]}</h3>
+    <p class="plant_progressbar_text">{$inner_product->getDifficulty()} / 5</p>
+    <div class="plant_value">
+        <div class="plant_progressbar" role="progressbar" style="width: {$inner_product->getDifficulty() / 5 * 100}%">
+        </div>
+    </div>
+    <h3 class="descriptors">{$language["ORDER_DETAILS_TBL_PRICE"]}</h3>
+    CHF {number_format($inner_product->getPrice(), 2)}
 </div>
 
 <div id="customizing">

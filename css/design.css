@@ -249,6 +249,28 @@ a.nav:hover {
     margin-left: 20px;
     width: 250px;
 }
+.plant_value {
+    height: 25px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    text-align: center;
+}
+.plant_progressbar {
+    float: left;
+    width: 0;
+    height: 100%;
+    font-size: 14px;
+    line-height: 25px;
+    color: #fff;
+    background-color: #98bf21;
+}
+.plant_progressbar_text {
+    color: #275420;
+    text-align: center;
+    margin-bottom: 0;
+}
 
 #customizing {
     width: 30%;
