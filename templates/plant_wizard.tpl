@@ -1,6 +1,6 @@
 <div id="plantwizard">
    {if $quiz[4] == '1'}
-      <h3>{$language['PLANTWIZARD_DESC']}</h3>
+      <h1>{$language['PLANTWIZARD_DESC']}</h1>
    {/if}
    <div id="question">
       <h2>{$language[$quiz[0]]}</h2>

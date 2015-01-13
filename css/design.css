@@ -33,7 +33,7 @@ div {
     box-sizing: border-box;
 }
 
-button {
+button, input[type=submit] {
     background-color: #98bf21;
     color: white;
     font-weight: bold;
@@ -163,12 +163,34 @@ a.nav:hover {
     height: 100%;
 }
 
-#submit {
-    float:left;
+#loginForm {
+    margin-bottom: 0;
 }
 
 .login {
     font-weight: bold;
+}
+
+.failedlogin {
+    position:absolute;
+    margin-top: 3px;
+}
+
+#login > form {
+    margin-top: 5px;
+}
+
+#login > form > label {
+    font-weight: bold;
+    color: #275420;
+}
+
+#login > form > input {
+    margin-bottom: 5px;
+}
+
+#login > form > button {
+    margin-top: 10px;
 }
 
 #shopping_cart {
@@ -470,23 +492,6 @@ p.loginRequired {
     font-style: italic;
 }
 
-#login > form {
-    margin-top: 5px;
-}
-
-#login > form > label {
-    font-weight: bold;
-    color: #275420;
-}
-
-#login > form > input {
-    margin-bottom: 5px;
-}
-
-#login > form > button {
-    margin-top: 10px;
-}
-
 #shopping_cart > div.title {
     font-weight: bold;
     color: #275420;
@@ -640,7 +645,6 @@ p.loginRequired {
 
 #plantwizard h2, h3 {
     color: #275420;
-    font-size: 16px;
 }
 
 div#answerContainer>form>div.answer > button {
