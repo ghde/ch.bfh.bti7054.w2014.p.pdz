@@ -314,7 +314,7 @@ class DBDao
         $order = $orderRes->fetch_object('Order');
 
         $orderPosArr = array();
-        $orderPosRes = $dbConnection->query("SELECT * FROM orderpos WHERE orderId = '{$order->getId()}' ORDER BY orderPosId");
+        $orderPosRes = $dbConnection->query("SELECT * FROM orderPos WHERE orderId = '{$order->getId()}' ORDER BY orderPosId");
         while ($orderPos = $orderPosRes->fetch_object('OrderPos')) {
             if ($orderPos->getPlantId() != null) {
                 $orderPos->setPlant($this->getPlant($orderPos->getPlantId()));
@@ -359,7 +359,7 @@ class DBDao
         $orderRes = $dbConnection->query("SELECT * FROM `order` WHERE `status` < 4 ORDER BY status ASC, orderId ASC");
         while ($order = $orderRes->fetch_object('Order')) {
             $orderPosArr = array();
-            $orderPosRes = $dbConnection->query("SELECT * FROM orderpos WHERE orderId = '{$order->getId()}' ORDER BY orderPosId");
+            $orderPosRes = $dbConnection->query("SELECT * FROM orderPos WHERE orderId = '{$order->getId()}' ORDER BY orderPosId");
             while ($orderPos = $orderPosRes->fetch_object('OrderPos')) {
                 if ($orderPos->getPlantId() != null) {
                     $orderPos->setPlant($this->getPlant($orderPos->getPlantId()));
