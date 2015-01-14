@@ -18,14 +18,14 @@
 #### Login as customer
 
 Grant Plant
-Username: grant.plant@p3n.ch
+Username: grant.plant@no-host
 Password: gp
 
 Peter Mueller
-Username: peter.mueller@p3n.ch
+Username: peter.mueller@no-host
 Password: pm
 
 #### Login as admin
 
-Username: admin@p3n.ch
+Username: admin@no-host
 Password: admin

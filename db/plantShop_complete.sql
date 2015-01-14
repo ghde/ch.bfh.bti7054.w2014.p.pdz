@@ -368,23 +368,23 @@ INSERT INTO messages (messageKey, language, message) VALUES
 INSERT INTO customer
   (accountName, accountPassword, firstName, lastName, gender, company)
 VALUES
-  ('peter.mueller@p3n.ch', 'pm', 'Peter', 'Müller', 'm', NULL),
-  ('grant.plant@p3n.ch', 'gp', 'Grant', 'Plant', 'm', NULL);
+  ('peter.mueller@no-host', 'pm', 'Peter', 'Müller', 'm', NULL),
+  ('grant.plant@no-host', 'gp', 'Grant', 'Plant', 'm', NULL);
 -- -----------------------------------------------------
 -- customerAddress
 -- -----------------------------------------------------
 INSERT INTO customerAddress
   (accountName, streetName, zipCode, city, country)
 VALUES
-  ('peter.mueller@p3n.ch', 'Poststrasse 3', 3000, 'Bern', 'Switzerland'),
-  ('grant.plant@p3n.ch', 'Gartenstrasse 33', 3001, 'Bern', 'Switzerland');
+  ('peter.mueller@no-host', 'Poststrasse 3', 3000, 'Bern', 'Switzerland'),
+  ('grant.plant@no-host', 'Gartenstrasse 33', 3001, 'Bern', 'Switzerland');
 -- -----------------------------------------------------
 -- customer
 -- -----------------------------------------------------
 INSERT INTO admin
   (accountName, accountPassword)
 VALUES
-  ('admin@p3n.ch', 'admin');
+  ('admin@no-host', 'admin');
 -- -----------------------------------------------------
 -- plantTypeTx
 -- -----------------------------------------------------
