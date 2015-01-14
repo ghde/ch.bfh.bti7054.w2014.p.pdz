@@ -16,6 +16,8 @@ class Plant extends Product
 
     private $plantType;
 
+    private $plantTxArray;
+
     public function __construct($id, $pictureName, $title, $description,
                                 $pouringFrequency, $sunlight, $difficulty, $plantType, $price)
     {
@@ -172,6 +174,20 @@ class Plant extends Product
     public function setPrice($price)
     {
         $this->price = $price;
+    }
+
+    /**
+     * @param $plantTxArray
+     */
+    public function setPlantTxArray($plantTxArray) {
+        $this->plantTxArray = $plantTxArray;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPlantTxArray() {
+        return $this->plantTxArray;
     }
 
     /**

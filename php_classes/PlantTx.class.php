@@ -2,45 +2,39 @@
 
 /**
  * Created by IntelliJ IDEA.
- * User: decla
- * Date: 30.11.2014
- * Time: 21:06
+ * User: pfafs1
+ * Date: 14.01.2015
+ * Time: 20:20
  */
-class PlantType
+class PlantTx
 {
-    private $id;
+    private $language;
 
     private $title;
 
     private $description;
 
-    public function __construct($id, $title, $description)
+    public function __construct($language, $title, $description)
     {
-        if (isset($id)) {
-            $this->id = $id;
-        }
-        if (isset($title)) {
-            $this->title = $title;
-        }
-        if (isset($description)) {
-            $this->description = $description;
-        }
+        $this->language = $language;
+        $this->title = $title;
+        $this->description = $description;
     }
 
     /**
      * @return mixed
      */
-    public function getId()
+    public function getLanguage()
     {
-        return $this->id;
+        return $this->language;
     }
 
     /**
-     * @param mixed $id
+     * @param mixed $language
      */
-    public function setId($id)
+    public function setLanguage($language)
     {
-        $this->id = $id;
+        $this->language = $language;
     }
 
     /**

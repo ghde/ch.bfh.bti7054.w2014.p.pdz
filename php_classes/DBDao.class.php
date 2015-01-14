@@ -11,6 +11,36 @@ class DBDao
 
     //region plant
     /**
+     * @return array
+     */
+    function getAllPlantType()
+    {
+        global $language;
+        $dbConnection = getDBConnection();
+            $dbQuery = "
+                    SELECT
+                        plantTypeId,
+                        plantTypeTitle,
+                        plantTypeDescription
+                    FROM plantTypeTx
+                    WHERE
+                      language = '$language'";
+
+            $plantTypes = array();
+            if ($dbRes = $dbConnection->query($dbQuery)) {
+                while ($row = $dbRes->fetch_object()) {
+                    // Create plant type and plant
+                    $plantType = new PlantType($row->plantTypeId,
+                        $row->plantTypeTitle,
+                        $row->plantTypeDescription);
+                    array_push($plantTypes, $plantType);
+                }
+                // free result set
+                $dbRes->close();
+            }
+            return $plantTypes;
+    }
+    /**
      * @return string
      */
     private function getPlantSelectQuery()
@@ -110,6 +140,80 @@ class DBDao
         }
         return $plants;
     }
+
+    /**
+     * @param $plant
+     */
+    function insertPlant($plant) {
+        $dbConnection = getDBConnection();
+
+        if (isset($plant) && $plant instanceof Plant) {
+            $plantTxArray = $plant->getPlantTxArray();
+            if (!empty($plantTxArray)) {
+                //set autocommit off
+                $dbConnection->autocommit(FALSE);
+                $dbQuery = "
+                  INSERT INTO `plant`
+                  (
+                      price,
+                      pouringFrequency,
+                      sunlight,
+                      difficulty,
+                      pictureName,
+                      plantTypeId
+                  )
+                  VALUES
+                  (
+                    '{$plant->getPrice()}',
+                    '{$plant->getPouringFrequency()}',
+                    '{$plant->getSunlight()}',
+                    '{$plant->getDifficulty()}',
+                    '{$plant->getPictureName()}',
+                    '{$plant->getPlantType()->getId()}'
+                  )";
+                if ($dbConnection->query($dbQuery) === TRUE) {
+                    //success
+                    $plant->setId($dbConnection->insert_id);
+                    //prepare statement
+                    $plantId = $plant->getId();
+                    $language = null;
+                    $title = null;
+                    $description = null;
+                    $stmt = $dbConnection->prepare("
+                        INSERT INTO `plantTx`
+                        (
+                            plantId,
+                            language,
+                            plantTitle,
+                            plantDescription
+                        )
+                        VALUES(?,?,?,?)");
+                    //bind variables --> set in foreach
+                    $stmt->bind_param('isss', $plantId, $language, $title, $description);
+                    foreach($plantTxArray as $plantTx) {
+                        $language = $plantTx->getLanguage();
+                        $title = $plantTx->getTitle();
+                        $description = $plantTx->getDescription();
+                        if ($stmt->execute() === TRUE) {
+                            //success
+                        }
+                        else {
+                            echo($dbConnection->error);
+                            $dbConnection->rollback();
+                            $dbConnection->close();
+                            return;
+                        }
+                    }
+                    $dbConnection->commit();
+                }
+                else {
+                    echo($dbConnection->error);
+                }
+                $dbConnection->close();
+            }
+        }
+    }
+
     //endregion plant
 
     //region accessory
