@@ -20,7 +20,8 @@ else {
         && array_key_exists("streetName", $_POST)
         && array_key_exists("zipCode", $_POST)
         && array_key_exists("city", $_POST)
-        && array_key_exists("country", $_POST)) {
+        && array_key_exists("country", $_POST)
+        && array_key_exists("expressDelivery", $_POST)) {
 
         //check save address
         if (array_key_exists("saveAddress", $_POST)) {
@@ -41,6 +42,7 @@ else {
         $order->setZipCode($_POST["zipCode"]);
         $order->setCity($_POST["city"]);
         $order->setCountry($_POST["country"]);
+        $order->setExpressDelivery($_POST["expressDelivery"]);
 
         $orderPosArray = array();
         foreach (array_merge($shoppingCart->getPlants(), $shoppingCart->getAccessories()) as $productData) {

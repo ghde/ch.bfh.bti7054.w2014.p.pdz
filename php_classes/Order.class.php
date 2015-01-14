@@ -22,6 +22,8 @@ class Order
 
     private $country;
 
+    private $expressDelivery;
+
     private $validAddress = false;
 
     private $formattedAddress;
@@ -131,6 +133,25 @@ class Order
      */
     public function getCountry() {
         return $this->country;
+    }
+
+    /**
+     * @param $expressDelivery
+     */
+    public function setExpressDelivery($expressDelivery) {
+        if ($expressDelivery == 0) {
+            $this->expressDelivery = 0;
+        }
+        else {
+            $this->expressDelivery = 1;
+        }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getExpressDelivery() {
+        return $this->expressDelivery;
     }
 
     /**
