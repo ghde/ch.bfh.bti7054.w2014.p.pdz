@@ -10,7 +10,7 @@
 <body id="aOrder">
 {if $admin->isLoggedIn()}
     <div>
-        <h3>Order overview</h3>
+        <h2>Order overview</h2>
         {if $orders|count == 0}
             No active orders found!
         {else}
@@ -84,14 +84,25 @@
             </table>
         {/if}
     </div>
+    <div>
+        <h2>Logout</h2>
+        <form action="admin.php" method="post">
+            <input type="hidden" name="action" value="logout"/>
+            <input type="hidden" name="orderId" value="0"/>
+            <button type="submit">Logout from admin panel</button>
+        </form>
+    </div>
 {else}
-    <form action="{$url}" method="post">
-        <label for="username">{$language["LOGIN_FORM_USERNAME"]}</label>
-        <input id="username" name="username" type="text" l/>
-        <label for="password">{$language["LOGIN_FORM_PASSWORD"]}</label>
-        <input id="password" name="password" type="password"/>
-        <button type="submit" name="login">{$language["LOGIN_FORM_LOGIN"]}</button>
-    </form>
+    <div>
+        <h2>Login</h2>
+        <form action="{$url}" method="post">
+            <label for="username">{$language["LOGIN_FORM_USERNAME"]}</label>
+            <input id="username" name="username" type="text" l/>
+            <label for="password">{$language["LOGIN_FORM_PASSWORD"]}</label>
+            <input id="password" name="password" type="password"/>
+            <button type="submit" name="login">{$language["LOGIN_FORM_LOGIN"]}</button>
+        </form>
+    </div>
 {/if}
 </body>
 </html>

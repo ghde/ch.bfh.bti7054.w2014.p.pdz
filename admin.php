@@ -88,6 +88,11 @@ if (array_key_exists("action", $_POST) && array_key_exists("orderId", $_POST)) {
         $dbDao->deleteOrder($orderId);
     }
 
+    // Handle logout function
+    if ("logout" == $action) {
+        session_destroy();
+    }
+
     // Force reload of admin UI to loose POST params.
     header("Location: " . $_SERVER["REQUEST_URI"]);
 }

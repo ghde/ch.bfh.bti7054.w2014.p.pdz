@@ -3,6 +3,11 @@ body > div {
     margin-left: 10px;
 }
 
+h2 {
+    color: black;
+    font-size: 13px;
+}
+
 table {
     border: 2px solid black;
 }
@@ -44,4 +49,15 @@ tr.order_status_2 {
 
 tr.order_status_3 {
     background-color: lightyellow;
+}
+
+form > label {
+    font-weight: bold;
+    text-align: right;
+}
+
+form > input {
+    display: block;
+    border: solid 1px #aacfe4;
+    margin: 5px 0 5px 0;
 }
