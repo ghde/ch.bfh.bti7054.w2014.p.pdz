@@ -124,6 +124,75 @@
         </div>
     </div>
     <div>
+        <h2>Add a new plant <a id="addPlant_toggle" href="#" onclick="toggle('addPlant');">[show]</a></h2>
+
+        <div id="addPlant" class="hidden">
+            <!-- plantTypes -->
+            <form action="admin.php" method="post">
+
+                <hr/>
+                <label for="titleDE">Plant title german</label>
+                <input id="titleDE" name="titleDE" type="text"/>
+
+                <label for="descriptionDE">Plant description german</label>
+                <textarea id="descriptionDE" name="descriptionDE" rows="5" cols="50">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</textarea>
+
+                <hr/>
+                <label for="titleEN">Plant title english</label>
+                <input id="titleEN" name="titleEN" type="text"/>
+
+                <label for="descriptionEN">Plant description english</label>
+                <textarea id="descriptionEN" name="descriptionEN" rows="5" cols="50">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</textarea>
+
+                <hr/>
+                <label for="picture">Picture</label>
+                <select id="picture" name="picture">
+                    {foreach from=$pictures item=picture}
+                        {if $picture|strpos:'plant'===0}
+                            <option value="{$picture}">{$picture}</option>
+                        {/if}
+                    {/foreach}
+                </select>
+
+                <label for="price">Price</label>
+                <input id="price" name="price" type="number" step="0.01"/>
+
+                <label for="pouringFrequency">Pouring frequency</label>
+                <select id="pouringFrequency" name="pouringFrequency">
+                    {foreach from=$numerics item=numeric}
+                        <option value="{$numeric}">{$numeric}</option>
+                    {/foreach}
+                </select>
+
+                <label for="sunlight">Sunlight</label>
+                <select id="sunlight" name="sunlight">
+                    {foreach from=$numerics item=numeric}
+                        <option value="{$numeric}">{$numeric}</option>
+                    {/foreach}
+                </select>
+
+                <label for="difficulty">Difficulty</label>
+                <select id="difficulty" name="difficulty">
+                    {foreach from=$numerics item=numeric}
+                        <option value="{$numeric}">{$numeric}</option>
+                    {/foreach}
+                </select>
+
+                <label for="plantType">Plant type</label>
+                <select id="plantType" name="plantType">
+                    {foreach from=$plantTypes item=plantType}
+                        <option value="{$plantType->getId()}">{$plantType->getTitle()}</option>
+                    {/foreach}
+                </select>
+
+                <input type="hidden" name="action" value="createPlant"/>
+                <input type="hidden" name="orderId" value="0"/>
+                <button type="submit">Save plant</button>
+
+            </form>
+        </div>
+    </div>
+    <div>
         <h2>Logout</h2>
 
         <form action="admin.php" method="post">

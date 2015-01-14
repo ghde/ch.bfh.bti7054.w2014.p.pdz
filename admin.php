@@ -94,6 +94,37 @@ if (array_key_exists("action", $_POST) && array_key_exists("orderId", $_POST)) {
         session_destroy();
     }
 
+    // Handle createPlant function
+    if ("createPlant" == $action) {
+
+        // String parameters from $_POST
+        $titleDE = $_POST["titleDE"];
+        $titleEN = $_POST["titleEN"];
+        $descriptionDE = $_POST["descriptionDE"];
+        $descriptionEN = $_POST["descriptionEN"];
+        $picture = $_POST["picture"];
+
+        // Integer parameters from $_POST
+        $pouringFrequency = intval($_POST["pouringFrequency"]);
+        $sunlight = intval($_POST["sunlight"]);
+        $difficulty = intval($_POST["difficulty"]);
+        $plantTypeId = intval($_POST["plantType"]);
+
+        // Double parameters from $_POST
+        $price = doubleval($_POST["price"]);
+
+        // Create required objects.
+        $plantType = new PlantType($plantTypeId, null, null);
+        $plantTx = array();
+        array_push($plantTx, new PlantTx('de', $titleDE, $descriptionDE));
+        array_push($plantTx, new PlantTx('en', $titleEN, $descriptionEN));
+        $plant = new Plant(0, $picture, null, null, 3, 4, 2, $plantType, $price);
+        $plant->setPlantTxArray($plantTx);
+
+        // Insert plant into db
+        $dbDao->insertPlant($plant);
+    }
+
     // Force reload of admin UI to loose POST params.
     header("Location: " . $_SERVER["REQUEST_URI"]);
 }
@@ -101,7 +132,7 @@ if (array_key_exists("action", $_POST) && array_key_exists("orderId", $_POST)) {
 // Fetch orders & plants & accessories
 $orders = $dbDao->getActiveOrders();
 $plants = $dbDao->getAllPlants(null);
-$accessories = $dbDao->getAllAccessories();
+$plantTypes = $dbDao->getAllPlantType();
 
 // Validate order address if not in session
 $googleApiUrl = "https://maps.googleapis.com/maps/api/geocode/json?address={address}&sensor=false";
@@ -180,14 +211,16 @@ $smarty->assign('url', $_SERVER["REQUEST_URI"]);
 $smarty->assign('admin', $admin);
 $smarty->assign('language', $languageKeys);
 $smarty->assign('plants', $plants);
-$smarty->assign('accessories', $accessories);
+$smarty->assign('plantTypes', $plantTypes);
 $smarty->assign('orders', $orders);
+$smarty->assign('pictures', scandir("pictures"));
 $smarty->assign('status', array(
     1 => "new",
     2 => "confirmed",
     3 => "payed",
     4 => "delivered"
 ));
+$smarty->assign('numerics', array(1, 2, 3, 4, 5));
 
 // Display root template
 $smarty->display('admin.tpl');
