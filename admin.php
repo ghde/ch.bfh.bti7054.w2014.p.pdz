@@ -38,8 +38,10 @@ $languageKeys = getLanguageKeys();
 // Get or create user);
 if (array_key_exists("admin", $_SESSION) && $_SESSION["admin"] instanceof User) {
     $admin = $_SESSION["admin"];
-} else  {
+    $validation = array_key_exists("validation", $_SESSION) ? $_SESSION["validation"] : array();
+} else {
     $admin = new User;
+    $validation = array();
     $_SESSION["admin"] = $admin;
 }
 
@@ -52,34 +54,53 @@ $smarty->debugging = false;
 $smarty->caching = false;
 //$smarty->cache_lifetime = 120;
 
+// Handle admin requests
+if (array_key_exists("action", $_POST) && array_key_exists("orderId", $_POST)) {
+
+    // Read admin params
+    $action = $_POST["action"];
+    $orderId = intval($_POST["orderId"]);
+
+    // Handle proceed order function
+    if ("proceedOrder" == $action && array_key_exists("newStatus", $_POST)) {
+
+        // Read new status
+        $newStatus = intval($_POST["newStatus"]);
+
+        // Read requested order and user
+        $order = $dbDao->getOrder($orderId);
+        $user = $dbDao->getCustomerByAccountName($order->getAccountName());
+
+        // Decide whether to send a mail notification
+        if ($newStatus == 2) {
+            $order->sendPaymentMail($user);
+        } else if ($newStatus == 4) {
+            $order->sendDeliveryMail($user);
+        }
+
+        // Update order status
+        $dbDao->setOrderStatus($orderId, $newStatus);
+
+    }
+
+    // Handle cancel order function
+    if ("cancelOrder" == $action) {
+        $dbDao->deleteOrder($orderId);
+    }
+
+    // Force reload of admin UI to loose POST params.
+    header("Location: " . $_SERVER["REQUEST_URI"]);
+}
+
 // Fetch orders
 $orders = $dbDao->getActiveOrders();
 
-// Handle admin requests
-if (array_key_exists("proceedOrder", $_POST)
-    && array_key_exists("orderId", $_POST)
-    && array_key_exists("newStatus", $_POST)) {
+// Validate order address if not in session
+$googleApiUrl = "https://maps.googleapis.com/maps/api/geocode/json?address={address}&sensor=false";
+foreach ($orders as $order) {
 
-    $orderId = intval($_POST["orderId"]);
-    $newStatus = intval($_POST["newStatus"]);
-    $order = $dbDao->getOrder($orderId);
-    $user = $dbDao->getCustomerByAccountName($order->getAccountName());
-
-    if ($newStatus == 2) {
-        $order->sendPaymentMail($user);
-    } else if ($newStatus == 4) {
-        $order->sendDeliveryMail($user);
-    }
-
-    $dbDao->setOrderStatus($orderId, $newStatus);
-
-    // Redirect user.
-    header("Location: " . $_SERVER["REQUEST_URI"]);
-
-} else if (array_key_exists("validateDeliveryAddresses", $_POST)) {
-
-    $googleApiUrl = "https://maps.googleapis.com/maps/api/geocode/json?address={address}&sensor=false";
-    foreach ($orders as $order) {
+    // Check if address was previously validated (validation result stored in session).
+    if (!array_key_exists($order->getId(), $validation)) {
 
         // Get address parts.
         $streetName = $order->getStreetName();
@@ -117,18 +138,33 @@ if (array_key_exists("proceedOrder", $_POST)
 
             // Set formatted address
             $order->setFormattedAddress($result->formatted_address);
+            $validation[$order->getId()] = $result->formatted_address;
 
             // Check validity of address
             if ($gStreetNumber != null && $gStreetName != null && $gLocality != null && $gCountry != null && $gPostalCode != null) {
                 $gStreet = $gStreetName . " " . $gStreetNumber;
                 if ($streetName == $gStreet && $zipCode == $gPostalCode && $city == $gLocality && $country == $gCountry) {
                     $order->setValidAddress(true);
+                    $validation[$order->getId()] = "";
                 }
             }
         }
+    } else {
+
+        // Address was already validated.
+        $validatedAddress = $validation[$order->getId()];
+        if ($validatedAddress == "") {
+
+            // Address was valid
+            $order->setValidAddress(true);
+
+        } else {
+
+            // Address was not valid
+            $order->setValidAddress(false);
+            $order->setFormattedAddress($validatedAddress);
+        }
     }
-
-
 }
 
 // Assign common attributes
@@ -136,6 +172,12 @@ $smarty->assign('url', $_SERVER["REQUEST_URI"]);
 $smarty->assign('admin', $admin);
 $smarty->assign('language', $languageKeys);
 $smarty->assign('orders', $orders);
+$smarty->assign('status', array(
+    1 => "new",
+    2 => "confirmed",
+    3 => "payed",
+    4 => "delivered"
+));
 
 // Display root template
 $smarty->display('admin.tpl');
@@ -145,4 +187,5 @@ $admin->setFailedLoginTry(false);
 $_SESSION["admin"] = $admin;
 
 // Write and close session
+$_SESSION["validation"] = $validation;
 session_write_close();

@@ -1,0 +1,47 @@
+
+body > div {
+    margin-left: 10px;
+}
+
+table {
+    border: 2px solid black;
+}
+
+tr {
+    border: 2px solid grey;
+}
+
+td, th {
+    padding: 5px 8px 5px 8px;
+    border: 1px solid black;
+}
+
+td > ul {
+    padding: 0px 0px 0px 20px;
+}
+
+div.invalidAddress {
+    margin-top: 10px;
+    border: 2px solid red;
+    background-color: lightsalmon;
+    padding: 10px 10px 10px 10px;
+}
+
+div.validAddress {
+    margin-top: 10px;
+    border: 2px solid green;
+    background-color: lightgreen;
+    padding: 10px 10px 10px 10px;
+}
+
+tr.order_status_1 {
+    background-color: lightblue;
+}
+
+tr.order_status_2 {
+    background-color: lightgrey;
+}
+
+tr.order_status_3 {
+    background-color: lightyellow;
+}

@@ -52,6 +52,13 @@ class Order
     /**
      * @return mixed
      */
+    public function getNextStatus() {
+        return $this->status + 1;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getStatus() {
         return $this->status;
     }

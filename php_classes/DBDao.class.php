@@ -1,17 +1,20 @@
 <?php
+
 /**
  * Created by IntelliJ IDEA.
  * User: Claudio
  * Date: 05.12.14
  * Time: 10:43
  */
-class DBDao {
+class DBDao
+{
 
     //region plant
     /**
      * @return string
      */
-    private function getPlantSelectQuery(){
+    private function getPlantSelectQuery()
+    {
         global $language;
 
         $dbQuery = "
@@ -40,10 +43,11 @@ class DBDao {
      * @param $plantId
      * @return Plant
      */
-    function getPlant($plantId) {
+    function getPlant($plantId)
+    {
         $dbConnection = getDBConnection();
 
-        if (empty($plantId)){
+        if (empty($plantId)) {
             return null;
         }
         $dbQuery = $this->getPlantSelectQuery() . "WHERE plant.plantId = '$plantId'";
@@ -74,7 +78,8 @@ class DBDao {
      * @param $plantTypeId
      * @return array of plants.
      */
-    function getAllPlants($plantTypeId) {
+    function getAllPlants($plantTypeId)
+    {
         $dbConnection = getDBConnection();
 
         $plants = array();
@@ -112,7 +117,8 @@ class DBDao {
      * @param $plantId
      * @return string
      */
-    private function getAccessorySelectQuery($plantId){
+    private function getAccessorySelectQuery($plantId)
+    {
         global $language;
 
         $dbQuery = "
@@ -131,21 +137,23 @@ class DBDao {
 
         return $dbQuery;
     }
+
     /**
      * @param $plantId
      * @return array of accessories
      */
-    function getAccessoriesByPlant($plantId) {
+    function getAccessoriesByPlant($plantId)
+    {
         $dbConnection = getDBConnection();
 
-        if (empty($plantId)){
+        if (empty($plantId)) {
             return null;
         }
 
         $accessories = array();
         $dbQuery = $this->getAccessorySelectQuery($plantId);
 
-        if($dbRes = $dbConnection->query($dbQuery)) {
+        if ($dbRes = $dbConnection->query($dbQuery)) {
             while ($accessory = $dbRes->fetch_object("Accessory")) {
                 array_push($accessories, $accessory);
             }
@@ -154,15 +162,17 @@ class DBDao {
         }
         return $accessories;
     }
+
     /**
      * @return array of accessories
      */
-    function getAllAccessories() {
+    function getAllAccessories()
+    {
         $dbConnection = getDBConnection();
 
         $accessories = array();
         $dbQuery = $this->getAccessorySelectQuery(null);
-        if($dbRes = $dbConnection->query($dbQuery)) {
+        if ($dbRes = $dbConnection->query($dbQuery)) {
             while ($accessory = $dbRes->fetch_object("Accessory")) {
                 array_push($accessories, $accessory);
             }
@@ -171,11 +181,13 @@ class DBDao {
         }
         return $accessories;
     }
+
     /**
      * @param $accessoryId
      * @return array of accessories
      */
-    function getAccessory($accessoryId) {
+    function getAccessory($accessoryId)
+    {
         $dbConnection = getDBConnection();
 
         $dbQuery = $this->getAccessorySelectQuery(null);
@@ -190,7 +202,8 @@ class DBDao {
     //endregion accessory
 
     //region order
-    function getOrder($orderId) {
+    function getOrder($orderId)
+    {
         $dbConnection = getDBConnection();
 
         $orderRes = $dbConnection->query("SELECT * FROM `order` WHERE orderId = $orderId");
@@ -210,13 +223,32 @@ class DBDao {
         return $order;
     }
 
-    function setOrderStatus($orderId, $newStatus) {
+    function deleteOrder($orderId)
+    {
         $dbConnection = getDBConnection();
 
-        $dbConnection->query("UPDATE `order` SET `status` = $newStatus WHERE orderId = $orderId");
+        $deleteOrderPosQuery = "DELETE FROM orderPos WHERE orderId = $orderId";
+        $deleteOrderQuery = "DELETE FROM `order` WHERE orderId = $orderId";
+
+        $dbConnection->autocommit(FALSE);
+        if ($dbConnection->query($deleteOrderPosQuery) === TRUE) {
+            if ($dbConnection->query($deleteOrderQuery) === TRUE) {
+                $dbConnection->commit();
+            } else {
+                echo($dbConnection->error);
+                $dbConnection->rollback();
+            }
+        }
+        $dbConnection->close();
     }
 
-    function getActiveOrders() {
+    function setOrderStatus($orderId, $newStatus)
+    {
+        getDBConnection()->query("UPDATE `order` SET `status` = $newStatus WHERE orderId = $orderId");
+    }
+
+    function getActiveOrders()
+    {
         $dbConnection = getDBConnection();
 
         $orderArr = array();
@@ -241,7 +273,8 @@ class DBDao {
     /**
      * @param $order
      */
-    function insertOrder($order) {
+    function insertOrder($order)
+    {
         $dbConnection = getDBConnection();
 
         if (isset($order) && $order instanceof Order) {
@@ -288,7 +321,7 @@ class DBDao {
                         VALUES(?,?,?,?,?)");
                     //bind variables --> set in foreach
                     $stmt->bind_param('iiiid', $orderId, $orderPlantId, $accessoryId, $quantity, $unitPrice);
-                    foreach($orderPosArray as $orderPos) {
+                    foreach ($orderPosArray as $orderPos) {
                         $orderPlantId = $orderPos->getPlantId();
                         $accessoryId = $orderPos->getAccessoryId();
                         $quantity = $orderPos->getQuantity();
@@ -296,8 +329,7 @@ class DBDao {
                         if ($stmt->execute() === TRUE) {
                             //success
                             $orderPos->setId($dbConnection->insert_id);
-                        }
-                        else {
+                        } else {
                             echo($dbConnection->error);
                             $dbConnection->rollback();
                             $dbConnection->close();
@@ -305,8 +337,7 @@ class DBDao {
                         }
                     }
                     $dbConnection->commit();
-                }
-                else {
+                } else {
                     echo($dbConnection->error);
                 }
                 $dbConnection->close();
@@ -319,7 +350,8 @@ class DBDao {
     /**
      * @return array of language keys.
      */
-    function getLanguageKeys() {
+    function getLanguageKeys()
+    {
         global $language;
         $dbConnection = getDBConnection();
 
@@ -339,7 +371,8 @@ class DBDao {
      * @param $password
      * @return customer.
      */
-    function getCustomer($accountName, $password) {
+    function getCustomer($accountName, $password)
+    {
         $dbConnection = getDBConnection();
 
         $customer = null;
@@ -374,7 +407,8 @@ class DBDao {
      * @param $accountName
      * @return null|object|stdClass
      */
-    function getCustomerByAccountName($accountName) {
+    function getCustomerByAccountName($accountName)
+    {
         $dbConnection = getDBConnection();
 
         $customer = null;
@@ -403,7 +437,8 @@ class DBDao {
      * inserts a new customer with a new customer address
      * @param $customer customer with customer address
      */
-    function insertCustomer($customer) {
+    function insertCustomer($customer)
+    {
         $dbConnection = getDBConnection();
 
         if (isset($customer) && $customer instanceof Customer) {
@@ -455,29 +490,29 @@ class DBDao {
 
                     if ($dbConnection->query($dbQuery) === TRUE) {
                         $dbConnection->commit();
-                    }
-                    else {
+                    } else {
                         echo($dbConnection->error);
                         $dbConnection->rollback();
                     }
-                }
-                else {
+                } else {
                     echo($dbConnection->error);
                 }
                 $dbConnection->close();
             }
         }
     }
+
     /**
      * @param $accountName
      * @return null|object|stdClass
      */
-    function getCustomerAddress($accountName) {
+    function getCustomerAddress($accountName)
+    {
         $dbConnection = getDBConnection();
 
         $customerAddress = null;
 
-        if ($accountName !== ''){
+        if ($accountName !== '') {
             //real_escape_string --> else sql code can be injected
             $accountName = $dbConnection->real_escape_string($accountName);
             $dbQuery = "
@@ -504,10 +539,11 @@ class DBDao {
     /**
      * @param $customerAddress
      */
-    function updateCustomerAddress($customerAddress) {
+    function updateCustomerAddress($customerAddress)
+    {
         $dbConnection = getDBConnection();
 
-        if (isset($customerAddress) && $customerAddress instanceof CustomerAddress){
+        if (isset($customerAddress) && $customerAddress instanceof CustomerAddress) {
             $dbQuery = "
               UPDATE customerAddress
               SET
@@ -520,8 +556,7 @@ class DBDao {
 
             if ($dbConnection->query($dbQuery) === TRUE) {
                 //success
-            }
-            else {
+            } else {
                 echo $dbConnection->error;
             }
             $dbConnection->close();
@@ -535,7 +570,8 @@ class DBDao {
      * @param $password
      * @return admin.
      */
-    function getAdmin($accountName, $password) {
+    function getAdmin($accountName, $password)
+    {
         $dbConnection = getDBConnection();
 
         if ($accountName !== '' && $password !== '') {
@@ -562,7 +598,8 @@ class DBDao {
     //endregion admin
 
     //region search
-    function getSearchPreview($searchTxt){
+    function getSearchPreview($searchTxt)
+    {
         global $language;
         $dbConnection = getDBConnection();
         if ($searchTxt !== '') {
@@ -594,7 +631,7 @@ class DBDao {
                 ORDER BY title LIMIT 10";
         }
         $products = array();
-        if($dbRes = $dbConnection->query($dbQuery)) {
+        if ($dbRes = $dbConnection->query($dbQuery)) {
             while ($product = $dbRes->fetch_object("Product")) {
                 array_push($products, $product);
             }
@@ -603,7 +640,9 @@ class DBDao {
         }
         return $products;
     }
-    function getSearchPreviewExt($searchTxt){
+
+    function getSearchPreviewExt($searchTxt)
+    {
         global $language;
         $dbConnection = getDBConnection();
         if ($searchTxt !== '') {
@@ -637,7 +676,7 @@ class DBDao {
                     ORDER BY title";
         }
         $products = array();
-        if($dbRes = $dbConnection->query($dbQuery)) {
+        if ($dbRes = $dbConnection->query($dbQuery)) {
             while ($product = $dbRes->fetch_object("Product")) {
                 array_push($products, $product);
             }
@@ -654,7 +693,8 @@ class DBDao {
      * @param $difficulty
      * @return array of Product
      */
-    function getSearchPreviewForWizard($sunlight, $pouringfreq, $difficulty){
+    function getSearchPreviewForWizard($sunlight, $pouringfreq, $difficulty)
+    {
         global $language;
         $dbConnection = getDBConnection();
         if (is_numeric($sunlight) && is_numeric($pouringfreq) && is_numeric($difficulty)) {
@@ -676,7 +716,7 @@ class DBDao {
                       AND p.difficulty <= '$difficulty'";
         }
         $products = array();
-        if($dbRes = $dbConnection->query($dbQuery)) {
+        if ($dbRes = $dbConnection->query($dbQuery)) {
             while ($product = $dbRes->fetch_object("Product")) {
                 array_push($products, $product);
             }

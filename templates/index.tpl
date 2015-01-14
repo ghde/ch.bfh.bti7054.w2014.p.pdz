@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Plants for your home</title>
     <link rel="stylesheet" type="text/css" media="screen" href="css/design.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/design-shop.css"/>
     <script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
