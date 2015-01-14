@@ -61,3 +61,7 @@ form > input {
     border: solid 1px #aacfe4;
     margin: 5px 0 5px 0;
 }
+
+.hidden {
+    display: none;
+}
