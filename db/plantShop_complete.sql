@@ -413,9 +413,9 @@ VALUES
   (40.8, 1, 2, 3, 'plant4.jpg', 2),
   (50.95, 4, 3, 2, 'plant5.jpg', 3),
   (60.0, 5, 4, 3, 'plant6.jpg', 4),
-  (20.6, 2, 2, 1, 'plant7.jpg', 5),
-  (90.5, 3, 3, 4, 'plant8.jpg', 3),
-  (89.4, 1, 1, 1, 'plant9.jpg', 1);
+  (20.6, 2, 2, 2, 'plant7.jpg', 5),
+  (90.5, 1, 1, 1, 'plant8.jpg', 3),
+  (89.4, 1, 2, 1, 'plant9.jpg', 1);
 -- -----------------------------------------------------
 -- plantTx
 -- -----------------------------------------------------
@@ -461,22 +461,22 @@ VALUES
 INSERT INTO accessoryTx
 (accessoryId, language, accessoryTitle, accessoryDescription)
 VALUES
-  (1, 'de', 'Weisser Topf', 'Zubehör 1 Beschreibung'),
-  (1, 'en', 'White pot', 'accessory 1 description'),
-  (2, 'de', 'Metalltopf', 'Zubehör 2 Beschreibung'),
-  (2, 'en', 'Metal pot', 'accessory 2 description'),
-  (3, 'de', 'Grüner Topf', 'Zubehör 3 Beschreibung'),
-  (3, 'en', 'Green pot', 'accessory 3 description'),
-  (4, 'de', 'Untertopf', 'Zubehör 4 Beschreibung'),
-  (4, 'en', 'Underpot', 'accessory 4 description'),
-  (5, 'de', 'Antiker Topf', 'Zubehör 5 Beschreibung'),
-  (5, 'en', 'Antique pot', 'accessory 5 description'),
-  (6, 'de', 'Hipster Topf', 'Zubehör 6 Beschreibung'),
-  (6, 'en', 'Hipster pot', 'accessory 6 description'),
-  (7, 'de', 'Dünger', 'Zubehör 7 Beschreibung'),
-  (7, 'en', 'Fertilizer', 'accessory 7 description'),
-  (8, 'de', 'Pflanzenerde', 'Zubehör 8 Beschreibung'),
-  (8, 'en', 'Plant earth', 'accessory 8 description');
+  (1, 'de', 'Weisser Topf', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua'),
+  (1, 'en', 'White pot', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua'),
+  (2, 'de', 'Metalltopf', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.'),
+  (2, 'en', 'Metal pot', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.'),
+  (3, 'de', 'Grüner Topf', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.'),
+  (3, 'en', 'Green pot', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.'),
+  (4, 'de', 'Untertopf', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.'),
+  (4, 'en', 'Underpot', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.'),
+  (5, 'de', 'Antiker Topf', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.'),
+  (5, 'en', 'Antique pot', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.'),
+  (6, 'de', 'Hipster Topf', 'Lorem ipsum hip hipsterus sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua.'),
+  (6, 'en', 'Hipster pot', 'Lorem ipsum hip hipsterus sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua.'),
+  (7, 'de', 'Dünger', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.'),
+  (7, 'en', 'Fertilizer', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.'),
+  (8, 'de', 'Pflanzenerde', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.'),
+  (8, 'en', 'Plant earth', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.');
   
 -- -----------------------------------------------------
 -- plant_accessory
