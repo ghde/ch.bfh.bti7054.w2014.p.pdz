@@ -62,14 +62,6 @@
                                 <input id="email" name="email" type="text" value="{$user->getUsername()}" disabled />
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                <label for="email">{$language["USER_EMAIL"]}: </label>
-                            </td>
-                            <td>
-                                <input id="email" name="email" type="text" value="{$user->getUsername()}" disabled />
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -77,6 +69,22 @@
                 <h2>{$language["USER_SHIPPING_ADDRESS"]}</h2>
                 <table>
                     <tbody>
+                        <tr>
+                            <td>
+                                <label>{$language["ORDER_SHIPPINGMETHOD"]}: </label>
+                            </td>
+                            <td>
+                                <label>{$language["ORDER_SHIPPINGMETHOD_STANDARD"]}</label>
+                                <input name="expressDelivery" type="radio" value="0" checked>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <label>{$language["ORDER_SHIPPINGMETHOD_EXPRESS"]}</label>
+                                <input name="expressDelivery" type="radio" value="1">
+                            </td>
+                        </tr>
                         <tr>
                             <td>
                                 <label for="streetName">{$language["USER_STREET"]}: </label>

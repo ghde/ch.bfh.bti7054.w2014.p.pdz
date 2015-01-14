@@ -487,6 +487,10 @@ p.loginRequired {
     margin-top: 3px;
     float: right;
 }
+#order_confirm input[type=radio] {
+    margin-top: 0;
+    float: left;
+}
 
 #orderForm > div.split > div {
     width: 50%;

@@ -256,7 +256,8 @@ class DBDao {
                     streetName,
                     zipCode,
                     city,
-                    country
+                    country,
+                    expressDelivery
                   )
                   VALUES
                   (
@@ -264,7 +265,8 @@ class DBDao {
                     '{$order->getStreetName()}',
                     '{$order->getZipCode()}',
                     '{$order->getCity()}',
-                    '{$order->getCountry()}'
+                    '{$order->getCountry()}',
+                    '{$order->getExpressDelivery()}'
                   )";
 
                 if ($dbConnection->query($dbQuery) === TRUE) {
