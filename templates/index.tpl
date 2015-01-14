@@ -34,17 +34,18 @@
                         <input id="username" name="username" type="text" l/>
                         <label class="login" for="password">{$language["LOGIN_FORM_PASSWORD"]}</label>
                         <input id="password" name="password" type="password"/>
-                        <button type="submit" name="login">{$language["LOGIN_FORM_LOGIN"]}</button>
-                        {if $user->isFailedLoginTry()}
-                            <span class="failedlogin"><strong>{$language["LOGIN_ERROR_HINT"]}
-                                    :</strong> {$language["LOGIN_ERROR_TEXT"]}</span>
-                        {/if}
+                        <button id="loginPanelButton" type="submit" name="login">{$language["LOGIN_FORM_LOGIN"]}</button>
+
                     </form>
                     <form action="index.php" method="GET">
                         <input type="hidden" name="page" value="signup"/>
-                        <button type="submit">{$language["SIGNUP"]}</button>
+                        <button id="loginPanelButton" type="submit">{$language["SIGNUP"]}</button><br>
                     </form>
                 </div>
+                {if $user->isFailedLoginTry()}
+                    <span class="failedLogin"><strong>{$language["LOGIN_ERROR_HINT"]}
+                            :</strong> {$language["LOGIN_ERROR_TEXT"]}</span>
+                {/if}
             {/if}
         </div>
         <div id="shopping_cart">
@@ -58,11 +59,12 @@
                             <form method="POST" action="index.php?page=removefromcart">
                                 <input type="hidden" name="plantId" value="{$plant.product->getId()}"/>
 
-                                <div>{$plant.quantity} x <a
+                                <div id="productInShoppingCart">{$plant.quantity} x <a
                                             href="index.php?page=details&Id={$plant.product->getId()}">{$plant.product->getTitle()}</a>
                                     <button type="submit">X</button>
                                 </div>
                             </form>
+                            <br>
                         {/foreach}
                     {/if}
                     {if $cart->getAccessories()|@count > 0}

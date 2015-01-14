@@ -171,9 +171,15 @@ a.nav:hover {
     font-weight: bold;
 }
 
-.failedlogin {
-    position:absolute;
+.failedLogin {
+    float: left;
     margin-top: 3px;
+    margin-left: 12px;
+    color: red;
+}
+
+#loginPanelButton {
+    float: left;
 }
 
 #login > form {
@@ -198,6 +204,10 @@ a.nav:hover {
     float: right;
     width: 50%;
     height: 100%;
+}
+
+#removebutton {
+    float: right;
 }
 
 #shopping_cart > div.elements {
@@ -724,6 +734,7 @@ div#answerContainer>form>div.answer > button {
     font-weight: bold;
     border-radius: 10px;
     font-size: 14px;
+    float:left;
 }
 
 div#changeLang>div.errors>div.lang {
