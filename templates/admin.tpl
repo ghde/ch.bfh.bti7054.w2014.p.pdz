@@ -85,7 +85,41 @@
         {/if}
     </div>
     <div>
+        <h2>All plants</h2>
+        {if $plants|count == 0}
+            No plants found!
+        {else}
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Pouring frequency</th>
+                    <th>Sunlight</th>
+                    <th>Difficulty</th>
+                    <th>Plant type</th>
+                </tr>
+                </thead>
+                <tbody>
+                {foreach from=$plants item=plant}
+                    <tr>
+                        <th>#{$plant->getId()}</th>
+                        <td>{$plant->getTitle()}</td>
+                        <td align="right">{$plant->getPrice()} CHF</td>
+                        <td align="right">{$plant->getPouringFrequency()}</td>
+                        <td align="right">{$plant->getSunlight()}</td>
+                        <td align="right">{$plant->getDifficulty()}</td>
+                        <td>{$plant->getPlantType()->getTitle()}</td>
+                    </tr>
+                {/foreach}
+                </tbody>
+            </table>
+        {/if}
+    </div>
+    <div>
         <h2>Logout</h2>
+
         <form action="admin.php" method="post">
             <input type="hidden" name="action" value="logout"/>
             <input type="hidden" name="orderId" value="0"/>
@@ -95,6 +129,7 @@
 {else}
     <div>
         <h2>Login</h2>
+
         <form action="{$url}" method="post">
             <label for="username">{$language["LOGIN_FORM_USERNAME"]}</label>
             <input id="username" name="username" type="text" l/>

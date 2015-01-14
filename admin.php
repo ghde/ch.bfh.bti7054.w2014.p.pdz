@@ -97,8 +97,10 @@ if (array_key_exists("action", $_POST) && array_key_exists("orderId", $_POST)) {
     header("Location: " . $_SERVER["REQUEST_URI"]);
 }
 
-// Fetch orders
+// Fetch orders & plants & accessories
 $orders = $dbDao->getActiveOrders();
+$plants = $dbDao->getAllPlants(null);
+$accessories = $dbDao->getAllAccessories();
 
 // Validate order address if not in session
 $googleApiUrl = "https://maps.googleapis.com/maps/api/geocode/json?address={address}&sensor=false";
@@ -176,6 +178,8 @@ foreach ($orders as $order) {
 $smarty->assign('url', $_SERVER["REQUEST_URI"]);
 $smarty->assign('admin', $admin);
 $smarty->assign('language', $languageKeys);
+$smarty->assign('plants', $plants);
+$smarty->assign('accessories', $accessories);
 $smarty->assign('orders', $orders);
 $smarty->assign('status', array(
     1 => "new",
