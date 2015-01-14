@@ -2,11 +2,11 @@
 
 Hallo {$user->getFirstName()},
 
-Vielen Dank für die Überweisung des Betrages für Ihre Bestellung.
+Vielen Dank fuer die Ueberweisung des Betrages fuer Ihre Bestellung.
 
-Ihre Bestellung wurde soeben versendet und wird in den nächsten Tage bei Ihnen eintreffen.
+Ihre Bestellung wurde soeben versendet und wird in den naechsten Tage bei Ihnen eintreffen.
 
-Mit freundlichen Grüssen
+Mit freundlichen Gruessen
 Plants for your Home
 
 +++++++++++++++++++++++++++++++++++++ ENGLISH VERSION +++++++++++++++++++++++++++++++++++++

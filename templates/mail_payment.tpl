@@ -2,15 +2,15 @@
 
 Hallo {$user->getFirstName()},
 
-Vielen Dank für Ihre Bestellung bei "Plants for your Home".
+Vielen Dank fuer Ihre Bestellung bei "Plants for your Home".
 
-Damit wir Ihre Bestellung so rasch als möglich versenden können, überweisen Sie uns bitte den Totalbetrag auf unser Konto:
+Damit wir Ihre Bestellung so rasch als moeglich versenden koennen, ueberweisen Sie uns bitte den Totalbetrag auf unser Konto:
 IBAN: CHXX XXXX XXXX XXXX XXXX X
 SWIFT: XYZ
 Betrag: CHF {$price|number_format:2:".":","}
 Verwendungszweck: Bestellung {$order->getId()}
 
-Mit freundlichen Grüssen
+Mit freundlichen Gruessen
 Plants for your Home
 
 +++++++++++++++++++++++++++++++++++++ ENGLISH VERSION +++++++++++++++++++++++++++++++++++++
