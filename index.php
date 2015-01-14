@@ -58,8 +58,8 @@ if (array_key_exists("cart", $_SESSION)) {
 // Load basic layout
 $smarty = new Smarty;
 $smarty->debugging = false;
-$smarty->caching = true;
-$smarty->cache_lifetime = 120;
+$smarty->caching = false;
+//$smarty->cache_lifetime = 120;
 
 // Check page attribute
 if (isset($_GET["page"]) && preg_match("/^([a-z])+([A-Z])?([a-z])+$/", $_GET["page"]))
