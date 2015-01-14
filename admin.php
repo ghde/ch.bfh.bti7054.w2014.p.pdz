@@ -52,8 +52,8 @@ handleAdminLoginLogout();
 // Load basic layout
 $smarty = new Smarty;
 $smarty->debugging = false;
-$smarty->caching = false;
-//$smarty->cache_lifetime = 120;
+$smarty->caching = true;
+$smarty->cache_lifetime = 120;
 
 // Handle admin requests
 if (array_key_exists("action", $_POST) && array_key_exists("orderId", $_POST)) {
