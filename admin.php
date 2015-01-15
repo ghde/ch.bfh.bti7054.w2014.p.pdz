@@ -118,7 +118,7 @@ if (array_key_exists("action", $_POST) && array_key_exists("orderId", $_POST)) {
         $plantTx = array();
         array_push($plantTx, new PlantTx('de', $titleDE, $descriptionDE));
         array_push($plantTx, new PlantTx('en', $titleEN, $descriptionEN));
-        $plant = new Plant(0, $picture, null, null, 3, 4, 2, $plantType, $price);
+        $plant = new Plant(0, $picture, null, null, $pouringFrequency, $sunlight, $difficulty, $plantType, $price);
         $plant->setPlantTxArray($plantTx);
 
         // Insert plant into db
