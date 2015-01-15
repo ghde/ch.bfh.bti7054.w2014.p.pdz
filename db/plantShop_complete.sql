@@ -221,7 +221,7 @@ INSERT INTO messages (messageKey, language, message) VALUES
   ("LOGIN_FORM_LOGIN", "en", "Login"),
   ("LOGIN_ERROR_HINT", "de", "Fehler"),
   ("LOGIN_ERROR_HINT", "en", "Error"),
-  ("LOGIN_ERROR_TEXT", "de", "Ungültiger Benutzername und/oder Password!"),
+  ("LOGIN_ERROR_TEXT", "de", "Login fehlgeschlagen"),
   ("LOGIN_ERROR_TEXT", "en", "Invalid credentials!"),
   ("LOGIN_REQUIRED", "de", "Bitte melden Sie sich an um mit der Bestellung fortzufahren."),
   ("LOGIN_REQUIRED", "en", "Please login to continue with your order."),

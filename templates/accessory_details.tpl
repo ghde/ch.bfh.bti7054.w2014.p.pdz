@@ -1,5 +1,7 @@
 <div id="preview_image">
     <img id="logo" src="pictures/{$inner_accessory->getPictureName()}" width="400" height="400" border="0"/>
+</div>
+<div>
     {$inner_accessory->getDescription()}
 </div>
 <div id="customizing">
