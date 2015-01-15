@@ -11,7 +11,7 @@
 
 - Copy all files from source to your web server.
 - Execute the script 'db/plantShop_complete.sql' in order to create database and required tables.
-(this script creates a table named plantShop and a user called gardener identified by password plants4home).
+(this script creates a database named plantShop and a user called gardener identified by password plants4home).
 - Copy file \_mySql.php.sample and rename it to \_mySql.php
 - Launch browser http://{your host}/index.php or http://{your host}/admin.php
 
